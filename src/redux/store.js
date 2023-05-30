@@ -1,18 +1,18 @@
 import { configureStore } from '@reduxjs/toolkit'; 
-// import todoSlice from './todoSlice';
-// import userSlice from './userSlice';
+import userSlice from './reducers/userSlice';
 // import settingsSlice from './settingsSlice';
 // import bookmarksSlice from './bookmarksSlice';
 // import backgroundSlice from "./backgroundSlice";
+// import todoSlice from './todoSlice';
 
 const store = configureStore({
-    // reducer: {  
-    //             background: backgroundSlice.reducer,
-    //             todos: todoSlice.reducer, 
-    //             user: userSlice.reducer, 
-    //             settings: settingsSlice.reducer, 
-    //             bookmarks: bookmarksSlice.reducer
-    //         }
+  reducer: {  
+    user: userSlice.reducer, 
+    // background: backgroundSlice.reducer,
+    // todos: todoSlice.reducer, 
+    // settings: settingsSlice.reducer, 
+    // bookmarks: bookmarksSlice.reducer
+  }
 });
 
 export default store;
