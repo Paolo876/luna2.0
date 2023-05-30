@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'; 
 import userSlice from './reducers/userSlice';
-// import settingsSlice from './settingsSlice';
+import settingsSlice from './reducers/settingsSlice';
 // import bookmarksSlice from './bookmarksSlice';
 // import backgroundSlice from "./backgroundSlice";
 // import todoSlice from './todoSlice';
@@ -8,9 +8,10 @@ import userSlice from './reducers/userSlice';
 const store = configureStore({
   reducer: {  
     user: userSlice.reducer, 
+    settings: settingsSlice.reducer, 
+
     // background: backgroundSlice.reducer,
     // todos: todoSlice.reducer, 
-    // settings: settingsSlice.reducer, 
     // bookmarks: bookmarksSlice.reducer
   }
 });

@@ -1,13 +1,13 @@
 import React from 'react'
 import { useState } from "react";
 import { useUserRedux } from "../../hooks/useUserRedux";
-
 import validateInput from "../../utils/validate-input";
-
 import { Typography, Box, TextField } from '@mui/material'
 import "./WelcomePrompt.scss"
 import Image from 'mui-image';
 import logo from "../../assets/logo.png"
+
+
 const WelcomePrompt = () => {
   const { setUserName } = useUserRedux();
   const [ name, setName ] = useState("")
@@ -15,7 +15,8 @@ const WelcomePrompt = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if(validateInput(name, "text")) {
-      setError({state: false, value: null})
+      setError({state: false, value: null});
+      setUserName(name);
     } else {
       setError({state: true, value:"Please enter a valid name."})
       setName("")
@@ -35,7 +36,6 @@ const WelcomePrompt = () => {
         <Typography variant="h3">Before we get started, <br/>what is your name?</Typography>
         <TextField variant="standard" placeholder='John' value={name} onChange={e => setName(e.target.value)} error={error.state}/>
         {error && <Typography variant="body2" color="error.light" mt={1} fontStyle="italic">{error.value}</Typography>}
-
       </Box>
     </Box>
   )

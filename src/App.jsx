@@ -5,6 +5,7 @@ function App() {
   const { name } = useUserRedux();
 
   if(!name || name.trim().length === 0) return <WelcomePrompt/>
+  // if(name && )
   return (
     <div className="App">
     asdasdsad
