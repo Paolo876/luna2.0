@@ -51,21 +51,21 @@ export const theme = createTheme({
     //   }
     },
     palette: {
-      primary: {
-        main: '#d19119',
-      },
-      secondary: {
-        main: '#5b6eb5',
-      },
-      info: {
-        main: '#18ecbe',
-      },
-      error: {
-        main: '#f8713f',
-      },
-      success: {
-        main: '#91f574',
-      },
+    //   primary: {
+    //     main: '#d19119',
+    //   },
+    //   secondary: {
+    //     main: '#5b6eb5',
+    //   },
+    //   info: {
+    //     main: '#18ecbe',
+    //   },
+    //   error: {
+    //     main: '#f8713f',
+    //   },
+    //   success: {
+    //     main: '#91f574',
+    //   },
       background: {
         default: 'rgb(38,37,37)',
         lighter: 'rgba(239,235,229,0.8)',
@@ -86,32 +86,33 @@ export const theme = createTheme({
         letterSpacing: 1
       },
       h2: {
-        fontFamily: 'Manrope',
+        fontFamily: 'Roboto',
+        fontSize: "4.5em",
         fontWeight: 700,
         textTransform: 'uppercase',
   
       },
       h3: {
         fontFamily: 'Inter',
-        fontSize: "3.2em",
+        fontSize: "4.25em",
         fontWeight: 400,
         lineHeight: 1.5,
       },
       h4: {
-        fontFamily: 'Manrope',
+        fontFamily: 'Roboto',
         textTransform: 'uppercase',
         letterSpacing: 15,
         fontWeight: 800,
   
       },
       h5: {
-        fontFamily: 'Manrope',
+        fontFamily: 'Roboto',
         letterSpacing: 7,
         fontWeight: 800,
         textTransform: 'uppercase',
       },
       h6: {
-        fontFamily: 'Manrope',
+        fontFamily: 'Roboto',
         letterSpacing: 2,
         fontWeight: 600,
         textTransform: 'uppercase',
@@ -129,7 +130,7 @@ export const theme = createTheme({
         fontWeight: 300,
       },
       button: {
-        fontFamily: 'Noto Sans Lao',
+        fontFamily: 'Source Sans Pro',
       },
     },
   });
