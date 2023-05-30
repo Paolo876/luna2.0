@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { userActions } from "../redux//reducers/userSlice";
 
-export const useUserRedux = () => {
+const useUserRedux = () => {
     const userRedux = useSelector(state => state.user);
     const dispatch = useDispatch();
 
@@ -15,3 +15,5 @@ export const useUserRedux = () => {
         throw Error('Error accessing user reducer.');
     }
 }
+
+export default useUserRedux

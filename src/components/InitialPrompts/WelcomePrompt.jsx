@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from "react";
-import { useUserRedux } from "../../hooks/useUserRedux";
+import useUserRedux from "../../hooks/useUserRedux";
 import validateInput from "../../utils/validate-input";
 import { Typography, Box, TextField } from '@mui/material'
 import "./WelcomePrompt.scss"
