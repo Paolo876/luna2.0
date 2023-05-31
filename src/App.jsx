@@ -2,6 +2,7 @@ import useUserRedux from './hooks/useUserRedux';
 import useSettingsRedux from './hooks/useSettingsRedux';
 import WelcomePrompt from './components/InitialPrompts/WelcomePrompt';
 import LocationPrompt from './components/InitialPrompts/LocationPrompt';
+import Background from './components/Background/Background';
 
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
 
   return (
     <div className="App">
-    asdasdsad
+      <Background/>
     </div>
   );
 }

@@ -1,16 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { settingsInitialState, initialComponentsSettings } from "../initialStates";
-
-let updatedInitialState = {...settingsInitialState }
-if(!settingsInitialState.components) {
-    localStorage.setItem("components", JSON.stringify(initialComponentsSettings))
-    updatedInitialState = { ...updatedInitialState, components: initialComponentsSettings}
-}
+import { settingsInitialState } from "../initialStates";
 
 
 const settingsSlice = createSlice({
     name: 'settings',
-    initialState: updatedInitialState,
+    initialState: settingsInitialState,
     // initialState: {
     //     // background: initBgConfig,
     //     // components: initComponentsConfig,
