@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { backgroundInitialState } from "../initialStates";
-
+import { fetchBackground } from "./backgroundReducers";
 
 const backgroundSlice = createSlice({
     name: "background",
@@ -44,6 +44,24 @@ const backgroundSlice = createSlice({
 
         // },
     }, 
+    extraReducers: (builder) => {
+        builder
+        // fetchBackground
+        .addCase(fetchBackground.pending, ( state ) => {
+            state.isLoading = true;
+            state.error = null;
+        })
+        .addCase(fetchBackground.fulfilled, ( state, { payload }) => {
+            state.src = payload;
+            state.isLocal = false;
+            state.isLoading = false;
+            state.error = null;
+        })
+        .addCase(fetchBackground.rejected, ( state , { payload }) => {
+            state.isLoading = false;
+            state.error = payload.message;
+        })
+    }
 })
 
 export const backgroundActions = backgroundSlice.actions;
