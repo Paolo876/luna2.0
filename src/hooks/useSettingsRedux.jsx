@@ -10,6 +10,7 @@ const useSettingsRedux = () => {
   return {
     ...settingsRedux,
     setIsVisible: data => dispatch(settingsActions.setIsVisible(data)),
+    toggleGeolocation: data => dispatch(settingsActions.toggleGeolocation(data)),
   }
 }
 

@@ -21,9 +21,16 @@ const settingsSlice = createSlice({
     reducers: {
         // components
         setIsVisible(state, { payload }){
-            const component = state.components.find(item => item.name === payload);
+            const updatedComponents = { ...state.components };
+            const component = updatedComponents.find(item => item.name === payload);
             component.isVisible = !component.isVisible;
-            localStorage.setItem('componentsConfig', JSON.stringify(state.components));
+
+            state.components = updatedComponents
+            localStorage.setItem('components', JSON.stringify(updatedComponents));
+        },
+        toggleGeolocation(state, { payload }){
+            state.isGeolocationAllowed = payload;
+            localStorage.setItem('isGeolocationAllowed', JSON.stringify(state.isGeolocationAllowed))
         },
         // changeStyle(state, {payload}){
         //     const component = state.components.find(item => item.name === payload.name);
@@ -80,10 +87,7 @@ const settingsSlice = createSlice({
 
         // },
         // // UI
-        // toggleGeolocation(state, {payload}){
-        //     state.location.isGeolocationAllowed = payload;
-        //     localStorage.setItem('locationConfig', JSON.stringify(state.location))
-        // },
+
         // changeContainerColor(state, {payload}){
         //     const colors = payload.color
         //     const value = `linear-gradient(rgba(${colors.r}, ${colors.g}, ${colors.b}, ${payload.alpha}), rgba(${colors.r}, ${colors.g}, ${colors.b}, ${payload.alpha}))`;

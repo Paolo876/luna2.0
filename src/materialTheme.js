@@ -99,23 +99,22 @@ export const theme = createTheme({
         lineHeight: 1.5,
       },
       h4: {
-        fontFamily: 'Roboto',
-        textTransform: 'uppercase',
-        letterSpacing: 15,
-        fontWeight: 800,
+        fontFamily: 'Inter',
+        fontSize: "3em",
+        letterSpacing: 1,
+        fontWeight: 1,
   
       },
       h5: {
-        fontFamily: 'Roboto',
-        letterSpacing: 7,
-        fontWeight: 800,
-        textTransform: 'uppercase',
+        fontFamily: 'Inter',
+        fontSize: "2em",
+        fontWeight: 400,
+        letterSpacing: 1,
       },
       h6: {
-        fontFamily: 'Roboto',
+        fontSize: "1.5em",
+        fontFamily: 'Inter',
         letterSpacing: 2,
-        fontWeight: 600,
-        textTransform: 'uppercase',
       },
       subtitle1: {
         fontWeight: 300,
@@ -125,9 +124,10 @@ export const theme = createTheme({
       },
       body1: {
         fontWeight: 400,
+        fontSize: "1.1em",
       },
       body2: {
-        fontWeight: 300,
+        fontWeight: 400,
       },
       button: {
         fontFamily: 'Source Sans Pro',
