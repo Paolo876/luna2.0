@@ -9,6 +9,7 @@ const useBackgroundRedux = () => {
   return {
     ...backgroundRedux,
     fetchBackground: () => dispatch(fetchBackground()),
+    generateLocalBackground: () => dispatch(backgroundActions.generateLocalBackground()),
     // setIsVisible: data => dispatch(settingsActions.setIsVisible(data)),
   }
 }

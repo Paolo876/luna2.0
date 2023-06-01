@@ -71,6 +71,7 @@ export const backgroundInitialState = () => {
             isLocal: true,
             isRandom: true,
             src: null,
+            activeLocalBackground: null,
         }
         localStorage.setItem("backgroundConfig", JSON.stringify(bgConfig))
         return { ...bgConfig, ...result }

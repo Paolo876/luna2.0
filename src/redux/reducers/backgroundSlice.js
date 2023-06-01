@@ -6,16 +6,13 @@ const backgroundSlice = createSlice({
     name: "background",
     initialState: backgroundInitialState,
     reducers: {
-        // generateLocalBackground(state, { payload }){
-        //     const images = require.context("../assets", true);
-        //     let generatedImg
-        //     if(payload != null) {
-        //         generatedImg = images(`./bg_${payload}.jpg`);
-        //     } else {
-        //         generatedImg = images(`./bg_default_${ Math.floor(Math.random() * 5) + 1 }.jpg`);
-        //     }
-        //     state.source = generatedImg;
-        // },
+        generateLocalBackground( state ){
+            const selectedBackground = state.localBackgrounds[Math.floor(Math.random() * 5) ]      //choose random bg
+            state.activeLocalBackground = selectedBackground;
+            state.src = selectedBackground.url;
+            state.isLocal = true;
+            state.isRandom = true;
+        },
         // setBackground(state, {payload = true}){
         //     state.isRandom = !payload;    
         //     localStorage.setItem('backgroundConfig', JSON.stringify(state))

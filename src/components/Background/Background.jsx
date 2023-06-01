@@ -3,11 +3,11 @@ import useBackgroundRedux from "../../hooks/useBackgroundRedux";
 
 
 const Background = () => {
-  const { fetchBackground, isLocal, isRandom } = useBackgroundRedux();
+  const { fetchBackground, generateLocalBackground, isLocal, isRandom, } = useBackgroundRedux();
 
   useEffect(() => {
     if(isLocal){
-
+      generateLocalBackground();
     } else {
       fetchBackground()
     }
