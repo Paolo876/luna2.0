@@ -11,6 +11,7 @@ export const settingsInitialState = () => {
     let result = {
         components: JSON.parse(localStorage.getItem("components")),
         isGeolocationAllowed: JSON.parse(localStorage.getItem("isGeolocationAllowed")),
+        uiConfig: JSON.parse(localStorage.getItem("uiConfig")),
     }
 
     if(!JSON.parse(localStorage.getItem("components"))){
@@ -25,6 +26,17 @@ export const settingsInitialState = () => {
         ];
         localStorage.setItem("components", JSON.stringify(components))
         result = { ...result, components }
+    }
+
+    if(!JSON.parse(localStorage.getItem("uiConfig"))){
+        const uiConfig = {
+            containerColor: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5))",
+            isHintsEnabled: true,
+            primaryColor: "#45a198",
+            settingsPosition:"top", 
+        };
+        localStorage.setItem("uiConfig", JSON.stringify(uiConfig))
+        result = { ...result, uiConfig }
     }
 
     return result
