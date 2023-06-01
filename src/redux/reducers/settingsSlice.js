@@ -51,14 +51,14 @@ const settingsSlice = createSlice({
         //     state.editorMode.changeComponentPosition = [];
    
         // },
-        // changeComponentPosition(state, {payload}){
-        //     const index = state.editorMode.changeComponentPosition.findIndex(item => item.id === payload.id);
-        //     if(index === -1) {
-        //         state.editorMode.changeComponentPosition.push(payload);
-        //     } else {
-        //         state.editorMode.changeComponentPosition[index].transform = payload.transform;
-        //     }
-        // },
+        changeComponentPosition(state, { payload }){
+            const index = state.editorMode.changeComponentPosition.findIndex(item => item.id === payload.id);
+            if(index === -1) {
+                state.editorMode.changeComponentPosition.push(payload);
+            } else {
+                state.editorMode.changeComponentPosition[index].transform = payload.transform;
+            }
+        },
         // saveComponentPositions(state){
         //     const updatedComponents = state.editorMode.changeComponentPosition;
 

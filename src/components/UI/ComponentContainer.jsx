@@ -1,15 +1,24 @@
 import React from "react";
 import Draggable from "react-draggable";
 import { Box } from "@mui/material";
-import { useSettingsRedux } from "../../../../luna/src/hooks/useSettingsRedux";
+import useSettingsRedux from "../../hooks/useSettingsRedux";
 
-import getTranslateValue from "../../../../luna/src/utils/get-translate-value";
+import getTranslateValue from "../../utils/get-translate-value";
 
 
 const ComponentContainer = (props, ref) => {
-  const { uiSettings: { primaryColor, }, } = useSettingsRedux();
+  const { ui: { primaryColor, }, editorMode: { isActive }, changeComponentPosition, components } = useSettingsRedux();
+
   const handleStop = () => {
-    
+    changeComponentPosition({id: ref.current.id, transform: ref.current.style.transform})
+  }
+
+  let defaultPosition = undefined;
+  if(isActive){
+      const componentStyles = components.find(item => item.name === ref.current.id).addedStyles
+      if(componentStyles.transform){
+          defaultPosition = getTranslateValue(componentStyles.transform);
+      }
   }
 
   const content = (
@@ -22,6 +31,7 @@ const ComponentContainer = (props, ref) => {
         left: 0,
         right: 0,
         margin: "0 auto",
+        width: "fit-content",
         zIndex: 1,
         textShadow: "0 0 10px rgba(0, 0, 0, 0.2)",
         ...props.additionalStyles
@@ -30,7 +40,7 @@ const ComponentContainer = (props, ref) => {
       ref={ref}
       id={props.id}
     >
-      {editorModeIsActive && <Box 
+      {isActive && <Box 
         sx={{
           position: "absolute",
           backgroundColor: "transparent",
@@ -44,9 +54,11 @@ const ComponentContainer = (props, ref) => {
       {props.children}
     </Box>
   )
+
+
   return (
     <>
-      {editorModeIsActive ? 
+      {isActive ? 
         <Draggable      
           position={null} 
           nodeRef={ref} 

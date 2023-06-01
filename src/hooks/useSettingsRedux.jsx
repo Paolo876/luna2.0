@@ -11,6 +11,7 @@ const useSettingsRedux = () => {
     ...settingsRedux,
     setIsVisible: data => dispatch(settingsActions.setIsVisible(data)),
     toggleGeolocation: data => dispatch(settingsActions.toggleGeolocation(data)),
+    changeComponentPosition: data => dispatch(settingsActions.changeComponentPosition(data)),
   }
 }
 

@@ -11,7 +11,8 @@ export const settingsInitialState = () => {
     let result = {
         components: JSON.parse(localStorage.getItem("components")),
         isGeolocationAllowed: JSON.parse(localStorage.getItem("isGeolocationAllowed")),
-        uiConfig: JSON.parse(localStorage.getItem("uiConfig")),
+        ui: JSON.parse(localStorage.getItem("uiConfig")),
+        editorMode: { isActive: false, changeComponentPosition: []},
     }
 
     if(!JSON.parse(localStorage.getItem("components"))){
