@@ -94,3 +94,19 @@ export const backgroundInitialState = () => {
 }
 
 
+//todos
+export const todosInitialState = () => {
+    if(!JSON.parse(localStorage.getItem("todos"))){
+        const todos = [
+            {text: "Eat", id: "01", isFinished: false},
+            {text: "Exercise", id: "02", isFinished: false},
+            {text: "Learn something new", id: "03", isFinished: false},
+        ];
+        localStorage.setItem("todos", JSON.stringify(todos))
+        return todos
+    } else {
+        return JSON.parse(localStorage.getItem("todos"))
+    }
+}
+
+
