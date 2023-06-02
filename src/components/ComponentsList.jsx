@@ -2,6 +2,8 @@ import React from 'react'
 import useSettingsRedux from '../hooks/useSettingsRedux';
 import Greeting from './Greeting/Greeting';
 import Motivations from './Motivations/Motivations';
+import Search from './Search/Search';
+
 
 const ComponentsList = () => {
   const { toggleGeolocation, components } = useSettingsRedux();
@@ -27,7 +29,8 @@ const ComponentsList = () => {
   return (
     <>
       { checkIsVisible("greeting")            && <Greeting/> }
-      { checkIsVisible("motivations")            && <Motivations/> }
+      { checkIsVisible("motivations")         && <Motivations/> }
+      { checkIsVisible("search")              && <Search/> }
     </>
   )
 }

@@ -1,7 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import ComponentContainer from "../UI/ComponentContainer";
 import useSettingsRedux from "../../hooks/useSettingsRedux";
-// import useHttp from "../../utils/"
 import axios from "axios";
 
 const Motivations = () => {
@@ -20,7 +19,7 @@ const Motivations = () => {
   const fetchData = async () => {
     setIsLoading(true)
     try{
-      const res = await axios.get("https://api.quotable.io/random?maxLength=140&tags=happiness|love|inspirational|success");
+      const res = await axios.get("https://api.quotable.io/random?maxLength=140&tags=happiness|love|success");
       setData(res.data)
       setIsLoading(false)
     }catch (err) {
@@ -34,7 +33,7 @@ const Motivations = () => {
       additionalStyles={{
         bottom: "5%",
         textAlign: "center",
-        textShadow: "0 0 10px rgba(0, 0, 0, 0.4)",
+        textShadow: "0 0 10px rgba(0, 0, 0, .5)",
         p: 1,
         ".content": {
           fontSize: "1.2em",
