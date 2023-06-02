@@ -4,6 +4,7 @@ import Greeting from './Greeting/Greeting';
 import Motivations from './Motivations/Motivations';
 import Search from './Search/Search';
 import Time from './Time/Time';
+import Todos from './Todos/Todos';
 
 const ComponentsList = () => {
   const { toggleGeolocation, components } = useSettingsRedux();
@@ -31,7 +32,8 @@ const ComponentsList = () => {
       { checkIsVisible("greeting")            && <Greeting/> }
       { checkIsVisible("motivations")         && <Motivations/> }
       { checkIsVisible("search")              && <Search/> }
-      { checkIsVisible("time")              && <Time/> }
+      { checkIsVisible("time")                && <Time/> }
+      { checkIsVisible("todos")               && <Todos/> }
     </>
   )
 }

@@ -38,7 +38,8 @@ const Time = () => {
         },
         ".day": {
           fontSize: '1.8em',
-        }
+        },
+        ...addedStyles
       }}
       ref={ref} 
       id="time"
