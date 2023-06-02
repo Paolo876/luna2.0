@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import useSettingsRedux from "../../hooks/useSettingsRedux";
 import ComponentContainer from '../UI/ComponentContainer'
 import SearchIcon from '@mui/icons-material/Search';
@@ -6,12 +6,13 @@ import { TextField, InputAdornment } from "@mui/material";
 
 const Search = () => {
   const ref = useRef();
+  const [ input, setInput ] = useState("");
   const { components } = useSettingsRedux();
   const addedStyles = components.find(item => item.name === "search").addedStyles;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // window.location.href = `https://www.google.com/search?q=${inputRef.current.value}`;
+    window.location.href = `https://www.google.com/search?q=${input}`;
 
   }
   return (
@@ -59,6 +60,8 @@ const Search = () => {
               letterSpacing: .5,
             }
           }}
+          value={input}
+          onChange={e => setInput(e.target.value)}
         />
       </form>
     </ComponentContainer>
