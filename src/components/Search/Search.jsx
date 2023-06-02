@@ -18,10 +18,10 @@ const Search = () => {
     <ComponentContainer
       additionalStyles={{
         top: "0",
-        left: "2%",
+        // left: "2%",
         right: "inherit",
-        minWidth: "25em",
-        p: 1,
+        minWidth: "30em",
+        p: .5,
         flexDirection: "row",
         WebkitBoxPack: "center",
         msFlexPack: "center",
@@ -49,9 +49,10 @@ const Search = () => {
             '.MuiInputBase-input': { 
               fontWeight: 300,
               px: 1,
+              height: 32,
             },
             '.MuiInputBase-input::placeholder': {
-              fontWeight: 300,
+              fontWeight: 200,
               color: "white",
               opacity: .5,
               fontSize: ".8em",
