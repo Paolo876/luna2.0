@@ -23,13 +23,14 @@ const Todos = () => {
         minWidth: '22em',
         textShadow: '0 0 10px rgba(0, 0, 0, 0.8)',
         p: 1,
-        // bottom: 0,
+        // bottom: 1,
         background: containerColor,
         ".todos-header": {
-          marginTop:' .8em',
-          marginBottom: '.4em',
+          marginTop:' .4em',
+          marginBottom: '.25em',
           marginLeft: '.5em',
-          fontSize: '1.6em',
+          fontSize: '1.35em',
+          letterSpacing: 1,
         },
         ...addedStyles
       }}
