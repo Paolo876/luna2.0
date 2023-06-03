@@ -1,14 +1,16 @@
 import { useState } from "react";
 import { TextField, Box, InputAdornment } from "@mui/material";
 import EditNoteIcon from '@mui/icons-material/EditNote';
-
+import useTodoRedux from "../../hooks/useTodoRedux";
 
 const AddTodoForm = () => {
+  const { addTodo } = useTodoRedux();
   const [inputValue, setInputValue] = useState("")
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    addTodo(inputValue)
+    setInputValue("")
   }
   return (
     <Box 
@@ -37,7 +39,6 @@ const AddTodoForm = () => {
               px: 1,
               height: 32,
               fontSize: ".85em",
-
             },
             '.MuiInputBase-input::placeholder': {
               fontWeight: 300,
