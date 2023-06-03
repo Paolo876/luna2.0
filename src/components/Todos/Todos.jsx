@@ -2,6 +2,8 @@ import { useRef } from "react";
 import useSettingsRedux from "../../hooks/useSettingsRedux";
 import ComponentContainer from "../UI/ComponentContainer";
 import AddTodoForm from "./AddTodoForm";
+import TodoList from "./TodoList";
+import { Box, Button } from "@mui/material";
 
 
 const Todos = () => {
@@ -36,6 +38,10 @@ const Todos = () => {
     >
       <p className="todos-header">My Todo List</p>
       <AddTodoForm/>
+      <TodoList/>
+      <Box sx={{display: "flex", p: ".5em"}}>
+        <Button size="small" variant="contained" sx={{ml: "auto"}}>Clear All</Button>
+      </Box>
     </ComponentContainer>
   )
 }
