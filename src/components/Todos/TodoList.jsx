@@ -1,11 +1,17 @@
 import React from 'react'
 import useTodoRedux from '../../hooks/useTodoRedux'
-import { ButtonBase, List, ListItem, ListItemButton, ListItemText, Typography } from '@mui/material';
+import { Checkbox, List, ListItem, ListItemButton, ListItemText, Typography, IconButton, ListItemIcon, Box } from '@mui/material';
+import EditIcon from '@mui/icons-material/Edit';
+import CloseIcon from '@mui/icons-material/Close';
 
 
 const TodoList = () => {
   const { items } = useTodoRedux();
-  console.log(items)
+  
+  const handleToggle = () => {
+    
+  }
+
   return (
     <List
       sx={{
@@ -13,10 +19,36 @@ const TodoList = () => {
         // p: ".5em",
       }}
     >
-      {items.map(item => <ListItem key={item.id}>
-        
-        {/* <ButtonBase sx={{height: "100%", width: "100%", textAlign: "left"}}><Typography variant="body2" textAlign="left">{item.text}</Typography></ButtonBase> */}
-      </ListItem>)}
+      {items.map(item => (
+        <ListItem 
+          disablePadding
+          key={item.id}
+          secondaryAction={
+            <Box>
+              <IconButton edge="end" aria-label="comments" sx={{mr: .01}}>
+                <EditIcon color="primary" fontSize="small"/>
+              </IconButton>
+              <IconButton edge="end" aria-label="comments">
+                <CloseIcon color="primary" fontSize="small"/>
+              </IconButton>
+            </Box>
+
+          }
+        >
+          <ListItemButton role={undefined} onClick={handleToggle(item.id)} dense>
+            <ListItemIcon>
+              <Checkbox
+                edge="start"
+                // checked={checked.indexOf(item.id) !== -1}
+                // tabIndex={-1}
+                // disableRipple
+                inputProps={{ 'aria-labelledby': item.id }}
+              />
+            </ListItemIcon>
+            <ListItemText id={item.id} primary={item.text} />
+          </ListItemButton>
+        </ListItem>
+      ))}
     </List>
   )
 }
