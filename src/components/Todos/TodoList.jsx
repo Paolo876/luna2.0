@@ -6,11 +6,7 @@ import CloseIcon from '@mui/icons-material/Close';
 
 
 const TodoList = () => {
-  const { items } = useTodoRedux();
-  
-  const handleToggle = () => {
-    
-  }
+  const { items, finishTodo, editTodo, deleteTodo } = useTodoRedux();
 
   return (
     <List
@@ -35,19 +31,21 @@ const TodoList = () => {
 
           }
         >
-          <ListItemButton role={undefined} onClick={handleToggle(item.id)} dense sx={{py: 0}}>
+          <ListItemButton role={undefined} onClick={() => finishTodo(item.id)} dense sx={{py: 0}}>
             <ListItemIcon sx={{minWidth: "initial", mr: 1.5}}>
               <Checkbox
                 size="small"
                 edge="start"
-                // checked={checked.indexOf(item.id) !== -1}
+                checked={item.isFinished}
                 // tabIndex={-1}
                 // disableRipple
                 inputProps={{ 'aria-labelledby': item.id }}
               />
             </ListItemIcon>
-            <ListItemText id={item.id} primary={<Typography variant="body2" fontSize={15} letterSpacing={.5} fontWeight={300}>{item.text}</Typography>} />
-            {/* <ListItemText id={item.id} primary={item.text} /> */}
+            <ListItemText 
+              id={item.id} 
+              primary={<Typography variant="body2" fontSize={15} letterSpacing={.5} fontWeight={300}>{item.text}</Typography>} 
+            />
           </ListItemButton>
         </ListItem>
       ))}
