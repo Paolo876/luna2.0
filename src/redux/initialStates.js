@@ -13,6 +13,7 @@ export const settingsInitialState = () => {
         isGeolocationAllowed: JSON.parse(localStorage.getItem("isGeolocationAllowed")),
         ui: JSON.parse(localStorage.getItem("uiConfig")),
         editorMode: { isActive: false, changeComponentPosition: []},
+        temperatureUnit: localStorage.getItem("temperatureUnit"),
     }
 
     if(!JSON.parse(localStorage.getItem("components"))){
@@ -27,6 +28,11 @@ export const settingsInitialState = () => {
         ];
         localStorage.setItem("components", JSON.stringify(components))
         result = { ...result, components }
+    }
+
+    if(!localStorage.getItem("temperatureUnit")) {
+        localStorage.setItem("temperatureUnit", "f");
+        result = { ...result, temperatureUnit: "f"};
     }
 
     if(!JSON.parse(localStorage.getItem("uiConfig"))){
