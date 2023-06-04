@@ -5,6 +5,8 @@ import Motivations from './Motivations/Motivations';
 import Search from './Search/Search';
 import Time from './Time/Time';
 import Todos from './Todos/Todos';
+import Weather from './Weather/Weather';
+
 
 const ComponentsList = () => {
   const { toggleGeolocation, components } = useSettingsRedux();
@@ -34,6 +36,7 @@ const ComponentsList = () => {
       { checkIsVisible("search")              && <Search/> }
       { checkIsVisible("time")                && <Time/> }
       { checkIsVisible("todos")               && <Todos/> }
+      { checkIsVisible("weather")             && <Weather/> }
     </>
   )
 }
