@@ -9,7 +9,9 @@ const AddTodoForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addTodo(inputValue)
+    if(inputValue.trim().length !== 0) {
+      addTodo(inputValue)
+    }
     setInputValue("")
   }
   return (
@@ -23,10 +25,12 @@ const AddTodoForm = () => {
       }}
     >
       <TextField
+        type="text"
         size="small"
         fullWidth
         variant="standard"
         placeholder="Add Todo"
+        inputProps={{maxLength: 28}}
         InputProps={{ endAdornment: (
           <InputAdornment position="end">
             <EditNoteIcon sx={{mr: 1}} color="primary"/>

@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import useSettingsRedux from "../../hooks/useSettingsRedux";
+import useTodoRedux from "../../hooks/useTodoRedux";
 import ComponentContainer from "../UI/ComponentContainer";
 import AddTodoForm from "./AddTodoForm";
 import TodoList from "./TodoList";
@@ -11,7 +12,7 @@ const Todos = () => {
   const { components, ui } = useSettingsRedux();
   const addedStyles = components.find(item => item.name === "todos").addedStyles;
   const { containerColor } = ui;
-
+  const { clearTodo, items } = useTodoRedux();
 
   return (
     <ComponentContainer
@@ -40,9 +41,9 @@ const Todos = () => {
       <p className="todos-header">My Todo List</p>
       <AddTodoForm/>
       <TodoList/>
-      <Box sx={{display: "flex", p: ".5em"}}>
-        <Button size="small" variant="contained" sx={{ml: "auto"}}>Clear All</Button>
-      </Box>
+      {items.length !== 0 && <Box sx={{display: "flex", p: ".5em"}}>
+        <Button size="small" variant="contained" sx={{ml: "auto"}} onClick={clearTodo}>Clear All</Button>
+      </Box>}
     </ComponentContainer>
   )
 }

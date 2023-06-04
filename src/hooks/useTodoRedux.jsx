@@ -11,6 +11,7 @@ const useTodoRedux = () => {
     editTodo: data => dispatch(todoActions.editTodo(data)),
     deleteTodo: data => dispatch(todoActions.deleteTodo(data)),
     finishTodo: data => dispatch(todoActions.finishTodo(data)),
+    clearTodo: () => dispatch(todoActions.clearTodo()),
   }
 }
 

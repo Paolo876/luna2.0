@@ -13,14 +13,19 @@ const todoSlice = createSlice({
             state.items = updatedItems;
             localStorage.setItem('todos', JSON.stringify(updatedItems));
         },
-        editTodo(state, action) {
-            const item = state.items.find(item => item.id === action.payload.id);
-            item.text = action.payload.text;
-            localStorage.setItem('todos', JSON.stringify(state.items));
+        editTodo(state, { payload }) {
+            const updatedItems = [ ...state.items ]
+            const item = updatedItems.find(item => item.id === payload.id);
+            item.text = payload.text;
+
+            state.items = updatedItems;
+            localStorage.setItem('todos', JSON.stringify(updatedItems));
         },
-        deleteTodo(state, action) {
-            state.items = state.items.filter(item => item.id !== action.payload);
-            localStorage.setItem('todos', JSON.stringify(state.items));
+        deleteTodo(state, { payload }) {
+            const updatedItems = state.items.filter(item => item.id !== payload);
+
+            state.items = updatedItems;
+            localStorage.setItem('todos', JSON.stringify(updatedItems));
         },
         clearTodo(state) {
             state.items = [];

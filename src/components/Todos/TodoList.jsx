@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import useTodoRedux from '../../hooks/useTodoRedux'
-import { Checkbox, List, ListItem, ListItemButton, ListItemText, Typography, IconButton, ListItemIcon, Box, TextField } from '@mui/material';
+import { Checkbox, List, ListItem, ListItemButton, ListItemText, Typography, IconButton, ListItemIcon, Box, TextField, InputAdornment } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import CloseIcon from '@mui/icons-material/Close';
 import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
@@ -10,19 +10,24 @@ const TodoList = () => {
   const [ isEditable, setIsEditable ] = useState(null);
   const [ input, setInput ] = useState(null);
 
-
   const handleEditBtn = (id, text) => {
     setIsEditable(id)
     setInput(text)
   }
-
+ 
+  const handleSubmit = (e, id, text) => {
+    e.preventDefault()
+    if(input !== text && input.trim().length !== 0) editTodo({id, text: input})
+    
+    setIsEditable(null)
+    setInput(null)
+  }
 
 
   return (
     <List
       sx={{
         borderBottom: "1px solid rgba(0, 0, 0, 0.1)",
-        // p: ".5em",
       }}
     >
       {items.map(item => (
@@ -34,49 +39,57 @@ const TodoList = () => {
 
             </> :
             <Box>
-              <IconButton edge="end" aria-label="comments" sx={{mr: .01, opacity: item.isFinished ? .25 : 1, }} disabled={item.isFinished || isEditable} onClick={() => handleEditBtn(item.id, item.text)}>
+              <IconButton edge="end" aria-label="comments" sx={{mr: .01, opacity: item.isFinished ? .25 : 1, }} disabled={item.isFinished || isEditable !== null} onClick={() => handleEditBtn(item.id, item.text)}>
                 <EditIcon color="primary" fontSize="small"/>
               </IconButton>
-              <IconButton edge="end" aria-label="comments" disabled={isEditable}>
+              <IconButton edge="end" aria-label="comments" disabled={isEditable !== null} onClick={() => deleteTodo(item.id)}>
                 <CloseIcon color="primary" fontSize="small"/>
               </IconButton>
             </Box>
 
           }
           sx={{
-            opacity: isEditable && isEditable !== item.id ? .7 : 1
+            opacity: isEditable !== null && isEditable !== item.id ? .7 : 1
           }}
         >
           { isEditable === item.id ?
-            <TextField 
-              type="text"
-              size='small' 
-              variant="standard" 
-              fullWidth
-              value={input} 
-              onChange= {e => setInput(e.target.value)}
-              sx={{
-                mx: 2,
-                background: "rgba(80,80,80,0.15)",
-                '.MuiInputBase-input': { 
-                    fontWeight: 300,
-                    px: 2,
-                    height: 32,
-                    fontSize: ".85em",
-                  },
-              }}
-              />
+            <Box sx={{width: "100%", p:0, mx:2, zIndex: isEditable === item.id ? 6 : "initial"}} component="form" onSubmit={e => handleSubmit(e, item.id, item.text)}>
+              <TextField 
+                type="text"
+                size='small' 
+                variant="standard" 
+                autoFocus
+                value={input} 
+                onChange= {e => setInput(e.target.value)}
+                fullWidth
+                sx={{
+                  background: "rgba(80,80,80,0.15)",
+                  '.MuiInputBase-input': { 
+                      fontWeight: 400,
+                      px: 1,
+                      height: 32,
+                      fontSize: ".85em",
+                    },
+                }}
+                inputProps={{maxLength: 28}}
+                InputProps={{ endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton type="submit" size="small"  sx={{mr: .5}}>
+                      <KeyboardReturnIcon color="primary"/>
+                    </IconButton>
+                  </InputAdornment>
+                )}}
+                />
+
+            </Box>
           :
-            <ListItemButton role={undefined} onClick={() => finishTodo(item.id)} dense sx={{py: 0}} disabled={isEditable}>
+            <ListItemButton role={undefined} onClick={() => finishTodo(item.id)} dense sx={{py: 0}} disabled={isEditable !== null}>
               <ListItemIcon sx={{minWidth: "initial", mr: 1.5}}>
                 <Checkbox
                   size="small"
                   edge="start"
                   checked={item.isFinished}
-                  // tabIndex={-1}
-                  // disableRipple
                   inputProps={{ 'aria-labelledby': item.id}}
-                  // sx={{opacity: item.isFinished ? 1 : .35}}
                 />
               </ListItemIcon>
               <ListItemText 
@@ -101,6 +114,19 @@ const TodoList = () => {
           }
         </ListItem>
       ))}
+
+      {/* overlay for input blur */}
+      {isEditable && <Box 
+        sx={{
+          position: "fixed",
+          height: "100vh",
+          width: "100vw",
+          top: 0,
+          left: 0,
+          zIndex: 5,
+        }}
+        onClick={() => setIsEditable(null)}
+      ></Box>}
     </List>
   )
 }
