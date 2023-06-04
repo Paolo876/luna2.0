@@ -5,7 +5,7 @@ import useSettingsRedux from '../../hooks/useSettingsRedux'
 const Time = () => {
   const ref = useRef();
   const [time, setTime] = useState(new Date());
-  const { components } = useSettingsRedux();
+  const { components, dateFormat } = useSettingsRedux();
   const addedStyles = components.find(item => item.name === "time").addedStyles;
 
   const refreshTime = () => {
@@ -19,7 +19,7 @@ const Time = () => {
       }
   }, []);
 
-  const day = time.toLocaleString('en-us', {weekday:'short', month:'long', day:'2-digit' })
+  const day = time.toLocaleString('en-us', dateFormat)
 
   return (
     <ComponentContainer 
