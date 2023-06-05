@@ -1,13 +1,14 @@
 import { useState } from 'react'
 import useSettingsRedux from '../../hooks/useSettingsRedux'
 import SettingsIcon from '@mui/icons-material/Settings';
-import { IconButton, Modal } from '@mui/material';
+import { IconButton, Modal, Box } from '@mui/material';
 import SettingsList from './SettingsList';
 
 
 const Settings = () => {
   const { editorMode: { isActive } } = useSettingsRedux();
   const [ showSettings, setShowSettings ] = useState(false);
+
 
   return (
     <>
@@ -31,22 +32,28 @@ const Settings = () => {
                 textShadow: "0 0 10px rgba(0, 0, 0, 0.8)",
                 transform: showSettings ? "rotate(100deg)" : "initial"
               }}
+              disableFocusRipple
+              disableRipple
+              disableTouchRipple
             >
               <SettingsIcon/>
             </IconButton>
             <Modal
               open={showSettings}
-              onClose={() => setShowSettings(false)}
+              onClose={ () => setTimeout(() => setShowSettings(false), 250) }
+              // closeAfterTransition
               slotProps={{
                 backdrop: {
                   sx: {
-                    background: "transparent"
+                    background: "rgba(0,0,0,0.0)"
                   }
                 }
               }}
             >
+              <Box>
               <SettingsList/>
 
+              </Box>
             </Modal>
           </>
 
