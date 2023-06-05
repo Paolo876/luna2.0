@@ -4,6 +4,7 @@ import WelcomePrompt from './components/InitialPrompts/WelcomePrompt';
 import LocationPrompt from './components/InitialPrompts/LocationPrompt';
 import Background from './components/Background/Background';
 import ComponentsList from './components/ComponentsList';
+import Settings from './components/Settings/Settings';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
   return (
     <div className="App">
       <Background/>
+      <Settings/>
       <ComponentsList/>
     </div>
   );
