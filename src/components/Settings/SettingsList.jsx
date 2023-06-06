@@ -4,6 +4,18 @@ import useSettingsRedux from '../../hooks/useSettingsRedux'
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import General from './Subsettings/General';
 import EditorMode from './Subsettings/EditorMode';
+import { keyframes } from '@mui/material';
+
+const slide = keyframes`
+  from {
+    left: -10%;
+    opacity: 0;
+  }
+  to {
+   left: .5%;
+   opacity: 1;
+  }
+`;
 
 
 const textStyles = {
@@ -37,8 +49,11 @@ const SettingsList = () => {
       sx={{
         position: "absolute",
         bottom: "4.5%",
-        left: ".5%", 
+        left: "-100%", 
+        transition: "transform 1s ease",
         background: containerColor,
+        // transform: "translateX(125%)",
+        animation: `${slide} 250ms forwards linear`
       }}
     >
       <Grid container>

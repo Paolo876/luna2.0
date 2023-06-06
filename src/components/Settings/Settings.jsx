@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import useSettingsRedux from '../../hooks/useSettingsRedux'
 import SettingsIcon from '@mui/icons-material/Settings';
-import { IconButton, Modal, Box } from '@mui/material';
+import { IconButton, Modal, Box, Fade } from '@mui/material';
 import SettingsList from './SettingsList';
 
 
@@ -40,20 +40,25 @@ const Settings = () => {
             </IconButton>
             <Modal
               open={showSettings}
-              onClose={ () => setTimeout(() => setShowSettings(false), 250) }
-              // closeAfterTransition
+              // onClose={ () => setTimeout(() => setShowSettings(false), 250) }
+              onClose={ () => setShowSettings(false) }
+              closeAfterTransition
               slotProps={{
                 backdrop: {
+                  timeout: 200,
                   sx: {
                     background: "rgba(0,0,0,0.0)"
                   }
                 }
               }}
             >
+              <Fade in={showSettings} timeout={200}>
+
               <Box>
               <SettingsList/>
 
               </Box>
+              </Fade>
             </Modal>
           </>
 
