@@ -8,8 +8,10 @@ const SubsettingContainer = ({ children, title }) => {
       sx={{
         height: "100%",
         width: "100%",
-        p: 1,
-        background: "rgba(110,110,110,.05)"
+        px: 1.25,
+        py: 2,
+        // background: "red"
+        background: "rgba(110,110,110,.05)",
       }}
     >
       <Box>
@@ -18,17 +20,26 @@ const SubsettingContainer = ({ children, title }) => {
           sx={{
             fontFamily: "Lato",
             letterSpacing: .5,
-            fontSize: 20,
+            fontSize: 22,
             fontWeight: 400,
+            opacity: .9,
           }}
-          mb={.5}
+          pb={.25}
         >
           {title}
         </Typography>
         <Divider  sx={{borderColor: "rgba(180,180,180,.1)"}}/>
 
       </Box>
-      {children}
+      <Box
+        sx={{
+          maxWidth: 380,
+          pt: 2,
+        }}
+      >
+        {children}
+
+      </Box>
     </Box>
   )
 }
