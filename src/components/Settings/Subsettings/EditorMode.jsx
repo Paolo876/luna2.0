@@ -1,8 +1,12 @@
 import React from 'react'
+import SubsettingContainer from './SubsettingContainer'
+import { Typography } from '@mui/material'
+
 
 const EditorMode = () => {
   return (
-    <div>EditorMode</div>
+    <SubsettingContainer title="Editor Mode">
+    </SubsettingContainer>
   )
 }
 

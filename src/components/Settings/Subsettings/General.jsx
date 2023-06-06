@@ -1,8 +1,12 @@
 import React from 'react'
+import SubsettingContainer from './SubsettingContainer'
+
 
 const General = () => {
   return (
-    <div>General</div>
+    <SubsettingContainer title="General">
+      
+    </SubsettingContainer>
   )
 }
 
