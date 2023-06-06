@@ -24,19 +24,21 @@ const Settings = () => {
                 position: 'absolute',
                 bottom: 5,
                 left: 5,
-                transition: '.45s all ease-in-out',
+                transition: '300ms all ease-in-out',
                 lineHeight: 1,
                 zIndex: 3,
                 color: "#ebebeb",
                 background: "radial-gradient(rgba(0, 0, 0, 0.1) 10%, transparent 60%)",
                 textShadow: "0 0 10px rgba(0, 0, 0, 0.8)",
-                transform: showSettings ? "rotate(100deg)" : "initial"
+                transform: showSettings ? "rotate(90deg)" : "initial",
+                opacity: showSettings ? .65 : 1,
+                
               }}
               disableFocusRipple
               disableRipple
               disableTouchRipple
             >
-              <SettingsIcon/>
+              <SettingsIcon sx={{fontSize: 28}}/>
             </IconButton>
             <Modal
               open={showSettings}
