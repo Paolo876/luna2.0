@@ -22,7 +22,6 @@ const textStyles = {
   fontWeight: 200,
   fontFamily: "Questrial",
   fontSize: ".9em",
-  // opacity: .8, 
   letterSpacing: .5,
 }
 
