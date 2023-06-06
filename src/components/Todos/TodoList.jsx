@@ -90,6 +90,7 @@ const TodoList = () => {
                   edge="start"
                   checked={item.isFinished}
                   inputProps={{ 'aria-labelledby': item.id}}
+                  color="success"
                 />
               </ListItemIcon>
               <ListItemText 
