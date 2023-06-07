@@ -11,12 +11,11 @@ const EditorMode = () => {
     let isAtMaxWidth = (window.screen.availWidth - window.innerWidth) === 0;
     let isAtMaxHeight = (window.screen.availHeight - window.outerHeight <= 1);
 
-    setShowModal(true)
-    // if(isAtMaxWidth && isAtMaxHeight) {
-    //   alert('Browser is in fullscreen')
-    // } else {
-    //   setShowModal(true)
-    // }
+    if(isAtMaxWidth && isAtMaxHeight) {
+      alert('Browser is in fullscreen')
+    } else {
+      setShowModal(true)
+    }
   }
 
   return (

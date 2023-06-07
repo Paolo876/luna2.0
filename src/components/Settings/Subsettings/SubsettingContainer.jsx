@@ -38,7 +38,6 @@ const SubsettingContainer = ({ children, title }) => {
         }}
       >
         {children}
-
       </Box>
     </Box>
   )

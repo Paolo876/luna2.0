@@ -34,7 +34,7 @@ const WelcomePrompt = () => {
       </Box>
       <Box component="form" onSubmit={handleSubmit}>
         <Typography variant="h3">Before we get started, <br/>what is your name?</Typography>
-        <TextField variant="standard" placeholder='John' value={name} onChange={e => setName(e.target.value)} error={error.state}/>
+        <TextField variant="standard" placeholder='John' value={name} onChange={e => setName(e.target.value)} error={error.state} inputProps={{maxLength: 15}}/>
         {error && <Typography variant="body2" color="error.light" mt={1} fontStyle="italic">{error.value}</Typography>}
       </Box>
     </Box>
