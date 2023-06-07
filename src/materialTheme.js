@@ -19,11 +19,10 @@ export const theme = createTheme({
       MuiButton: {
         styleOverrides: {
           root: {
-            // fontFamily: 'Manrope',
+            fontFamily: 'Inter',
             borderWidth: 2,
             borderRadius: 0,
-            fontWeight: 600,
-            letterSpacing: .95,
+            letterSpacing: .25,
             ":hover": {
               borderRadius: 0,
               borderWidth: 2,
@@ -67,9 +66,9 @@ export const theme = createTheme({
     //     main: '#91f574',
     //   },
       background: {
-        default: 'rgb(38,37,37)',
-        lighter: 'rgba(239,235,229,0.8)',
-        paper: '#24242b',
+        // default: 'rgb(38,37,37)',
+        // lighter: 'rgba(239,235,229,0.8)',
+        // paper: '#24242b',
       },
       text: {
         primary: '#efebe5',
@@ -127,7 +126,9 @@ export const theme = createTheme({
         fontSize: "1.1em",
       },
       body2: {
-        fontWeight: 400,
+        // fontWeight: 100,
+        fontFamily: 'Questrial',
+
       },
       button: {
         fontFamily: 'Source Sans Pro',

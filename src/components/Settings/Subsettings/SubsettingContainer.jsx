@@ -34,7 +34,7 @@ const SubsettingContainer = ({ children, title }) => {
       <Box
         sx={{
           maxWidth: 380,
-          pt: 2,
+          pt: 3,
         }}
       >
         {children}
