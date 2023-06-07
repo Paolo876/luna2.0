@@ -1,6 +1,6 @@
 import React from 'react'
 import SubsettingContainer from './SubsettingContainer'
-import { Box, TextField, Typography } from '@mui/material'
+import { Box, TextField, Typography, Select, FormControl, InputLabel, Button } from '@mui/material'
 
 
 const labelStyles = {
@@ -22,16 +22,44 @@ const General = () => {
           label={<Typography variant="body2" sx={labelStyles}>Change Display Name</Typography>} 
           InputLabelProps={{shrink: true}}
           sx={{
-          '.MuiInputBase-input': { 
-              fontWeight: 500,
-              px: .5,
-              mt: 1.15,
-              // height: 32,
-              fontSize: ".9em",
-              letterSpacing: .75,
-            },
+            mb: 3,
+            '.MuiInputBase-input': { 
+                fontWeight: 500,
+                px: .5,
+                py: .25,
+                mt: 1,
+                fontSize: ".85em",
+                letterSpacing: .75,
+              },
         }}
         />
+        <FormControl  variant="standard" sx={{ mb: 3, width: "100%" }}>
+          <InputLabel shrink={true}><Typography variant="body2" sx={labelStyles}>Change Time Format</Typography></InputLabel>
+          <Select
+            // value={age}
+            // onChange={handleChange}
+          >
+          </Select>
+        </FormControl>
+        <FormControl  variant="standard" sx={{ mb: 3, width: "100%" }}>
+          <InputLabel shrink={true}><Typography variant="body2" sx={labelStyles}>Change Date Format</Typography></InputLabel>
+          <Select
+            // value={age}
+            // onChange={handleChange}
+          >
+          </Select>
+        </FormControl>
+        <FormControl  variant="standard" sx={{ mb: 3, width: "100%" }}>
+          <InputLabel shrink={true}><Typography variant="body2" sx={labelStyles}>Change Temperature Unit</Typography></InputLabel>
+          <Select
+            // value={age}
+            // onChange={handleChange}
+          >
+          </Select>
+        </FormControl>
+        {/* <Box>
+          <Button variant="contained">Save Changes</Button>
+        </Box> */}
       </Box>
     </SubsettingContainer>
   )

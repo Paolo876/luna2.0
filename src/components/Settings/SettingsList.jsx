@@ -64,6 +64,7 @@ const SettingsList = () => {
                 disableGutters 
                 key={item.id}
                 sx={{
+                  my: .5,
                   opacity: item.id === selectedSetting ? 1 : .8,
                   background: item.id === selectedSetting ? "rgba(0,0,0,.35)" : "initial",
                   "&:nth-of-type(7)" : {
