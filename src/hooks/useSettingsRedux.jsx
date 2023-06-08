@@ -12,6 +12,7 @@ const useSettingsRedux = () => {
     setIsVisible: data => dispatch(settingsActions.setIsVisible(data)),
     toggleGeolocation: data => dispatch(settingsActions.toggleGeolocation(data)),
     changeComponentPosition: data => dispatch(settingsActions.changeComponentPosition(data)),
+    changeTimeFormat: data => dispatch(settingsActions.changeTimeFormat(data)),
   }
 }
 

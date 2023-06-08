@@ -53,13 +53,14 @@ const DisplayNameInput = () => {
         onKeyDown={e => { if(e.key === "Enter") handleNameSubmit()}}
         InputProps={{ endAdornment: (
           <InputAdornment position="end">
-            {nameInput !== name && !nameError.state && (
+            {nameInput !== name && (
               <Button 
                 type="button"
                 size="small" 
                 variant="contained" 
                 onClick={handleNameSubmit}
                 sx={{py: .25, px: 1.5, fontSize: 9, fontWeight: 400, letterSpacing: .15, mr: .5, opacity: .8}}
+                disabled={nameError.state}
               >
                 Save Changes
               </Button>

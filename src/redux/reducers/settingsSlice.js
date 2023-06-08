@@ -26,6 +26,11 @@ const settingsSlice = createSlice({
             state.isGeolocationAllowed = payload;
             localStorage.setItem('isGeolocationAllowed', JSON.stringify(state.isGeolocationAllowed))
         },
+        changeTimeFormat(state, { payload }) {
+            state.timeFormat = payload;
+            localStorage.setItem('timeFormat', payload)
+
+        },
         // changeStyle(state, {payload}){
         //     const component = state.components.find(item => item.name === payload.name);
         //     if(!component.addedStyles)  component.addedStyles = {};

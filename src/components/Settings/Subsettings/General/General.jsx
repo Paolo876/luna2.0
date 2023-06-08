@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import SubsettingContainer from '../SubsettingContainer'
-import { Box, Typography, Select, FormControl, InputLabel } from '@mui/material'
+import { Box, Typography, Select, FormControl, InputLabel, MenuItem } from '@mui/material'
 import useSettingsRedux from "../../../../hooks/useSettingsRedux";
 import DisplayNameInput from './DisplayNameInput';
 
@@ -11,8 +11,8 @@ const labelStyles = {
 
 
 const General = () => {
-  const { dateFormat } = useSettingsRedux();
-
+  const { dateFormat, timeFormat, changeTimeFormat } = useSettingsRedux();
+  console.log(timeFormat)
 
   return ( 
     <SubsettingContainer title="General">
@@ -24,12 +24,14 @@ const General = () => {
         <FormControl  variant="standard" sx={{ mb: 3, width: "100%" }}>
           <InputLabel shrink={true}><Typography variant="body2" sx={labelStyles}>Change Time Format</Typography></InputLabel>
           <Select
-            // value={age}
-            // onChange={handleChange}
+            value={timeFormat}
+            onChange={(e) => changeTimeFormat(e.target.value)}
           >
+            <MenuItem value={"12"} sx={{color: "black"}}>12 Hours</MenuItem>
+            <MenuItem value={"24"} sx={{color: "black"}}>24 Hours</MenuItem>
           </Select>
         </FormControl>
-        <FormControl  variant="standard" sx={{ mb: 3, width: "100%" }}>
+        {/* <FormControl  variant="standard" sx={{ mb: 3, width: "100%" }}>
           <InputLabel shrink={true}><Typography variant="body2" sx={labelStyles}>Change Date Format</Typography></InputLabel>
           <Select
             // value={age}
@@ -44,7 +46,7 @@ const General = () => {
             // onChange={handleChange}
           >
           </Select>
-        </FormControl>
+        </FormControl> */}
         {/* <Box>
           <Button variant="contained">Save Changes</Button>
         </Box> */}
