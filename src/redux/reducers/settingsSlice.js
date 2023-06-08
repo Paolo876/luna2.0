@@ -29,7 +29,10 @@ const settingsSlice = createSlice({
         changeTimeFormat(state, { payload }) {
             state.timeFormat = payload;
             localStorage.setItem('timeFormat', payload)
-
+        },
+        changeTemperatureUnit(state, { payload }) {
+            state.temperatureUnit = payload;
+            localStorage.setItem('temperatureUnit', payload)
         },
         // changeStyle(state, {payload}){
         //     const component = state.components.find(item => item.name === payload.name);

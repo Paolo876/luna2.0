@@ -11,8 +11,8 @@ const labelStyles = {
 
 
 const General = () => {
-  const { dateFormat, timeFormat, changeTimeFormat } = useSettingsRedux();
-  console.log(timeFormat)
+  const { dateFormat, timeFormat, changeTimeFormat, temperatureUnit, changeTemperatureUnit } = useSettingsRedux();
+  console.log(temperatureUnit)
 
   return ( 
     <SubsettingContainer title="General">
@@ -31,7 +31,7 @@ const General = () => {
             <MenuItem value={"24"} sx={{color: "black"}}>24 Hours</MenuItem>
           </Select>
         </FormControl>
-        {/* <FormControl  variant="standard" sx={{ mb: 3, width: "100%" }}>
+        <FormControl  variant="standard" sx={{ mb: 3, width: "100%" }}>
           <InputLabel shrink={true}><Typography variant="body2" sx={labelStyles}>Change Date Format</Typography></InputLabel>
           <Select
             // value={age}
@@ -42,14 +42,14 @@ const General = () => {
         <FormControl  variant="standard" sx={{ mb: 3, width: "100%" }}>
           <InputLabel shrink={true}><Typography variant="body2" sx={labelStyles}>Change Temperature Unit</Typography></InputLabel>
           <Select
-            // value={age}
-            // onChange={handleChange}
+            value={temperatureUnit}
+            onChange={(e) => changeTemperatureUnit(e.target.value)}
           >
+            <MenuItem value={"f"} sx={{color: "black"}}>Fahrenheit</MenuItem>
+            <MenuItem value={"c"} sx={{color: "black"}}>Celsius</MenuItem>
+            <MenuItem value={"k"} sx={{color: "black"}}>Kelvin</MenuItem>
           </Select>
-        </FormControl> */}
-        {/* <Box>
-          <Button variant="contained">Save Changes</Button>
-        </Box> */}
+        </FormControl>
       </Box>
     </SubsettingContainer>
   )

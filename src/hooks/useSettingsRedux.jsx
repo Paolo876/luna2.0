@@ -13,6 +13,7 @@ const useSettingsRedux = () => {
     toggleGeolocation: data => dispatch(settingsActions.toggleGeolocation(data)),
     changeComponentPosition: data => dispatch(settingsActions.changeComponentPosition(data)),
     changeTimeFormat: data => dispatch(settingsActions.changeTimeFormat(data)),
+    changeTemperatureUnit: data => dispatch(settingsActions.changeTemperatureUnit(data)),
   }
 }
 
