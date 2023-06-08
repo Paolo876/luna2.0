@@ -25,15 +25,15 @@ const WelcomePrompt = () => {
   }
   return (
     <Box className="welcome-prompt">
-      <Box mb={5}>
-        <Image src={logo} height={250} width="auto"/>
+      <Box mb={4}>
+        <Image src={logo} height={225} width="auto"/>
       </Box>
       <Box >
         <Typography variant="body1" className="description">Luna is a personalizable browser homepage inspired by the google chrome extension 'Momentum'.</Typography>
         <Typography variant="body2" className="description-note" color="primary.light">Please understand that this app is designed and optimized for PC browsers. UI and features may not function properly if used on mobile browsers.</Typography>
       </Box>
       <Box component="form" onSubmit={handleSubmit}>
-        <Typography variant="h3">Before we get started, <br/>what is your name?</Typography>
+        <Typography variant="h3" fontSize={55} letterSpacing={1}>Before we get started, <br/>what is your name?</Typography>
         <TextField variant="standard" placeholder='John' value={name} onChange={e => setName(e.target.value)} error={error.state} inputProps={{maxLength: 15}}/>
         {error && <Typography variant="body2" color="error.light" mt={1} fontStyle="italic">{error.value}</Typography>}
       </Box>

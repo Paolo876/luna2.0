@@ -5,14 +5,14 @@ const userSlice = createSlice({
     name: "user",
     initialState: userInitialState,
     reducers: {
-        setUserName(state, action){
-            state.name = action.payload;
-            localStorage.setItem('name', action.payload)
+        setUserName(state, { payload }){
+            state.name = payload;
+            localStorage.setItem('name', payload)
         },
 
-        setBirthday(state, action){
-            state.birthday = action.payload;
-            localStorage.setItem('userInfo', JSON.stringify(state));
+        setBirthday(state, { payload }){
+            state.birthday = payload;
+            // localStorage.setItem('userInfo', JSON.stringify(state));
         }
     }
 })

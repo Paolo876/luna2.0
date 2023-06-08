@@ -8,25 +8,22 @@
     background: linear-gradient(black, rgb(30, 30, 30));
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
     text-align: center;
     color: #ebebeb;
     text-shadow: 0 0 10px rgba(170, 170, 170, 0.3);
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding-bottom: 15%;
+    padding-top: 2em;
 
     .description {
-        font-size: 1.45em;
+        font-size: 1.25em;
     }
 
     .description-note {
-        font-style: italic;
-        opacity: .85;
-        font-weight: 400;
-        margin-top: .5em;
+        opacity: .75;
+        margin-top: .75em;
     }
     form {
         padding-top: 6em;

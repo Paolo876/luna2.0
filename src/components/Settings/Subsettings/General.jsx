@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import SubsettingContainer from './SubsettingContainer'
 import { Box, TextField, Typography, Select, FormControl, InputLabel, Button, InputAdornment } from '@mui/material'
 import useSettingsRedux from "../../../hooks/useSettingsRedux";
@@ -12,14 +12,18 @@ const labelStyles = {
 
 
 const General = () => {
-  const { name } = useUserRedux();
+  const { name, setUserName } = useUserRedux();
   const { dateFormat } = useSettingsRedux();
   const [ nameInput, setNameInput ] = useState(name)
 
   
   const handleNameSubmit = () => {
-    setNameInput(name)
+    setUserName(nameInput)
   }
+
+  useEffect(() => {
+    setNameInput(name)
+  }, [name])
 
   return ( 
     <SubsettingContainer title="General">
@@ -34,14 +38,15 @@ const General = () => {
           InputLabelProps={{shrink: true}}
           value={nameInput}
           onChange={e => setNameInput(e.target.value)}
-          onBlur={() => setNameInput(name)}
           onKeyDown={e => { if(e.key === "Enter") handleNameSubmit()}}
           InputProps={{ endAdornment: (
           <InputAdornment position="end">
             {nameInput !== name && (
               <Button 
+                type="button"
                 size="small" 
                 variant="contained" 
+                onClick={handleNameSubmit}
                 sx={{py: .25, px: 1.5, fontSize: 9, fontWeight: 400, letterSpacing: .15, mr: .5, opacity: .8}}
               >
                 Save Changes
@@ -61,7 +66,7 @@ const General = () => {
               },
         }}
         />
-        <FormControl  variant="standard" sx={{ mb: 3, width: "100%" }}>
+        {/* <FormControl  variant="standard" sx={{ mb: 3, width: "100%" }}>
           <InputLabel shrink={true}><Typography variant="body2" sx={labelStyles}>Change Time Format</Typography></InputLabel>
           <Select
             // value={age}
@@ -84,7 +89,7 @@ const General = () => {
             // onChange={handleChange}
           >
           </Select>
-        </FormControl>
+        </FormControl> */}
         {/* <Box>
           <Button variant="contained">Save Changes</Button>
         </Box> */}
