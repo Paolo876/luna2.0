@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Box, Grid, List, ListItem, ListItemButton, ListItemText, Typography } from '@mui/material'
 import useSettingsRedux from '../../hooks/useSettingsRedux'
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
-import General from './Subsettings/General';
+import General from './Subsettings/General/General';
 import EditorMode from './Subsettings/EditorMode';
 import { keyframes } from '@mui/material';
 
