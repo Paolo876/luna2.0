@@ -1,6 +1,8 @@
-import React from 'react'
+import { useState } from 'react'
 import SubsettingContainer from './SubsettingContainer'
-import { Box, TextField, Typography, Select, FormControl, InputLabel, Button } from '@mui/material'
+import { Box, TextField, Typography, Select, FormControl, InputLabel, Button, InputAdornment } from '@mui/material'
+import useSettingsRedux from "../../../hooks/useSettingsRedux";
+import useUserRedux from "../../../hooks/useUserRedux"
 
 
 const labelStyles = {
@@ -10,7 +12,16 @@ const labelStyles = {
 
 
 const General = () => {
-  return (
+  const { name } = useUserRedux();
+  const { dateFormat } = useSettingsRedux();
+  const [ nameInput, setNameInput ] = useState(name)
+
+  
+  const handleNameSubmit = () => {
+    setNameInput(name)
+  }
+
+  return ( 
     <SubsettingContainer title="General">
       <Box>
         <TextField 
@@ -21,6 +32,23 @@ const General = () => {
           inputProps={{maxLength: 15}} 
           label={<Typography variant="body2" sx={labelStyles}>Change Display Name</Typography>} 
           InputLabelProps={{shrink: true}}
+          value={nameInput}
+          onChange={e => setNameInput(e.target.value)}
+          onBlur={() => setNameInput(name)}
+          onKeyDown={e => { if(e.key === "Enter") handleNameSubmit()}}
+          InputProps={{ endAdornment: (
+          <InputAdornment position="end">
+            {nameInput !== name && (
+              <Button 
+                size="small" 
+                variant="contained" 
+                sx={{py: .25, px: 1.5, fontSize: 9, fontWeight: 400, letterSpacing: .15, mr: .5, opacity: .8}}
+              >
+                Save Changes
+              </Button>
+            )}
+          </InputAdornment>
+        )}}
           sx={{
             mb: 3,
             '.MuiInputBase-input': { 
