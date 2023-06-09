@@ -14,6 +14,8 @@ const useSettingsRedux = () => {
     changeComponentPosition: data => dispatch(settingsActions.changeComponentPosition(data)),
     changeTimeFormat: data => dispatch(settingsActions.changeTimeFormat(data)),
     changeTemperatureUnit: data => dispatch(settingsActions.changeTemperatureUnit(data)),
+    changeDateFormat: data => dispatch(settingsActions.changeDateFormat(data)),
+    changeDateOptions: data => dispatch(settingsActions.changeDateOptions(data)),
   }
 }
 

@@ -34,6 +34,15 @@ const settingsSlice = createSlice({
             state.temperatureUnit = payload;
             localStorage.setItem('temperatureUnit', payload)
         },
+        changeDateFormat(state, { payload }) {
+            state.dateFormat = payload;
+            localStorage.setItem('dateFormat', payload)
+        },
+        changeDateOptions(state, { payload }) {
+            const updatedDateOption = {...state.dateOptions, payload};
+            state.dateOptions = updatedDateOption;
+            localStorage.setItem("dateOptions", JSON.stringify(updatedDateOption));
+        },
         // changeStyle(state, {payload}){
         //     const component = state.components.find(item => item.name === payload.name);
         //     if(!component.addedStyles)  component.addedStyles = {};

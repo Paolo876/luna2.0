@@ -7,6 +7,7 @@ import { TextField, Typography, Button, InputAdornment } from '@mui/material'
 const labelStyles = {
   fontSize: 20,
   letterSpacing:.5, 
+  opacity: .85, 
 }
 
 
@@ -73,7 +74,7 @@ const DisplayNameInput = () => {
               px: .5,
               py: .25,
               mt: 1,
-              fontSize: ".85em",
+              fontSize: "1em",
               letterSpacing: .75,
             },
         }}
