@@ -56,7 +56,7 @@ const SettingsList = () => {
       }}
     >
       <Grid container>
-        <Grid item xs={4} sx={{width: 275, borderRight: 1, borderColor: "rgba(250,250,250,0.25)"}}>
+        <Grid item xs={4} sx={{width: 275, borderRight: 1, borderColor: "rgba(250,250,250,0.25)", height: 500}}>
           <List>
             {settingsList.map(item => (
               <ListItem 
@@ -79,7 +79,7 @@ const SettingsList = () => {
             ))}
           </List>
         </Grid>
-        <Grid item xs={8}  sx={{minWidth: 400}}>
+        <Grid item xs={8}  sx={{width: 400, height: 500, background: "rgba(110,110,110,.05)"}}>
           {selectedSetting === "editor"  && <EditorMode/>}
           {selectedSetting === "general" && <General/>}
         </Grid>

@@ -7,11 +7,12 @@ const SubsettingContainer = ({ children, title }) => {
     <Box 
       sx={{
         height: "100%",
-        width: "100%",
+        // width: "100%",
+        // maxWidth: 400,
         px: 1.25,
         py: 2,
         // background: "red"
-        background: "rgba(110,110,110,.05)",
+        // background: "rgba(110,110,110,.05)",
       }}
     >
       <Box>
@@ -33,8 +34,11 @@ const SubsettingContainer = ({ children, title }) => {
       </Box>
       <Box
         sx={{
-          maxWidth: 380,
-          pt: 3,
+          mt: 1,
+          pt: 2,
+          pr: 1.5,
+          overflowY: "auto",
+          height: 400
         }}
       >
         {children}

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import SubsettingContainer from '../SubsettingContainer'
-import { Box, Typography, Select, FormControl, InputLabel, MenuItem } from '@mui/material'
+import { Box, Typography, Select, FormControl, InputLabel, MenuItem, Stack } from '@mui/material'
 import useSettingsRedux from "../../../../hooks/useSettingsRedux";
 import DisplayNameInput from './DisplayNameInput';
 
@@ -16,7 +16,7 @@ const General = () => {
 
   return ( 
     <SubsettingContainer title="General">
-      <Box>
+      {/* <Box sx={{overflowY: "auto"}}> */}
         <Box mb={3}>
           <DisplayNameInput/>
         </Box>
@@ -55,7 +55,31 @@ const General = () => {
             <MenuItem value={"k"} sx={{color: "black"}}>Kelvin</MenuItem>
           </Select>
         </FormControl>
-      </Box>
+        <FormControl  variant="standard" sx={{ mb: 3, width: "100%" }}>
+          <InputLabel shrink={true}><Typography variant="body2" sx={labelStyles}>Change Temperature Unit</Typography></InputLabel>
+          <Select
+            value={temperatureUnit}
+            onChange={(e) => changeTemperatureUnit(e.target.value)}
+            size="small"
+          >
+            <MenuItem value={"f"} sx={{color: "black"}}>Fahrenheit</MenuItem>
+            <MenuItem value={"c"} sx={{color: "black"}}>Celsius</MenuItem>
+            <MenuItem value={"k"} sx={{color: "black"}}>Kelvin</MenuItem>
+          </Select>
+        </FormControl>
+        <FormControl  variant="standard" sx={{ mb: 3, width: "100%" }}>
+          <InputLabel shrink={true}><Typography variant="body2" sx={labelStyles}>Change Temperature Unit</Typography></InputLabel>
+          <Select
+            value={temperatureUnit}
+            onChange={(e) => changeTemperatureUnit(e.target.value)}
+            size="small"
+          >
+            <MenuItem value={"f"} sx={{color: "black"}}>Fahrenheit</MenuItem>
+            <MenuItem value={"c"} sx={{color: "black"}}>Celsius</MenuItem>
+            <MenuItem value={"k"} sx={{color: "black"}}>Kelvin</MenuItem>
+          </Select>
+        </FormControl>
+      {/* </Box> */}
     </SubsettingContainer>
   )
 }
