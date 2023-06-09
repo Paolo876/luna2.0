@@ -5,6 +5,7 @@ import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import General from './Subsettings/General/General';
 import EditorMode from './Subsettings/EditorMode';
 import { keyframes } from '@mui/material';
+import Background from './Subsettings/Background/Background';
 
 const slide = keyframes`
   from {
@@ -82,6 +83,7 @@ const SettingsList = () => {
         <Grid item xs={8}  sx={{width: 400, height: 500, background: "rgba(110,110,110,.05)"}}>
           {selectedSetting === "editor"  && <EditorMode/>}
           {selectedSetting === "general" && <General/>}
+          {selectedSetting === "background" && <Background/>}
         </Grid>
       </Grid>
     </Box>
