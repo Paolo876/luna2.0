@@ -15,7 +15,8 @@ export const settingsInitialState = () => {
         editorMode: { isActive: false, changeComponentPosition: []},
         temperatureUnit: localStorage.getItem("temperatureUnit"),
         timeFormat: localStorage.getItem("timeFormat"),
-        dateFormat: JSON.parse(localStorage.getItem("dateFormat")),
+        dateFormat: localStorage.getItem("dateFormat"),
+        dateOptions: JSON.parse(localStorage.getItem("dateOptions")),
     }
 
     if(!JSON.parse(localStorage.getItem("components"))){
@@ -42,10 +43,16 @@ export const settingsInitialState = () => {
         result = { ...result, timeFormat: "12"};
     }
 
-    if(!JSON.parse(localStorage.getItem("dateFormat"))) {
-        const dateFmt = { weekday:'short', month:'long', day:'2-digit'}
-        localStorage.setItem("dateFormat", JSON.stringify(dateFmt));
-        result = { ...result, dateFormat: dateFmt};
+    if(!localStorage.getItem("dateFormat")) {
+        const dateFormat = "en-US"
+        localStorage.setItem("dateFormat", dateFormat);
+        result = { ...result, dateFormat};
+    }
+
+    if(!JSON.parse(localStorage.getItem("dateOptions"))) {
+        const dateOptions = { weekday:'short', month:'long', day:'2-digit'}
+        localStorage.setItem("dateOptions", JSON.stringify(dateOptions));
+        result = { ...result, dateOptions};
     }
 
     if(!JSON.parse(localStorage.getItem("uiConfig"))){
