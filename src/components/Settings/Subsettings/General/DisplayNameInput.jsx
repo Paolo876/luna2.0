@@ -74,7 +74,7 @@ const DisplayNameInput = () => {
               px: .5,
               py: .25,
               mt: 1,
-              fontSize: "1em",
+              fontSize: 17,
               letterSpacing: .75,
             },
         }}

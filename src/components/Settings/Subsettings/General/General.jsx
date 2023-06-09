@@ -11,7 +11,7 @@ const labelStyles = {
 
 
 const General = () => {
-  const { dateFormat, dateOptions, timeFormat, changeTimeFormat, temperatureUnit, changeTemperatureUnit, changeDateFormat } = useSettingsRedux();
+  const { dateFormat, dateOptions, timeFormat, changeTimeFormat, temperatureUnit, changeTemperatureUnit, changeDateFormat, changeDateOptions } = useSettingsRedux();
   
   
   // const handleChangeDateOption = (item, value) => {
@@ -24,49 +24,90 @@ const General = () => {
         <DisplayNameInput/>
       </Box>
       
-      <FormControl  variant="standard" sx={{ mb: 4, width: "100%" }}>
+      <FormControl  variant="standard" sx={{ mb: 4.25, width: "100%" }}>
         <InputLabel shrink={true}><Typography variant="body2" sx={labelStyles}>Change Time Format</Typography></InputLabel>
         <Select
           value={timeFormat}
           onChange={(e) => changeTimeFormat(e.target.value)}
           size="small"
-          sx={{
-            // '.MuiSelect-select .MuiSelect-standard .MuiInputBase-input .MuiInput-input' : labelStyles
-          }}
+          sx={{ fontSize: 17}}
         >
           <MenuItem value={"12"} sx={{color: "black"}}>12 Hours</MenuItem>
           <MenuItem value={"24"} sx={{color: "black"}}>24 Hours</MenuItem>
         </Select>
       </FormControl>
-      <FormControl  variant="standard" sx={{ mb: 4, width: "100%" }}>
+      <FormControl  variant="standard" sx={{ mb: 4.25, width: "100%" }}>
         <InputLabel shrink={true}><Typography variant="body2" sx={labelStyles}>Change Date Format</Typography></InputLabel>
         <Select
           value={dateFormat}
           onChange={(e) => changeDateFormat(e.target.value)}
           size="small"
+          sx={{ fontSize: 17}}
         >
           <MenuItem value={"en-US"} sx={{color: "black"}}>Month-Day-Year</MenuItem>
           <MenuItem value={"en-GB"} sx={{color: "black"}}>Day-Month-Year</MenuItem>
         </Select>
       </FormControl>
-      <Box sx={{ mb: 4, width: "100%" }}>
+      <Box sx={{ mb: 4.25, width: "100%" }}>
         <InputLabel shrink={true}><Typography variant="body2" sx={labelStyles}>Date Options:</Typography></InputLabel>
-          <FormControl  variant="standard" sx={{ mb: 4, pl: 1, width: "100%" }}>
-            <InputLabel shrink={true}><Typography variant="body2" sx={{ fontSize: 18, letterSpacing: .5, pl: 1}}>Weekday</Typography></InputLabel>
+          <FormControl  variant="standard" sx={{ mb: 1.75, pl: 1, width: "100%" }}>
+            <InputLabel shrink={true}><Typography variant="body2" sx={{ fontSize: 18, letterSpacing: .5, pl: 1, opacity: .75}}>Weekday</Typography></InputLabel>
             <Select
-              value={dateFormat}
-              onChange={(e) => changeDateFormat(e.target.value)}
+              value={dateOptions.weekday === undefined ? "hidden" : dateOptions.weekday}
+              onChange={(e) => changeDateOptions({item: "weekday", value: e.target.value})}
               size="small"
+              sx={{ fontSize: 17}}
             >
               <MenuItem value={"long"} sx={{color: "black"}}>Long</MenuItem>
               <MenuItem value={"narrow"} sx={{color: "black"}}>Narrow</MenuItem>
               <MenuItem value={"short"} sx={{color: "black"}}>Short</MenuItem>
-              <MenuItem value={undefined} sx={{color: "black"}}>Hidden</MenuItem>
+              <MenuItem value={"hidden"} sx={{color: "black"}}>Hidden</MenuItem>
+            </Select>
+          </FormControl>
+          <FormControl  variant="standard" sx={{ mb: 1.75, pl: 1, width: "100%" }}>
+            <InputLabel shrink={true}><Typography variant="body2" sx={{ fontSize: 18, letterSpacing: .5, pl: 1, opacity: .75}}>Month</Typography></InputLabel>
+            <Select
+              value={dateOptions.month === undefined ? "hidden" : dateOptions.month}
+              onChange={(e) => changeDateOptions({item: "month", value: e.target.value})}
+              size="small"
+              sx={{ fontSize: 17}}
+            >
+              <MenuItem value={"long"} sx={{color: "black"}}>Long</MenuItem>
+              <MenuItem value={"narrow"} sx={{color: "black"}}>Narrow</MenuItem>
+              <MenuItem value={"short"} sx={{color: "black"}}>Short</MenuItem>
+              <MenuItem value={"2-digit"} sx={{color: "black"}}>2-Digit</MenuItem>
+              <MenuItem value={"hidden"} sx={{color: "black"}}>Hidden</MenuItem>
+            </Select>
+          </FormControl>
+          <FormControl  variant="standard" sx={{ mb: 1.75, pl: 1, width: "100%" }}>
+            <InputLabel shrink={true}><Typography variant="body2" sx={{ fontSize: 18, letterSpacing: .5, pl: 1, opacity: .75}}>Day</Typography></InputLabel>
+            <Select
+              value={dateOptions.day === undefined ? "hidden" : dateOptions.day}
+              onChange={(e) => changeDateOptions({item: "day", value: e.target.value})}
+              size="small"
+              sx={{ fontSize: 17}}
+           >
+              <MenuItem value={"numeric"} sx={{color: "black"}}>Numeric</MenuItem>
+              <MenuItem value={"2-digit"} sx={{color: "black"}}>2-Digit</MenuItem>
+              <MenuItem value={"hidden"} sx={{color: "black"}}>Hidden</MenuItem>
+            </Select>
+          </FormControl>
+          <FormControl  variant="standard" sx={{ pl: 1, width: "100%" }}>
+            <InputLabel shrink={true}><Typography variant="body2" sx={{ fontSize: 18, letterSpacing: .5, pl: 1, opacity: .75}}>Year</Typography></InputLabel>
+            <Select
+              value={dateOptions.year === undefined ? "hidden" : dateOptions.year}
+              onChange={(e) => changeDateOptions({item: "year", value: e.target.value})}
+              size="small"
+              sx={{ fontSize: 17}}
+           >
+              <MenuItem value={"numeric"} sx={{color: "black"}}>Numeric</MenuItem>
+              <MenuItem value={"2-digit"} sx={{color: "black"}}>2-Digit</MenuItem>
+              <MenuItem value={"hidden"} sx={{color: "black"}}>Hidden</MenuItem>
             </Select>
           </FormControl>
       </Box>
       
-      <FormControl  variant="standard" sx={{ mb: 4, width: "100%" }}>
+      <FormControl  variant="standard" sx={{ mb: 4.25, width: "100%" }}>
         <InputLabel shrink={true}><Typography variant="body2" sx={labelStyles}>Change Temperature Unit</Typography></InputLabel>
         <Select
           value={temperatureUnit}

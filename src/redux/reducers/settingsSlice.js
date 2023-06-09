@@ -39,9 +39,16 @@ const settingsSlice = createSlice({
             localStorage.setItem('dateFormat', payload)
         },
         changeDateOptions(state, { payload }) {
-            const updatedDateOption = {...state.dateOptions, payload};
-            state.dateOptions = updatedDateOption;
-            localStorage.setItem("dateOptions", JSON.stringify(updatedDateOption));
+            const { item, value } = payload;
+            const updatedDateOptions = {...state.dateOptions};
+
+            if(value === "hidden"){
+                updatedDateOptions[item] = undefined;
+            } else {
+                updatedDateOptions[item] = value;
+            }
+            state.dateOptions = updatedDateOptions;
+            localStorage.setItem("dateOptions", JSON.stringify(updatedDateOptions));
         },
         // changeStyle(state, {payload}){
         //     const component = state.components.find(item => item.name === payload.name);
