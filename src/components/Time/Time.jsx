@@ -19,8 +19,9 @@ const Time = () => {
       }
   }, []);
 
-  const day = time.toLocaleString('en-us', dateFormat)
-
+  const day = time.toLocaleString('en-us', { weekday: undefined, month: "long", day: "2-digit", year: "2-digit"})
+  // const day = time.toLocaleString('en-us', dateFormat)
+  
   return (
     <ComponentContainer 
       additionalStyles={{

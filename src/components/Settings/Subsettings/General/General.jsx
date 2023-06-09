@@ -26,6 +26,10 @@ const General = () => {
           <Select
             value={timeFormat}
             onChange={(e) => changeTimeFormat(e.target.value)}
+            size="small"
+            sx={{
+              // '.MuiSelect-select .MuiSelect-standard .MuiInputBase-input .MuiInput-input' : labelStyles
+            }}
           >
             <MenuItem value={"12"} sx={{color: "black"}}>12 Hours</MenuItem>
             <MenuItem value={"24"} sx={{color: "black"}}>24 Hours</MenuItem>
@@ -44,6 +48,7 @@ const General = () => {
           <Select
             value={temperatureUnit}
             onChange={(e) => changeTemperatureUnit(e.target.value)}
+            size="small"
           >
             <MenuItem value={"f"} sx={{color: "black"}}>Fahrenheit</MenuItem>
             <MenuItem value={"c"} sx={{color: "black"}}>Celsius</MenuItem>
@@ -56,3 +61,17 @@ const General = () => {
 }
 
 export default General
+
+
+/**
+ * weekday: "long", "narrow", "short", undefined
+ * month: "long", "narrow", "short", "2-digit", undefined
+ * day: "numeric", "2-digit", undefined,
+ * year: "2-digit", "numeric"
+ * 
+ * TIME FORMATS
+ * 'en-US'  -> Month-day-year
+ * 'en-GB'  -> day-month-year
+ * 'ko-KR'  -> year-month-day
+ *   
+ */
