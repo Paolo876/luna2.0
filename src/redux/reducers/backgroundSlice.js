@@ -22,10 +22,10 @@ const backgroundSlice = createSlice({
         //     state.source = null;
         //     localStorage.setItem('backgroundConfig', JSON.stringify(state))
         // },
-        // setIsLocalBackground(state, {payload}){
-        //     state.isLocal = payload;
-        //     localStorage.setItem('backgroundConfig', JSON.stringify(state))
-        // },
+        setIsLocalBackground(state, {payload}){
+            state.isLocal = payload;
+            localStorage.setItem('backgroundConfig', JSON.stringify(state))
+        },
         // setFetchedBackground(state, {payload}){
         //     state.source = payload
         // },
