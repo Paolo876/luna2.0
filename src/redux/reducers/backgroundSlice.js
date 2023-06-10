@@ -31,6 +31,8 @@ const backgroundSlice = createSlice({
         },
         selectLocalBackground(state, { payload }){
             state.activeLocalBackground = payload;
+            // localStorage.setItem('backgroundConfig', JSON.stringify(state))
+
         },
         // setFetchedBackground(state, {payload}){
         //     state.source = payload

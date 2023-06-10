@@ -6,7 +6,7 @@ import Image from 'mui-image';
 
 
 const Background = () => {
-  const { localBackgrounds, activeLocalBackground, isLocal, isRandom, setIsLocalBackground } = useBackgroundRedux();
+  const { localBackgrounds, activeLocalBackground, isLocal, isRandom, setIsLocalBackground, selectLocalBackground } = useBackgroundRedux();
 
   console.log(localBackgrounds)
   return (
@@ -28,6 +28,7 @@ const Background = () => {
                 {localBackgrounds.map(item => (
                   <ButtonBase 
                     key={item.name}
+                    onClick={() => selectLocalBackground(item)}
                     component="li" 
                     sx={{
                       mx: .5, 
@@ -36,6 +37,7 @@ const Background = () => {
                       p: .25, 
                       borderColor: activeLocalBackground.name === item.name ? "primary.main" : "transparent"
                     }}
+                    
                   >
                     <Image src={item.thumbnailUrl} width={110} duration={0}/>
                   </ButtonBase>
