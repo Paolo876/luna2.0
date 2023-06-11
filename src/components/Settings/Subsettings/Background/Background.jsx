@@ -33,7 +33,7 @@ const Background = () => {
           <FormControlLabel value={true} control={<Radio />} label={<Typography variant='body2' fontSize={14.5}>Select Random Backgrounds from Database</Typography>} />
             <Box pb={2} pr={1} pl={3} mt={.5} sx={{position: "relative", opacity: isLocal ? 1 : .5}}>
               {!isLocal && <Box sx={{position: "absolute", top: 0, left: 0, height: "100%", width: "100%", zIndex: 1, background: "rgba(0,0,0,.5)"}}></Box>}
-              <Box sx={{display: "flex", overflowX: "scroll", overflowY: "hidden", width: 390, mb: 1}} component="ul">
+              <Box sx={{display: "flex", overflowX: "scroll", overflowY: "hidden", width: 440, mb: 1}} component="ul">
                 {localBackgrounds.map(item => (
                   <ButtonBase 
                     key={item.name}
@@ -49,7 +49,7 @@ const Background = () => {
                     }}
                     
                   >
-                    <Image src={item.thumbnailUrl} width={90} duration={0}/>
+                    <Image src={item.thumbnailUrl} width={96} duration={0}/>
                     {/* {!isRandom && (item.name === activeLocalBackground.name) && <Box sx={{position: "absolute", bottom: 0, right: 8}}>
                       <CheckCircleOutlineIcon fontSize="small"/>
                     </Box>} */}
@@ -62,14 +62,14 @@ const Background = () => {
             <Box pr={1} pl={3} mt={.5} sx={{position: "relative", opacity: !isLocal ? 1 : .5}}>
               {isLocal && <Box sx={{position: "absolute", top: 0, left: 0, height: "100%", width: "100%", zIndex: 1, background: "rgba(0,0,0,.5)"}}></Box>}
               <Box sx={{display: "flex", width: 390, my: 1.5, justifyContent: "left"}}>
-                <Button endIcon={<AutorenewIcon/>} size="medium" variant="outlined" onClick={() => fetchBackground()} disabled={isLoading}>Generate Background</Button>
+                <Button endIcon={<AutorenewIcon/>} size="medium" variant="outlined" onClick={() => fetchBackground()} disabled={isLoading}>Generate Random Background</Button>
               </Box>
             </Box>
         </RadioGroup>
       </FormControl>
       <Box sx={{display: "flex", justifyContent: "right", mt: 5.2}}>
         {!isRandom && <Tooltip title="Removing background will generate a random image." arrow enterDelay={400}>
-            <Button variant="contained" sx={{fontSize: 12}} disabled={isRandom} color="warning" onClick={isLocal ? generateLocalBackground : fetchBackground} endIcon={<HighlightOffIcon/>}>
+            <Button variant="contained" sx={{fontSize: 12}} disabled={isRandom} color="error" onClick={isLocal ? generateLocalBackground : fetchBackground} endIcon={<HighlightOffIcon/>}>
               Remove Default Background
             </Button>
           </Tooltip>
