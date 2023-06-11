@@ -4,7 +4,7 @@ import { Box } from "@mui/material";
 
 
 const Background = () => {
-  const { fetchBackground, generateLocalBackground, isLocal, isRandom, src, filter, activeLocalBackground } = useBackgroundRedux();
+  const { fetchBackground, generateLocalBackground, isLocal, isRandom, src, filter } = useBackgroundRedux();
 
   useEffect(() => {
     if(isRandom){
@@ -14,15 +14,11 @@ const Background = () => {
         fetchBackground()
       }
     }
-
   }, [isLocal, isRandom])
-  console.log(src)
+
   let bgValue = `linear-gradient(rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.2)), url(${src}) no-repeat fixed center/cover`;
-  // if(isLocal){
-  //   bgValue = `linear-gradient(rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.2)), url(${activeLocalBackground.url}) no-repeat fixed center/cover`
-  // } else {
-  //   bgValue = `linear-gradient(rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.2)), url(${src}) no-repeat fixed center/cover`
-  // }
+
+  
   return (
     <Box
       sx={{
