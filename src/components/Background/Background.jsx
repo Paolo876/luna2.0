@@ -12,10 +12,14 @@ const Background = () => {
     } else {
       fetchBackground()
     }
-  }, [isLocal, isRandom, activeLocalBackground])
+  }, [isLocal, isRandom])
 
-  const bgValue = `linear-gradient(rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.2)), url(${src}) no-repeat fixed center/cover`;
-
+  let bgValue;
+  if(isLocal){
+    bgValue = `linear-gradient(rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.2)), url(${activeLocalBackground.url}) no-repeat fixed center/cover`
+  } else {
+    bgValue = `linear-gradient(rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.2)), url(${src}) no-repeat fixed center/cover`
+  }
   return (
     <Box
       sx={{
