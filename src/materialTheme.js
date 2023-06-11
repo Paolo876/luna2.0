@@ -53,18 +53,18 @@ export const theme = createTheme({
       primary: {
         main: "#45a198",
       },
-    //   secondary: {
-    //     main: '#5b6eb5',
-    //   },
+      secondary: {
+        main: '#454ea1',
+      },
     //   info: {
     //     main: '#18ecbe',
     //   },
     //   error: {
     //     main: '#f8713f',
     //   },
-    //   success: {
-    //     main: '#91f574',
-    //   },
+      success: {
+        main: '#4cb074',
+      },
       background: {
         // default: 'rgb(38,37,37)',
         // lighter: 'rgba(239,235,229,0.8)',
