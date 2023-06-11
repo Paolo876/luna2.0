@@ -36,20 +36,17 @@ const backgroundSlice = createSlice({
             // localStorage.setItem('backgroundConfig', JSON.stringify(state))
 
         },
-        // setFetchedBackground(state, {payload}){
-        //     state.source = payload
-        // },
-        // changeFilter(state, {payload}){
-        //     const filters = state.filter;
+        changeFilter(state, {payload}){
+            const filters = state.filter;
 
-        //     if(payload.id === "brightness") filters.brightness = payload.value;  
-        //     if(payload.id === "contrast") filters.contrast = payload.value;
-        //     if(payload.id === "saturate") filters.saturate = payload.value;
-        //     if(payload.id === "reset") state.filter = initialConfigurations("background").filter;
+            if(payload.id === "brightness") filters.brightness = payload.value;  
+            if(payload.id === "contrast") filters.contrast = payload.value;
+            if(payload.id === "saturate") filters.saturate = payload.value;
+            if(payload.id === "reset") state.filter = { brightness: 100, contrast: 100, saturation: 100 };
         
-        //     localStorage.setItem('backgroundConfig', JSON.stringify(state))
+            localStorage.setItem('backgroundConfig', JSON.stringify(state))
 
-        // },
+        },
     }, 
     extraReducers: (builder) => {
         builder
