@@ -42,9 +42,6 @@ const Background = () => {
                   
                 >
                   <Image src={item.thumbnailUrl} width={96} duration={0}/>
-                  {/* {!isRandom && (item.name === activeLocalBackground.name) && <Box sx={{position: "absolute", bottom: 0, right: 8}}>
-                    <CheckCircleOutlineIcon fontSize="small"/>
-                  </Box>} */}
                 </ButtonBase>
               ))}
             </Box>
