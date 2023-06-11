@@ -41,7 +41,7 @@ const backgroundSlice = createSlice({
 
             if(payload.id === "brightness") filters.brightness = payload.value;  
             if(payload.id === "contrast") filters.contrast = payload.value;
-            if(payload.id === "saturate") filters.saturate = payload.value;
+            if(payload.id === "saturation") filters.saturation = payload.value;
             if(payload.id === "reset") state.filter = { brightness: 100, contrast: 100, saturation: 100 };
         
             localStorage.setItem('backgroundConfig', JSON.stringify(state))

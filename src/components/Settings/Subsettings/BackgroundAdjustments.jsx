@@ -11,8 +11,9 @@ const valueLabelComponent = ({ children, value }) => (
 
 
 const BackgroundAdjustments = () => {
-  const { filter } = useBackgroundRedux();
-  console.log(filter)
+  const { filter, changeFilter } = useBackgroundRedux();
+
+
   return (
     <SubsettingContainer title="Background Adjustments">
 
@@ -27,6 +28,7 @@ const BackgroundAdjustments = () => {
               color="secondary"
               value={filter.brightness}
               valueLabelDisplay="auto"
+              onChange={(e) => changeFilter({id: "brightness", value: e.target.value})}
               slots={{
                 valueLabel: valueLabelComponent,
               }}
@@ -36,8 +38,8 @@ const BackgroundAdjustments = () => {
             <Input
               value={filter.brightness}
               size="small"
-              // onChange={handleInputChange}
-              // onBlur={handleBlur}
+              onChange={(e) => changeFilter({id: "brightness", value: e.target.value})}
+              max={200}
               inputProps={{
                 step: 1,
                 min: 0,
@@ -59,6 +61,7 @@ const BackgroundAdjustments = () => {
               min={0}
               color="secondary"
               value={filter.contrast}
+              onChange={(e) => changeFilter({id: "contrast", value: e.target.value})}
               valueLabelDisplay="auto"
               slots={{
                 valueLabel: valueLabelComponent,
@@ -69,8 +72,7 @@ const BackgroundAdjustments = () => {
             <Input
               value={filter.contrast}
               size="small"
-              // onChange={handleInputChange}
-              // onBlur={handleBlur}
+              onChange={(e) => changeFilter({id: "contrast", value: e.target.value})}
               inputProps={{
                 step: 1,
                 min: 0,
@@ -92,6 +94,7 @@ const BackgroundAdjustments = () => {
               min={0}
               color="secondary"
               value={filter.saturation}
+              onChange={(e) => changeFilter({id: "saturation", value: e.target.value})}
               valueLabelDisplay="auto"
               slots={{
                 valueLabel: valueLabelComponent,
@@ -102,8 +105,7 @@ const BackgroundAdjustments = () => {
             <Input
               value={filter.saturation}
               size="small"
-              // onChange={handleInputChange}
-              // onBlur={handleBlur}
+              onChange={(e) => changeFilter({id: "saturation", value: e.target.value})}
               inputProps={{
                 step: 1,
                 min: 0,
@@ -114,8 +116,8 @@ const BackgroundAdjustments = () => {
           </Grid>
         </Grid>
       </Box>
-      <Box sx={{display: "flex", justifyContent: "right", px: 3, mt: 6.5}}>
-        <Button color="warning" variant="contained" size="small">Reset To Default</Button>
+      <Box sx={{display: "flex", justifyContent: "right", px: 3, mt: 5}}>
+        <Button color="warning" variant="contained" size="small" onClick={() => changeFilter({id: "reset"})} sx={{fontSize: 12}}>Reset To Default</Button>
       </Box>
     </SubsettingContainer>
   )
