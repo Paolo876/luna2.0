@@ -30,7 +30,8 @@ const SubsettingContainer = ({ children, title }) => {
       </Box>
       <Box
         sx={{
-          mt: 1,
+          display: "flex",
+          flexDirection: "column",
           pt: 2,
           pr: 1.5,
           overflowY: "auto",

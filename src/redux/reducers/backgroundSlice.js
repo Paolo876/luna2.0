@@ -9,19 +9,19 @@ const backgroundSlice = createSlice({
         generateLocalBackground( state ){
             const selectedBackground = state.localBackgrounds[Math.floor(Math.random() * 5) ]      //choose random bg
             state.activeLocalBackground = selectedBackground;
-            state.src = selectedBackground.url;
+            state.src = selectedBackground.src;
             state.isLocal = true;
             state.isRandom = true;
         },
-        // setBackground(state, {payload = true}){
-        //     state.isRandom = !payload;    
-        //     localStorage.setItem('backgroundConfig', JSON.stringify(state))
-        // },
-        // removeBackground(state){
-        //     state.isRandom = true;
-        //     state.source = null;
-        //     localStorage.setItem('backgroundConfig', JSON.stringify(state))
-        // },
+        setBackground(state){
+            state.isRandom = false;    
+            localStorage.setItem('backgroundConfig', JSON.stringify(state))
+        },
+        removeBackground(state){
+            state.isRandom = true;
+            // state.source = null;
+            localStorage.setItem('backgroundConfig', JSON.stringify(state))
+        },
         setIsLocalBackground(state, { payload }){
             if(payload !== state.isLocal){
                 state.isRandom = true;
@@ -30,8 +30,9 @@ const backgroundSlice = createSlice({
             }
         },
         selectLocalBackground(state, { payload }){
-            console.log(payload)
-            state.activeLocalBackground = payload;
+            // state.isRandom = true;
+            // state.activeLocalBackground = payload;
+            state.src = payload.src
             // localStorage.setItem('backgroundConfig', JSON.stringify(state))
 
         },
@@ -59,6 +60,7 @@ const backgroundSlice = createSlice({
         })
         .addCase(fetchBackground.fulfilled, ( state, { payload }) => {
             state.src = payload;
+            state.isRandom = true;
             state.isLocal = false;
             state.isLoading = false;
             state.error = null;
