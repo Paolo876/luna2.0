@@ -30,6 +30,7 @@ const settingsList = [
   {name: <Typography sx={textStyles}>Editor Mode<AutoAwesomeIcon fontSize="inherit" sx={{ml: 1, color: "rgba(245, 205, 79, 1)"}}/></Typography>, id: "editor"},
   {name: <Typography sx={textStyles}>General</Typography>,                 id: "general"},
   {name: <Typography sx={textStyles}>Background</Typography>,              id: "background"},
+  {name: <Typography sx={textStyles}>Background Adjustments</Typography>,  id: "background-adjustments"},
   {name: <Typography sx={textStyles}>Components</Typography>,              id: "components"},
   {name: <Typography sx={textStyles}>Interface</Typography>,               id: "ui"},
   {name: <Typography sx={textStyles}>Reset All Settings</Typography>,      id: "reset"},
@@ -57,7 +58,7 @@ const SettingsList = () => {
       }}
     >
       <Grid container>
-        <Grid item xs={4} sx={{width: 275, borderRight: 1, borderColor: "rgba(250,250,250,0.25)", height: 500}}>
+        <Grid item xs={4} sx={{width: 350, borderRight: 1, borderColor: "rgba(250,250,250,0.25)", height: 500}}>
           <List>
             {settingsList.map(item => (
               <ListItem 
@@ -65,11 +66,11 @@ const SettingsList = () => {
                 disableGutters 
                 key={item.id}
                 sx={{
-                  my: .5,
+                  my: .25,
                   opacity: item.id === selectedSetting ? 1 : .8,
                   background: item.id === selectedSetting ? "rgba(0,0,0,.35)" : "initial",
-                  "&:nth-of-type(7)" : {
-                    mt: 3,
+                  "&:nth-of-type(8)" : {
+                    mt: 5.5,
                   }
                 }}
               >
