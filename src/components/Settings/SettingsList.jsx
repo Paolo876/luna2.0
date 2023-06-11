@@ -1,11 +1,15 @@
 import { useState } from 'react'
-import { Box, Grid, List, ListItem, ListItemButton, ListItemText, Typography } from '@mui/material'
 import useSettingsRedux from '../../hooks/useSettingsRedux'
+
+import { Box, Grid, List, ListItem, ListItemButton, ListItemText, Typography } from '@mui/material'
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
+import { keyframes } from '@mui/material';
+
+//subsettings components
 import General from './Subsettings/General/General';
 import EditorMode from './Subsettings/EditorMode';
-import { keyframes } from '@mui/material';
 import Background from './Subsettings/Background/Background';
+import BackgroundAdjustments from './Subsettings/BackgroundAdjustments';
 
 const slide = keyframes`
   from {
@@ -85,6 +89,7 @@ const SettingsList = () => {
           {selectedSetting === "editor"  && <EditorMode/>}
           {selectedSetting === "general" && <General/>}
           {selectedSetting === "background" && <Background/>}
+          {selectedSetting === "background-adjustments" && <BackgroundAdjustments/>}
         </Grid>
       </Grid>
     </Box>
