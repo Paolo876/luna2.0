@@ -15,7 +15,6 @@ const useBackgroundRedux = () => {
     setBackground: () => dispatch(backgroundActions.setBackground()),
     removeBackground: () => dispatch(backgroundActions.removeBackground()),
     changeFilter: (data) => dispatch(backgroundActions.changeFilter(data)),
-    // setIsVisible: data => dispatch(settingsActions.setIsVisible(data)),
   }
 }
 
