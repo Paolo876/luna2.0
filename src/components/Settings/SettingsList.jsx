@@ -10,6 +10,8 @@ import General from './Subsettings/General/General';
 import EditorMode from './Subsettings/EditorMode';
 import Background from './Subsettings/Background/Background';
 import BackgroundAdjustments from './Subsettings/BackgroundAdjustments';
+import Components from './Subsettings/Components/Components';
+
 
 const slide = keyframes`
   from {
@@ -41,7 +43,6 @@ const settingsList = [
   {name: <Typography sx={textStyles}>About</Typography>,                   id: "about"},
   {name: <Typography sx={textStyles}>Contact</Typography>,                 id: "contact"},
 ];
-
 
 
 const SettingsList = () => {
@@ -90,6 +91,7 @@ const SettingsList = () => {
           {selectedSetting === "general" && <General/>}
           {selectedSetting === "background" && <Background/>}
           {selectedSetting === "background-adjustments" && <BackgroundAdjustments/>}
+          {selectedSetting === "components" && <Components/>}
         </Grid>
       </Grid>
     </Box>
