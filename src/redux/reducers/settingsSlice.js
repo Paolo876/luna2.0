@@ -99,12 +99,16 @@ const settingsSlice = createSlice({
         // },
         // // UI
 
-        // changeContainerColor(state, {payload}){
-        //     const colors = payload.color
-        //     const value = `linear-gradient(rgba(${colors.r}, ${colors.g}, ${colors.b}, ${payload.alpha}), rgba(${colors.r}, ${colors.g}, ${colors.b}, ${payload.alpha}))`;
-        //     state.ui.containerColor = value;
-        //     localStorage.setItem('uiConfig', JSON.stringify(state.ui))
-        // },
+        changeContainerColor(state, {payload}){
+            const colors = payload.color
+            const [r, g ,b] = colors.substr(4).split(", ", 4);
+            console.log(r)
+            console.log(g)
+            console.log(b)
+            // const value = `linear-gradient(rgba(${colors.r}, ${colors.g}, ${colors.b}, ${payload.alpha}), rgba(${colors.r}, ${colors.g}, ${colors.b}, ${payload.alpha}))`;
+            // state.ui.containerColor = value;
+            // localStorage.setItem('uiConfig', JSON.stringify(state.ui))
+        },
         // changeSettingsButtonPosition(state, {payload}){
         //     state.ui.settingsPosition = payload;
         //     localStorage.setItem('uiConfig', JSON.stringify(state.ui))

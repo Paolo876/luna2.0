@@ -22,8 +22,6 @@ const SelectedComponentSettings = ({ component }) => {
   const { components, setIsVisible, changeStyle, resetStyle } = useSettingsRedux()
   const selectedComponent = components.find(item => item.name === component)
 
-  console.log(selectedComponent.addedStyles)
-
   const [anchorEl, setAnchorEl] = useState(null);
   const [ selectedFont, setSelectedFont ] = useState(selectedComponent.addedStyles.fontFamily);
 
@@ -117,7 +115,3 @@ const SelectedComponentSettings = ({ component }) => {
 }
 
 export default SelectedComponentSettings
-
-
-// font weight slider
-// color selector
