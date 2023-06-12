@@ -17,6 +17,7 @@ const useSettingsRedux = () => {
     changeDateFormat: data => dispatch(settingsActions.changeDateFormat(data)),
     changeDateOptions: data => dispatch(settingsActions.changeDateOptions(data)),
     changeStyle: data => dispatch(settingsActions.changeStyle(data)),
+    resetStyle: data => dispatch(settingsActions.resetStyle(data)),
   }
 }
 

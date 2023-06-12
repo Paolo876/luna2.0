@@ -1,17 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { settingsInitialState } from "../initialStates";
+import { settingsInitialState, componentsInitialState } from "../initialStates";
 
 
 const settingsSlice = createSlice({
     name: 'settings',
     initialState: settingsInitialState,
-    // initialState: {
-    //     // background: initBgConfig,
-    //     // components: initComponentsConfig,
-    //     // editorMode: { isActive: false, changeComponentPosition: [] },
-    //     // location: initlocationConfig,
-    //     // ui: initUIConfig
-    // },
     reducers: {
         // components
         setIsVisible(state, { payload }){
@@ -51,9 +44,8 @@ const settingsSlice = createSlice({
             localStorage.setItem("dateOptions", JSON.stringify(updatedDateOptions));
         },
         changeStyle(state, { payload }){
-            
             const component = state.components.find(item => item.name === payload.name);
-            
+
             if(!component.addedStyles)      component.addedStyles = {};
             if(payload.id === "font")       component.addedStyles.fontFamily = payload.value;
             if(payload.id === "weight")     component.addedStyles.fontWeight = payload.value;
@@ -62,15 +54,14 @@ const settingsSlice = createSlice({
 
             localStorage.setItem('componentsConfig', JSON.stringify(state.components));
         },
+        resetStyle(state, {payload}){
+            const defaultValues = componentsInitialState.find(item => item.name === payload);
+            const component = state.components.find(item => item.name === payload);
 
-        // resetStyle(state, {payload}){
-        //     const defaultValues = initialConfigurations("components").find(item => item.name === payload);
-        //     const component = state.components.find(item => item.name === payload);
+            component.addedStyles = defaultValues.addedStyles
 
-        //     component.addedStyles = defaultValues.addedStyles
-
-        //     localStorage.setItem('componentsConfig', JSON.stringify(state.components))
-        // },
+            localStorage.setItem('componentsConfig', JSON.stringify(state.components))
+        },
         // // editor mode
         // toggleEditorMode(state, {payload}){
         //     state.editorMode.isActive = payload;

@@ -5,6 +5,16 @@ export const userInitialState = {
     birthday: localStorage.getItem('birthday')
 }
 
+// components
+export const componentsInitialState = [
+    {name: "greeting", value: "Greeting", isVisible: true, addedStyles: {fontFamily: "Lato", fontWeight: 100, color: "#EBEBEB", opacity: 1}},
+    {name: "motivations", value: "Motivations", isVisible: true, addedStyles: {fontFamily: "Roboto", fontWeight: 400, color: "#EBEBEB", opacity: 0.9}},
+    {name: "bookmarks", value: "Bookmarks", isVisible: true, addedStyles: {fontFamily: 'Source Sans Pro', fontWeight: 300, color: "#EBEBEB", opacity: 1}},
+    {name: "search", value: "Search Bar", isVisible: true, addedStyles: {fontFamily: "Inter", fontWeight: 200, color: "#EBEBEB", opacity: 1}},
+    {name: "time", value: "Time and Date", isVisible: true, addedStyles: {fontFamily: "Inter", fontWeight: 400, color: "#EBEBEB", opacity: 1}},
+    {name: "todos", value: "To-Do List", isVisible: true, addedStyles: {fontFamily: "Inter", fontWeight: 400, color: "#EBEBEB", opacity: 0.8}},
+    {name: "weather", value: "Weather", isVisible: true, addedStyles: {fontFamily: "Inter", fontWeight: 400, color: "#EBEBEB", opacity: 1}},
+];
 
 // settings
 export const settingsInitialState = () => {
@@ -20,17 +30,8 @@ export const settingsInitialState = () => {
     }
 
     if(!JSON.parse(localStorage.getItem("components"))){
-        const components = [
-            {name: "greeting", value: "Greeting", isVisible: true, addedStyles: {fontFamily: "Lato", fontWeight: 100, color: "#EBEBEB", opacity: 1}},
-            {name: "motivations", value: "Motivations", isVisible: true, addedStyles: {fontFamily: "Roboto", fontWeight: 400, color: "#EBEBEB", opacity: 0.9}},
-            {name: "bookmarks", value: "Bookmarks", isVisible: true, addedStyles: {fontFamily: 'Source Sans Pro', fontWeight: 300, color: "#EBEBEB", opacity: 1}},
-            {name: "search", value: "Search Bar", isVisible: true, addedStyles: {fontFamily: "Inter", fontWeight: 200, color: "#EBEBEB", opacity: 1}},
-            {name: "time", value: "Time and Date", isVisible: true, addedStyles: {fontFamily: "Inter", fontWeight: 400, color: "#EBEBEB", opacity: 1}},
-            {name: "todos", value: "To-Do List", isVisible: true, addedStyles: {fontFamily: "Inter", fontWeight: 400, color: "#EBEBEB", opacity: 0.8}},
-            {name: "weather", value: "Weather", isVisible: true, addedStyles: {fontFamily: "Inter", fontWeight: 400, color: "#EBEBEB", opacity: 1}},
-        ];
-        localStorage.setItem("components", JSON.stringify(components))
-        result = { ...result, components }
+        localStorage.setItem("components", JSON.stringify(componentsInitialState))
+        result = { ...result, components: componentsInitialState }
     }
 
     if(!localStorage.getItem("temperatureUnit")) {

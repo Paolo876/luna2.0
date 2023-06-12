@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import useSettingsRedux from '../../../../hooks/useSettingsRedux'
-import { Box, Divider, Slider, Switch, Typography, Tooltip, Grid, Button, Menu, MenuItem, Input,  } from '@mui/material'
+import { Box, Divider, Slider, Switch, Typography, Tooltip, Button, Menu, MenuItem } from '@mui/material'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-
+import { MuiColorInput } from 'mui-color-input'
 
 const labelStyles = {
   fontSize: 15,
@@ -19,7 +19,7 @@ const fontList = [ "Inter", "Lato", "Montserrat", "Roboto", "Source Sans Pro" ];
 
 
 const SelectedComponentSettings = ({ component }) => {
-  const { components, setIsVisible, changeStyle } = useSettingsRedux()
+  const { components, setIsVisible, changeStyle, resetStyle } = useSettingsRedux()
   const selectedComponent = components.find(item => item.name === component)
 
   console.log(selectedComponent.addedStyles)
@@ -39,7 +39,7 @@ const SelectedComponentSettings = ({ component }) => {
 
 
   return (
-    <Box mt={2} px={2}>
+    <Box mt={1} px={2}>
       <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
         <Typography variant="body2" sx={labelStyles}>Show Component</Typography>
         <Switch
@@ -50,7 +50,7 @@ const SelectedComponentSettings = ({ component }) => {
       <Divider/>
       <Box sx={{position: "relative", opacity: selectedComponent.isVisible ? 1 : .25}}>
         {!selectedComponent.isVisible && <Box sx={{position: "absolute", top: 0, left: 0, height: "100%", width: "100%", zIndex: 5}}></Box>}
-        <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}} my={3}>
+        <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}} my={2}>
           <Typography variant="body2" sx={labelStyles}>Opacity</Typography>
           <Slider
             sx={{width: 290, ml: "auto", mr:1}}
@@ -104,9 +104,12 @@ const SelectedComponentSettings = ({ component }) => {
             }}
           />
         </Box>
-        <Box>
-        sdss
-          <Input type="color" />
+        <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}} my={3}>
+          <Typography variant="body2" sx={labelStyles}>Text Color</Typography>
+          <MuiColorInput value={selectedComponent.addedStyles.color} onChange={(e) => changeStyle({id: "color", value: e, name: component})} size='small' sx={{fontSize: 13, letterSpacing: .5}}/>
+        </Box>
+        <Box sx={{display: "flex", justifyContent: "right", mt: 6.2}}>
+          <Button color="warning" variant="contained" size="small" onClick={() => resetStyle(component)} sx={{fontSize: 12}}>Reset To Default</Button>
         </Box>
       </Box>
     </Box>
