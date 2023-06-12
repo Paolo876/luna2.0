@@ -31,7 +31,7 @@ const Components = () => {
           aria-expanded={anchorEl ? 'true' : undefined}
           onClick={handleDropdownClick}
           endIcon={<KeyboardArrowDownIcon/>}
-          sx={{width: 400, display: "flex", justifyContent: "space-between", background: "rgba(15, 15, 15, .75)", letterSpacing: .5}}
+          sx={{width: 400, display: "flex", justifyContent: "space-between", background: "rgba(15, 15, 15, .75)", letterSpacing: .5, color: "rgba(222,222,222,1)"}}
           variant="outlined"
         >
           {selectedComponent === null ? 'Select Component' : selectedComponent.value}
