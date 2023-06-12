@@ -10,16 +10,16 @@ const Components = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [ selectedComponent, setSelectedComponent ] = useState(null);
 
-  console.log(components)
   const handleDropdownClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
   const handleItemClick = (item) => {
-    setSelectedComponent(item.value)
+    setSelectedComponent(item)
     setAnchorEl(null)
   }
-  console.log(selectedComponent)
+
+  
   return (
     <SubsettingContainer title="Components">
       <Box mb={1}>
@@ -33,7 +33,7 @@ const Components = () => {
           sx={{width: 400, display: "flex", justifyContent: "space-between", background: "rgba(15, 15, 15, .75)", letterSpacing: .5}}
           variant="outlined"
         >
-          {selectedComponent === null ? 'Select Component' : selectedComponent}
+          {selectedComponent === null ? 'Select Component' : selectedComponent.value}
         </Button>
         <Menu
           id="basic-menu"
@@ -62,7 +62,7 @@ const Components = () => {
         </Menu>
       </Box>
       <Divider/>
-      <SelectedComponentSettings component={selectedComponent}/>
+      {selectedComponent && <SelectedComponentSettings component={selectedComponent.name}/>}
     </SubsettingContainer>
   )
 }
