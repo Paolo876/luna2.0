@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import useSettingsRedux from '../../../../hooks/useSettingsRedux'
-import { Box, Divider, Slider, Switch, Typography, Tooltip, Grid, Button, Menu, MenuItem,  } from '@mui/material'
+import { Box, Divider, Slider, Switch, Typography, Tooltip, Grid, Button, Menu, MenuItem, Input,  } from '@mui/material'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 
@@ -50,23 +50,20 @@ const SelectedComponentSettings = ({ component }) => {
       <Divider/>
       <Box sx={{position: "relative", opacity: selectedComponent.isVisible ? 1 : .25}}>
         {!selectedComponent.isVisible && <Box sx={{position: "absolute", top: 0, left: 0, height: "100%", width: "100%", zIndex: 5}}></Box>}
-        <Box my={2}>
-          <Grid container spacing={3} alignItems="center" justifyContent="center" pr={.5}>
-            <Grid item mb={1}><Typography variant="body2" sx={labelStyles}>Opacity</Typography></Grid>
-            <Grid item xs>          
-              <Slider
-                min={.01}
-                max={1}
-                step={.01}
-                valueLabelDisplay="auto"
-                value={selectedComponent.addedStyles.opacity}
-                onChange={(e) => changeStyle({id: "opacity", value: e.target.value, name: component})}
-                slots={{
-                  valueLabel: valueLabelComponent,
-                }}
-              />
-            </Grid>
-          </Grid>
+        <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}} my={3}>
+          <Typography variant="body2" sx={labelStyles}>Opacity</Typography>
+          <Slider
+            sx={{width: 290, ml: "auto", mr:1}}
+            min={.01}
+            max={1}
+            step={.01}
+            valueLabelDisplay="auto"
+            value={selectedComponent.addedStyles.opacity}
+            onChange={(e) => changeStyle({id: "opacity", value: e.target.value, name: component})}
+            slots={{
+              valueLabel: valueLabelComponent,
+            }}
+          />
         </Box>
         <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
           <Typography variant="body2" sx={labelStyles}>Font</Typography>
@@ -92,6 +89,25 @@ const SelectedComponentSettings = ({ component }) => {
             </MenuItem>)}
           </Menu>
         </Box>
+        <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}} my={3}>
+          <Typography variant="body2" sx={labelStyles}>Font Weight</Typography>
+          <Slider
+            sx={{width: 290, ml: "auto", mr:1}}
+            min={100}
+            max={800}
+            step={100}
+            valueLabelDisplay="auto"
+            value={selectedComponent.addedStyles.fontWeight}
+            onChange={(e) => changeStyle({id: "weight", value: e.target.value, name: component})}
+            slots={{
+              valueLabel: valueLabelComponent,
+            }}
+          />
+        </Box>
+        <Box>
+        sdss
+          <Input type="color" />
+        </Box>
       </Box>
     </Box>
   )
@@ -100,6 +116,5 @@ const SelectedComponentSettings = ({ component }) => {
 export default SelectedComponentSettings
 
 
-// font dropdown
 // font weight slider
 // color selector
