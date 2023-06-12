@@ -15,7 +15,7 @@ const settingsSlice = createSlice({
     reducers: {
         // components
         setIsVisible(state, { payload }){
-            const updatedComponents = { ...state.components };
+            const updatedComponents = [ ...state.components ];
             const component = updatedComponents.find(item => item.name === payload);
             component.isVisible = !component.isVisible;
 
@@ -50,16 +50,18 @@ const settingsSlice = createSlice({
             state.dateOptions = updatedDateOptions;
             localStorage.setItem("dateOptions", JSON.stringify(updatedDateOptions));
         },
-        // changeStyle(state, {payload}){
-        //     const component = state.components.find(item => item.name === payload.name);
-        //     if(!component.addedStyles)  component.addedStyles = {};
-        //     if(payload.id === "font")   component.addedStyles.fontFamily = payload.font;
-        //     if(payload.id === "weight") component.addedStyles.fontWeight = payload.weight;
-        //     if(payload.id === "color")  component.addedStyles.color = payload.color;
-        //     if(payload.id === "opacity")component.addedStyles.opacity = payload.opacity;
+        changeStyle(state, { payload }){
+            
+            const component = state.components.find(item => item.name === payload.name);
+            
+            if(!component.addedStyles)      component.addedStyles = {};
+            if(payload.id === "font")       component.addedStyles.fontFamily = payload.value;
+            if(payload.id === "weight")     component.addedStyles.fontWeight = payload.value;
+            if(payload.id === "color")      component.addedStyles.color = payload.value;
+            if(payload.id === "opacity")    component.addedStyles.opacity = payload.value;
 
-        //     localStorage.setItem('componentsConfig', JSON.stringify(state.components));
-        // },
+            localStorage.setItem('componentsConfig', JSON.stringify(state.components));
+        },
 
         // resetStyle(state, {payload}){
         //     const defaultValues = initialConfigurations("components").find(item => item.name === payload);

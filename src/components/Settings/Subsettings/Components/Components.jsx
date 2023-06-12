@@ -5,6 +5,7 @@ import { Button, Menu, MenuItem, Box, Typography, Divider } from '@mui/material'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import SelectedComponentSettings from './SelectedComponentSettings';
 
+
 const Components = () => {
   const { components } = useSettingsRedux();
   const [anchorEl, setAnchorEl] = useState(null);
@@ -56,12 +57,12 @@ const Components = () => {
               onClick={() => handleItemClick({name: item.name, value: item.value})}
               sx={{width: "100%", color: "black", }}
             >
-              <Typography variant="body2" sx={{fontWeight: 600, letterSpacing: .5, opacity: .85, fontSize: 15}}>{item.value}</Typography>
+              <Typography variant="body2" sx={{fontWeight: 600, letterSpacing: .5, opacity: .7, fontSize: 15}}>{item.value}</Typography>
             </MenuItem>
           ))}
         </Menu>
       </Box>
-      <Divider/>
+      {/* <Divider/> */}
       {selectedComponent && <SelectedComponentSettings component={selectedComponent.name}/>}
     </SubsettingContainer>
   )
