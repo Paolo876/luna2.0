@@ -25,7 +25,6 @@ const Todos = () => {
         minWidth: '22em',
         textShadow: '0 0 10px rgba(0, 0, 0, 0.8)',
         p: 1,
-        // bottom: 1,
         background: containerColor,
         backdropFilter,
         ".todos-header": {
@@ -41,8 +40,8 @@ const Todos = () => {
       id="todos"
     >
       <p className="todos-header">My Todo List</p>
-      <AddTodoForm/>
-      <TodoList/>
+      <AddTodoForm addedStyles={addedStyles}/>
+      <TodoList addedStyles={addedStyles}/>
       {items.length !== 0 && <Box sx={{display: "flex", p: ".5em"}}>
         <Button size="small" variant="contained" sx={{ml: "auto"}} onClick={clearTodo}>Clear All</Button>
       </Box>}

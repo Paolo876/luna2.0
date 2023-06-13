@@ -3,7 +3,7 @@ import { TextField, Box, InputAdornment } from "@mui/material";
 import EditNoteIcon from '@mui/icons-material/EditNote';
 import useTodoRedux from "../../hooks/useTodoRedux";
 
-const AddTodoForm = () => {
+const AddTodoForm = ({ addedStyles }) => {
   const { addTodo } = useTodoRedux();
   const [inputValue, setInputValue] = useState("")
 
@@ -43,6 +43,8 @@ const AddTodoForm = () => {
               px: 1,
               height: 32,
               fontSize: ".85em",
+              fontFamily: addedStyles.fontFamily,
+              color: addedStyles.color,
             },
             '.MuiInputBase-input::placeholder': {
               fontWeight: 300,
@@ -50,6 +52,8 @@ const AddTodoForm = () => {
               opacity: .7,
               fontSize: ".8em",
               letterSpacing: .5,
+              fontFamily: addedStyles.fontFamily,
+              color: addedStyles.color,
             }
         }}
         value={inputValue}

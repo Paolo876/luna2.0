@@ -5,7 +5,8 @@ import EditIcon from '@mui/icons-material/Edit';
 import CloseIcon from '@mui/icons-material/Close';
 import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
 
-const TodoList = () => {
+
+const TodoList = ({ addedStyles }) => {
   const { items, finishTodo, editTodo, deleteTodo } = useTodoRedux();
   const [ isEditable, setIsEditable ] = useState(null);
   const [ input, setInput ] = useState(null);
@@ -98,10 +99,10 @@ const TodoList = () => {
                 primary={<Typography 
                   variant="body2" 
                   letterSpacing={.5} 
-                  fontWeight={300}
+                  fontWeight={addedStyles.fontWeight - 100}
                   sx={{
                     transition: "all .1s linear",
-                    fontFamily: "Inter",
+                    fontFamily: addedStyles.fontFamily,
                     fontStyle: item.isFinished ? "italic" : "initial",
                     textDecoration: item.isFinished ? "line-through" : "initial",
                     opacity: item.isFinished ? .6 : 1,
