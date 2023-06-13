@@ -56,7 +56,7 @@ const Background = () => {
           </Box>
         </RadioGroup>
       </FormControl>
-      <Box sx={{display: "flex", justifyContent: "right", mt: 5.2}}>
+      <Box sx={{display: "flex", justifyContent: "right", mt: "auto"}}>
         {!isRandom && <Tooltip title="Removing background will generate a random image." arrow enterDelay={400}>
           <Button variant="contained" sx={{fontSize: 12}} disabled={isRandom} color="error" onClick={isLocal ? generateLocalBackground : fetchBackground} endIcon={<HighlightOffIcon/>}>
             Remove Default Background

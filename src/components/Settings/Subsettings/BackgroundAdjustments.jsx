@@ -116,7 +116,7 @@ const BackgroundAdjustments = () => {
           </Grid>
         </Grid>
       </Box>
-      <Box sx={{display: "flex", justifyContent: "right", px: 3, mt: 5}}>
+      <Box sx={{display: "flex", justifyContent: "right", px: 3, mt: "auto"}}>
         <Button color="warning" variant="contained" size="small" onClick={() => changeFilter({id: "reset"})} sx={{fontSize: 12}}>Reset To Default</Button>
       </Box>
     </SubsettingContainer>

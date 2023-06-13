@@ -37,7 +37,7 @@ const SelectedComponentSettings = ({ component }) => {
 
 
   return (
-    <Box mt={1} px={2}>
+    <Box mt={1} px={2} sx={{display: "flex", flexDirection: "column", height: "100%"}}>
       <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
         <Typography variant="body2" sx={labelStyles}>Show Component</Typography>
         <Switch
@@ -106,10 +106,10 @@ const SelectedComponentSettings = ({ component }) => {
           <Typography variant="body2" sx={labelStyles}>Text Color</Typography>
           <MuiColorInput value={selectedComponent.addedStyles.color} onChange={(e) => changeStyle({id: "color", value: e, name: component})} size='small' sx={{fontSize: 13, letterSpacing: .5}}/>
         </Box>
-        <Box sx={{display: "flex", justifyContent: "right", mt: 6.2}}>
+      </Box>
+      <Box sx={{display: "flex", justifyContent: "right", mt: "auto"}}>
           <Button color="warning" variant="contained" size="small" onClick={() => resetStyle(component)} sx={{fontSize: 12}}>Reset To Default</Button>
         </Box>
-      </Box>
     </Box>
   )
 }
