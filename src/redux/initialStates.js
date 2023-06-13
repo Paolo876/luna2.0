@@ -55,18 +55,6 @@ export const settingsInitialState = () => {
         localStorage.setItem("dateOptions", JSON.stringify(dateOptions));
         result = { ...result, dateOptions};
     }
-
-    // if(!JSON.parse(localStorage.getItem("uiConfig"))){
-    //     const uiConfig = {
-    //         containerColor: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5))",
-    //         isHintsEnabled: true,
-    //         primaryColor: "#45a198",
-    //         settingsPosition:"top", 
-    //     };
-    //     localStorage.setItem("uiConfig", JSON.stringify(uiConfig))
-    //     result = { ...result, uiConfig }
-    // }
-
     return result
 }
 
@@ -82,7 +70,7 @@ export const uiInitialState = () => {
             containerColor: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5))",
             isHintsEnabled: true,
             primaryColor: "#45a198",
-            settingsPosition:"top", 
+            backdropFilter: "blur(5px) contrast(90%) brightness(85%)"
         };
         localStorage.setItem("uiConfig", JSON.stringify(uiConfig))
         result = { ...result, uiConfig }

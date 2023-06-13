@@ -42,13 +42,23 @@ const uiSlice = createSlice({
         // },
         // // UI
 
-        changeContainerColor(state, {payload}){
+        changeContainerColor(state, { payload }){
             const colors = payload.color.substr(0, payload.color.length - 1).substr(4)
             const [ r, g, b ] = colors.split(",")
             console.log(r, g ,b )
             const value = `linear-gradient(rgba(${r}, ${g}, ${b}, ${payload.alpha}), rgba(${r}, ${g}, ${b}, ${payload.alpha}))`;
             state.interface.containerColor = value;
             localStorage.setItem('uiConfig', JSON.stringify(state.interface))
+        },
+        changeBackdrop(state, { payload }){
+            let value;
+            if(payload.reset){
+                value = "blur(5px) contrast(90%) brightness(85%)";
+            } else {
+                value = `blur(${payload.blur}px) contrast(${payload.contrast}%) brightness(${payload.brightness}%)`;
+            }
+            state.interface.backdropFilter = value;
+            localStorage.setItem('backgroundConfig', JSON.stringify(state))
         },
         // changeSettingsButtonPosition(state, {payload}){
         //     state.ui.settingsPosition = payload;

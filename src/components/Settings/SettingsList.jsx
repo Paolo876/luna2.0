@@ -47,7 +47,7 @@ const settingsList = [
 
 
 const SettingsList = () => {
-  const { interface: { containerColor } } = useUiRedux();
+  const { interface: { containerColor, backdropFilter } } = useUiRedux();
   const [ selectedSetting, setSelectedSetting ] = useState("general")
 
   return (
@@ -58,7 +58,7 @@ const SettingsList = () => {
         left: "-100%", 
         transition: "transform 1s ease",
         background: containerColor,
-        backdropFilter: "blur(5px) contrast(90%) brightness(85%)",
+        backdropFilter,
         animation: `${slide} 250ms forwards linear`
       }}
     >
