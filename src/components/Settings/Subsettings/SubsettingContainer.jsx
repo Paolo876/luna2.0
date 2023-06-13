@@ -35,7 +35,7 @@ const SubsettingContainer = ({ children, title }) => {
           pt: 2,
           pr: 1.5,
           overflowY: "auto",
-          height: 400
+          height: 420
         }}
       >
         {children}

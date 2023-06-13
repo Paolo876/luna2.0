@@ -4,10 +4,9 @@ import useUiRedux from '../../../hooks/useUiRedux'
 import { Box, Slider, Typography, Tooltip, Button } from '@mui/material'
 import { MuiColorInput } from 'mui-color-input'
 
-
 const labelStyles = {
   fontSize: 16,
-  letterSpacing:.5, 
+  letterSpacing: 1, 
 }
 
 const valueLabelComponent = ({ children, value }) => (
@@ -24,11 +23,11 @@ const Interface = () => {
 
   return (
     <SubsettingContainer title="Interface">
-      <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}} pr={4} mb={1.5}>
+      <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}} pr={4} mb={2}>
         <Typography variant="body2" sx={labelStyles}>Primary Color</Typography>
         <MuiColorInput value={primaryColor} size='small' sx={{fontSize: 13, letterSpacing: .5, width: 225}}/>
       </Box>
-      <Box pr={4} mb={1.5}>
+      <Box pr={4} mb={2}>
         <Typography variant="body2" sx={labelStyles}>Container Color</Typography>
         <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}} mb={1.5} ml={2}>
           <Typography variant="body2" fontSize={13} sx={{opacity: .8}}>Color</Typography>
@@ -51,9 +50,9 @@ const Interface = () => {
           />
         </Box>
       </Box>
-      <Box pr={4} mb={1.5}>
+      <Box pr={4} mb={2}>
         <Typography variant="body2" sx={labelStyles}>Backdrop</Typography>
-        <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}} mb={1.5} ml={2}>
+        <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}} mb={1.5} ml={2} pt={1}>
           <Typography variant="body2" fontSize={13} sx={{opacity: .8}}>Blur</Typography>
           <Slider
             size="small"
@@ -110,10 +109,3 @@ const Interface = () => {
 }
 
 export default Interface
-
-/**
- * containerColor(pin):"linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5))"
-isHintsEnabled(pin):true
-primaryColor(pin):"#45a198"
-settingsPosition(pin):"top"
- */
