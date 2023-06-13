@@ -24,19 +24,14 @@ const Interface = () => {
   const { interface: { containerColor }, changeContainerColor } = useUiRedux();
   const [r, g ,b, a] = containerColor.substr(21).split(", ", 4);
 
-  // console.log(r, g ,b, a)
   return (
     <SubsettingContainer title="Interface">
-      <Box>
+      <Box pr={4}>
         <Typography variant="body2" fontSize={18} letterSpacing={.5}>Container Color</Typography>
 
         <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}} my={2} ml={1.5}>
           <Typography variant="body2" sx={labelStyles}>Color</Typography>
-          <MuiColorInput value={rgbToHex(`rgb(${r},${g},${b})`)} onChange={(e) => changeContainerColor({color: e, alpha: parseFloat(a)})} size='small' sx={{fontSize: 13, letterSpacing: .5}}/>
-          {/* <input type="color"
-            value={rgbToHex(`rgb(${r},${g},${b})`)}
-            onChange={ e => changeContainerColor({color: hexToRgb(e.target.value), alpha: parseFloat(a)})}
-          /> */}
+          <MuiColorInput value={`rgb(${r},${g},${b})`} onChange={(e) => changeContainerColor({color: e, alpha: parseFloat(a)})} size='small' sx={{fontSize: 13, letterSpacing: .5}}/>
         </Box>
         <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}} my={2} ml={1.5}>
           <Typography variant="body2" sx={labelStyles}>Alpha</Typography>
@@ -44,7 +39,7 @@ const Interface = () => {
             sx={{width: 290, ml: "auto", mr:1}}
             min={.1}
             max={1}
-            step={.1}
+            step={.02}
             valueLabelDisplay="auto"
             value={parseFloat(a)}
             onChange={(e) => changeContainerColor({color: `rgb(${r},${g},${b})`, alpha: e.target.value})}
