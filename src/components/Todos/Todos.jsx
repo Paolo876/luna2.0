@@ -11,7 +11,7 @@ import { Box, Button } from "@mui/material";
 const Todos = () => {
   const ref = useRef();
   const { components } = useSettingsRedux();
-  const { interface: { containerColor }} = useUiRedux();
+  const { interface: { containerColor, backdropFilter }} = useUiRedux();
   const addedStyles = components.find(item => item.name === "todos").addedStyles;
   const { clearTodo, items } = useTodoRedux();
 
@@ -27,6 +27,7 @@ const Todos = () => {
         p: 1,
         // bottom: 1,
         background: containerColor,
+        backdropFilter,
         ".todos-header": {
           marginTop:' .4em',
           marginBottom: '.25em',
