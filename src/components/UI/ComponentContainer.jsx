@@ -2,13 +2,13 @@ import React from "react";
 import Draggable from "react-draggable";
 import { Box } from "@mui/material";
 import useSettingsRedux from "../../hooks/useSettingsRedux";
-
+import useUiRedux from "../../hooks/useUiRedux";
 import getTranslateValue from "../../utils/get-translate-value";
 
 
 const ComponentContainer = (props, ref) => {
-  const { ui: { primaryColor, }, editorMode: { isActive }, changeComponentPosition, components } = useSettingsRedux();
-
+  const { editorMode: { isActive }, changeComponentPosition, components } = useSettingsRedux();
+  const { interface: { primaryColor } } = useUiRedux();
   const handleStop = () => {
     changeComponentPosition({id: ref.current.id, transform: ref.current.style.transform})
   }

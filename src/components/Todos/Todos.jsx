@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import useSettingsRedux from "../../hooks/useSettingsRedux";
+import useUiRedux from "../../hooks/useUiRedux";
 import useTodoRedux from "../../hooks/useTodoRedux";
 import ComponentContainer from "../UI/ComponentContainer";
 import AddTodoForm from "./AddTodoForm";
@@ -9,9 +10,9 @@ import { Box, Button } from "@mui/material";
 
 const Todos = () => {
   const ref = useRef();
-  const { components, ui } = useSettingsRedux();
+  const { components } = useSettingsRedux();
+  const { interface: { containerColor }} = useUiRedux();
   const addedStyles = components.find(item => item.name === "todos").addedStyles;
-  const { containerColor } = ui;
   const { clearTodo, items } = useTodoRedux();
 
   return (

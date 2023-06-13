@@ -1,9 +1,12 @@
 import React from 'react'
 import SubsettingContainer from './SubsettingContainer'
 import useSettingsRedux from '../../../hooks/useSettingsRedux'
+import useUiRedux from '../../../hooks/useUiRedux'
 import { Box, Slider, Typography, Tooltip } from '@mui/material'
 import { MuiColorInput } from 'mui-color-input'
 import { rgbToHex } from '@mui/material'
+import hexToRgb from "../../../utils/hex-to-rgb"
+
 
 const labelStyles = {
   fontSize: 15,
@@ -18,8 +21,8 @@ const valueLabelComponent = ({ children, value }) => (
 
 
 const Interface = () => {
-  const { ui, changeContainerColor } = useSettingsRedux();
-  const [r, g ,b, a] = ui.containerColor.substr(21).split(", ", 4);
+  const { interface: { containerColor }, changeContainerColor } = useUiRedux();
+  const [r, g ,b, a] = containerColor.substr(21).split(", ", 4);
 
   // console.log(r, g ,b, a)
   return (
@@ -30,6 +33,10 @@ const Interface = () => {
         <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}} my={2} ml={1.5}>
           <Typography variant="body2" sx={labelStyles}>Color</Typography>
           <MuiColorInput value={rgbToHex(`rgb(${r},${g},${b})`)} onChange={(e) => changeContainerColor({color: e, alpha: parseFloat(a)})} size='small' sx={{fontSize: 13, letterSpacing: .5}}/>
+          {/* <input type="color"
+            value={rgbToHex(`rgb(${r},${g},${b})`)}
+            onChange={ e => changeContainerColor({color: hexToRgb(e.target.value), alpha: parseFloat(a)})}
+          /> */}
         </Box>
         <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}} my={2} ml={1.5}>
           <Typography variant="body2" sx={labelStyles}>Alpha</Typography>

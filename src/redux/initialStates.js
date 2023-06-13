@@ -21,7 +21,7 @@ export const settingsInitialState = () => {
     let result = {
         components: JSON.parse(localStorage.getItem("components")),
         isGeolocationAllowed: JSON.parse(localStorage.getItem("isGeolocationAllowed")),
-        ui: JSON.parse(localStorage.getItem("uiConfig")),
+        // ui: JSON.parse(localStorage.getItem("uiConfig")),
         editorMode: { isActive: false, changeComponentPosition: []},
         temperatureUnit: localStorage.getItem("temperatureUnit"),
         timeFormat: localStorage.getItem("timeFormat"),
@@ -56,6 +56,27 @@ export const settingsInitialState = () => {
         result = { ...result, dateOptions};
     }
 
+    // if(!JSON.parse(localStorage.getItem("uiConfig"))){
+    //     const uiConfig = {
+    //         containerColor: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5))",
+    //         isHintsEnabled: true,
+    //         primaryColor: "#45a198",
+    //         settingsPosition:"top", 
+    //     };
+    //     localStorage.setItem("uiConfig", JSON.stringify(uiConfig))
+    //     result = { ...result, uiConfig }
+    // }
+
+    return result
+}
+
+
+// ui
+export const uiInitialState = () => {
+    let result = { 
+        interface: JSON.parse(localStorage.getItem("uiConfig")),
+    }
+
     if(!JSON.parse(localStorage.getItem("uiConfig"))){
         const uiConfig = {
             containerColor: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5))",
@@ -66,8 +87,7 @@ export const settingsInitialState = () => {
         localStorage.setItem("uiConfig", JSON.stringify(uiConfig))
         result = { ...result, uiConfig }
     }
-
-    return result
+    return result;
 }
 
 

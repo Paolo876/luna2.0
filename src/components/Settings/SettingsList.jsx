@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import useSettingsRedux from '../../hooks/useSettingsRedux'
-
+import useUiRedux from '../../hooks/useUiRedux';
 import { Box, Grid, List, ListItem, ListItemButton, ListItemText, Typography } from '@mui/material'
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import { keyframes } from '@mui/material';
@@ -47,8 +47,7 @@ const settingsList = [
 
 
 const SettingsList = () => {
-  const { ui } = useSettingsRedux();
-  const containerColor = ui.containerColor;
+  const { interface: { containerColor } } = useUiRedux();
   const [ selectedSetting, setSelectedSetting ] = useState("general")
 
   return (
