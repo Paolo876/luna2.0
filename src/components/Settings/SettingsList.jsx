@@ -58,7 +58,7 @@ const SettingsList = () => {
         left: "-100%", 
         transition: "transform 1s ease",
         background: containerColor,
-        backdropFilter,
+        backdropFilter: `blur(${backdropFilter.blur}px) contrast(${backdropFilter.contrast}%) brightness(${backdropFilter.brightness}%)`,
         animation: `${slide} 250ms forwards linear`
       }}
     >

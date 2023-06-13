@@ -33,7 +33,7 @@ const Search = () => {
         msFlexPack: "center",
         justifyContent: "center",
         background: containerColor,
-        backdropFilter,
+        backdropFilter: `blur(${backdropFilter.blur}px) contrast(${backdropFilter.contrast}%) brightness(${backdropFilter.brightness}%)`,
         textShadow: "0 0 10px rgba(0, 0, 0, 0.4)",
         ...addedStyles
         

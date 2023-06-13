@@ -51,12 +51,8 @@ const uiSlice = createSlice({
             localStorage.setItem('uiConfig', JSON.stringify(state.interface))
         },
         changeBackdrop(state, { payload }){
-            let value;
-            if(payload.reset){
-                value = "blur(5px) contrast(90%) brightness(85%)";
-            } else {
-                value = `blur(${payload.blur}px) contrast(${payload.contrast}%) brightness(${payload.brightness}%)`;
-            }
+            const value = `blur(${payload.blur}px) contrast(${payload.contrast}%) brightness(${payload.brightness}%)`;
+
             state.interface.backdropFilter = value;
             localStorage.setItem('backgroundConfig', JSON.stringify(state))
         },

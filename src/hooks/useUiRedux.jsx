@@ -8,6 +8,7 @@ const useUiRedux = () => {
   return {
     ...uiRedux,
     changeContainerColor: data => dispatch(uiActions.changeContainerColor(data)),
+    changeBackdrop: data => dispatch(uiActions.changeBackdrop(data)),
   }
 }
 

@@ -18,21 +18,22 @@ const valueLabelComponent = ({ children, value }) => (
 
 
 const Interface = () => {
-  const { interface: { containerColor, primaryColor }, changeContainerColor } = useUiRedux();
+  const { interface: { containerColor, primaryColor, backdropFilter }, changeContainerColor } = useUiRedux();
   const [r, g ,b, a] = containerColor.substr(21).split(", ", 4);
-
+  console.log(backdropFilter)
   return (
     <SubsettingContainer title="Interface">
-      <Box pr={4} mt={1} mb={3}>
+      <Box pr={4} mb={1.5}>
         <Typography variant="body2" sx={labelStyles}>Container Color</Typography>
-        <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}} my={1.75} ml={1.5}>
-          <Typography variant="body2" fontSize={13}>Color</Typography>
-          <MuiColorInput value={`rgb(${r},${g},${b})`} onChange={(e) => changeContainerColor({color: e, alpha: parseFloat(a)})} size='small' sx={{fontSize: 13, letterSpacing: .5}}/>
+        <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}} mb={1.5} ml={1.5}>
+          <Typography variant="body2" fontSize={13} sx={{opacity: .8}}>Color</Typography>
+          <MuiColorInput value={`rgb(${r},${g},${b})`} onChange={(e) => changeContainerColor({color: e, alpha: parseFloat(a)})} size='small' sx={{fontSize: 13, letterSpacing: .5, width: 225}}/>
         </Box>
-        <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}} my={1.75} ml={1.5}>
-          <Typography variant="body2" fontSize={13}>Alpha</Typography>
+        <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}} mb={1.5} ml={1.5}>
+          <Typography variant="body2" fontSize={13} sx={{opacity: .8}}>Alpha</Typography>
           <Slider
-            sx={{width: 225, ml: "auto", mr:1}}
+            size="small"
+            sx={{width: 225, ml: "auto"}}
             min={.1}
             max={1}
             step={.02}
@@ -44,25 +45,61 @@ const Interface = () => {
             }}
           />
         </Box>
-        <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}} my={1.75} ml={1.5}>
-          <Typography variant="body2" fontSize={13}>Backdrop Blur</Typography>
+      </Box>
+      <Box pr={4} mb={1.5}>
+        <Typography variant="body2" sx={labelStyles}>Backdrop</Typography>
+        <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}} mb={1.5} ml={1.5}>
+          <Typography variant="body2" fontSize={13} sx={{opacity: .8}}>Blur</Typography>
           <Slider
-            sx={{width: 225, ml: "auto", mr:1}}
-            min={0}
-            max={15}
-            step={1}
+            size="small"
+            sx={{width: 225, ml: "auto"}}
+            min={.1}
+            max={1}
+            step={.02}
             valueLabelDisplay="auto"
-            // value={parseFloat(a)}
-            // onChange={(e) => changeContainerColor({color: `rgb(${r},${g},${b})`, alpha: e.target.value})}
+            value={parseFloat(a)}
+            onChange={(e) => changeContainerColor({color: `rgb(${r},${g},${b})`, alpha: e.target.value})}
+            slots={{
+              valueLabel: valueLabelComponent,
+            }}
+          />
+        </Box>
+        <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}} mb={1.5} ml={1.5}>
+          <Typography variant="body2" fontSize={13} sx={{opacity: .8}}>Contrast</Typography>
+          <Slider
+            size="small"
+            sx={{width: 225, ml: "auto"}}
+            min={.1}
+            max={1}
+            step={.02}
+            valueLabelDisplay="auto"
+            value={parseFloat(a)}
+            onChange={(e) => changeContainerColor({color: `rgb(${r},${g},${b})`, alpha: e.target.value})}
+            slots={{
+              valueLabel: valueLabelComponent,
+            }}
+          />
+        </Box>
+        <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}} mb={1.5} ml={1.5}>
+          <Typography variant="body2" fontSize={13} sx={{opacity: .8}}>Brightness</Typography>
+          <Slider
+            size="small"
+            sx={{width: 225, ml: "auto"}}
+            min={.1}
+            max={1}
+            step={.02}
+            valueLabelDisplay="auto"
+            value={parseFloat(a)}
+            onChange={(e) => changeContainerColor({color: `rgb(${r},${g},${b})`, alpha: e.target.value})}
             slots={{
               valueLabel: valueLabelComponent,
             }}
           />
         </Box>
       </Box>
-      <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}} >
+      <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}} pr={4}>
         <Typography variant="body2" sx={labelStyles}>Primary Color</Typography>
-        <MuiColorInput value={primaryColor} size='small' sx={{fontSize: 13, letterSpacing: .5}}/>
+        <MuiColorInput value={primaryColor} size='small' sx={{fontSize: 13, letterSpacing: .5, width: 225}}/>
       </Box>
       <Box sx={{display: "flex", justifyContent: "right", px: 3, mt: "auto"}}>
         <Button color="warning" variant="contained" size="small" onClick={() => console.log("reset")} sx={{fontSize: 12}}>Reset To Default</Button>

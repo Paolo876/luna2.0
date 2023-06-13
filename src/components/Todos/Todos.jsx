@@ -26,7 +26,7 @@ const Todos = () => {
         textShadow: '0 0 10px rgba(0, 0, 0, 0.8)',
         p: 1,
         background: containerColor,
-        backdropFilter,
+        backdropFilter: `blur(${backdropFilter.blur}px) contrast(${backdropFilter.contrast}%) brightness(${backdropFilter.brightness}%)`,
         ".todos-header": {
           marginTop:' .4em',
           marginBottom: '.25em',
