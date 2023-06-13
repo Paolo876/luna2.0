@@ -51,9 +51,13 @@ const uiSlice = createSlice({
             localStorage.setItem('uiConfig', JSON.stringify(state.interface))
         },
         changeBackdrop(state, { payload }){
-            const value = `blur(${payload.blur}px) contrast(${payload.contrast}%) brightness(${payload.brightness}%)`;
+            const { id, value } = payload;
+            const backdropFilter = state.interface.backdropFilter;
+            if(id === "blur") backdropFilter.blur = value;
+            if(id === "contrast") backdropFilter.contrast = value;
+            if(id === "brightness") backdropFilter.brightness = value;
 
-            state.interface.backdropFilter = value;
+            // state.interface.backdropFilter = value;
             localStorage.setItem('backgroundConfig', JSON.stringify(state))
         },
         // changeSettingsButtonPosition(state, {payload}){
