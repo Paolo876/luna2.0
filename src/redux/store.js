@@ -14,7 +14,13 @@ const store = configureStore({
     todos: todoSlice.reducer, 
     ui: uiSlice.reducer,
     // bookmarks: bookmarksSlice.reducer
-  }
+  },
+  middleware: (getDefaultMiddleware) =>
+  getDefaultMiddleware({
+    thunk: true,
+    serializableCheck: false,
+    immutableCheck: false,
+  }),
 });
 
 export default store;

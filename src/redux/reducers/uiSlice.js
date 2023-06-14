@@ -43,7 +43,6 @@ const uiSlice = createSlice({
         // // UI
 
         changeContainerColor(state, { payload }){
-            // const value = `linear-gradient(${payload}, ${payload})`
             state.interface.containerColor = payload;
             localStorage.setItem('uiConfig', JSON.stringify(state.interface))
         },

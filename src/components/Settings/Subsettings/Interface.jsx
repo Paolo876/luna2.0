@@ -18,48 +18,26 @@ const valueLabelComponent = ({ children, value }) => (
 
 const Interface = () => {
   const { interface: { containerColor, primaryColor, backdropFilter }, changeContainerColor, changeBackdrop, changePrimaryColor } = useUiRedux();
-  const [r, g ,b, a] = containerColor.substr(21).split(", ", 4);
 
 
   return (
     <SubsettingContainer title="Interface">
-      <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}} pr={4} mb={2}>
+      <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}} pr={4} mb={4}>
         <Typography variant="body2" sx={labelStyles}>Primary Color</Typography>
-        <MuiColorInput value={primaryColor} onChange={e => changePrimaryColor(e)} size='small' sx={{fontSize: 13, letterSpacing: .5, width: 225}}/>
+        <MuiColorInput value={primaryColor} onChange={e => changePrimaryColor(e)} size='small' sx={{fontSize: 13, letterSpacing: .5, width: 225, color: primaryColor}}/>
       </Box>
-      <Box pr={4} mb={2}>
+      <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}} pr={4} mb={4}>
         <Typography variant="body2" sx={labelStyles}>Container Color</Typography>
-        <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}} mb={1.5} ml={2}>
-          <Typography variant="body2" fontSize={13} sx={{opacity: .8}}>Color</Typography>
-          <MuiColorInput value={containerColor} onChange={e => changeContainerColor(e)} size='small' sx={{fontSize: 13, letterSpacing: .5, width: 225}}/>
-          {/* <MuiColorInput value={`rgb(${r},${g},${b})`} onChange={(e) => changeContainerColor({color: e, alpha: parseFloat(a)})} size='small' sx={{fontSize: 13, letterSpacing: .5, width: 225}}/> */}
-        </Box>
-        {/* <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}} mb={1.5} ml={2}>
-          <Typography variant="body2" fontSize={13} sx={{opacity: .8}}>Alpha</Typography>
-          <Slider
-            size="small"
-            sx={{width: 225, ml: "auto"}}
-            min={.1}
-            max={1}
-            step={.02}
-            valueLabelDisplay="auto"
-            value={parseFloat(a)}
-            onChange={(e) => changeContainerColor({color: `rgb(${r},${g},${b})`, alpha: e.target.value})}
-            slots={{
-              valueLabel: valueLabelComponent,
-            }}
-          />
-        </Box> */}
+        <MuiColorInput value={containerColor} onChange={e => changeContainerColor(e)} size='small' sx={{fontSize: 13, letterSpacing: .5, width: 225}}/>
       </Box>
-      <Box pr={4} mb={2}>
+      <Box pr={4} mb={4}>
         <Typography variant="body2" sx={labelStyles}>Backdrop</Typography>
-        <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}} mb={1.5} ml={2} pt={1}>
+        <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}} mb={2} ml={2} pt={1.5}>
           <Typography variant="body2" fontSize={13} sx={{opacity: .8}}>Blur</Typography>
           <Slider
-            size="small"
             sx={{width: 225, ml: "auto"}}
             min={0}
-            max={20}
+            max={10}
             step={1}
             valueLabelDisplay="auto"
             value={backdropFilter.blur}
@@ -69,10 +47,9 @@ const Interface = () => {
             }}
           />
         </Box>
-        <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}} mb={1.5} ml={2}>
+        <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}} mb={2} ml={2}>
           <Typography variant="body2" fontSize={13} sx={{opacity: .8}}>Contrast</Typography>
           <Slider
-            size="small"
             sx={{width: 225, ml: "auto"}}
             min={0}
             max={100}
@@ -85,10 +62,9 @@ const Interface = () => {
             }}
           />
         </Box>
-        <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}} mb={1.5} ml={2}>
+        <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}} mb={2} ml={2}>
           <Typography variant="body2" fontSize={13} sx={{opacity: .8}}>Brightness</Typography>
           <Slider
-            size="small"
             sx={{width: 225, ml: "auto"}}
             min={0}
             max={100}
