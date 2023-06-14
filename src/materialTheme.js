@@ -32,22 +32,6 @@ export const theme = createTheme({
           
         },
       },
-    //   MuiLink: {
-    //     styleOverrides: {
-    //       root: {
-    //         textTransform: "uppercase",
-    //         textDecoration: "none",
-    //         color: "#efebe5"
-    //       }
-    //     }
-    //   },
-    //   MuiIconButton: {
-    //     styleOverrides: {
-    //       root: {
-    //         borderRadius: 0
-    //       }
-    //     }
-    //   }
     },
     palette: {
       primary: {
@@ -65,15 +49,10 @@ export const theme = createTheme({
       success: {
         main: '#4cb074',
       },
-      background: {
-        // default: 'rgb(38,37,37)',
-        // lighter: 'rgba(239,235,229,0.8)',
-        // paper: '#24242b',
-      },
       text: {
         primary: '#efebe5',
-        secondary: 'rgba(239,235,229,0.8)',
-        disabled: 'rgba(239,235,229,0.55)',
+        secondary: 'rgba(239,235,229,0.75)',
+        disabled: 'rgba(239,235,229,0.6)',
       },
     },
     typography: {

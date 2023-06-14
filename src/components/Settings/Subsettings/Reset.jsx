@@ -1,6 +1,6 @@
 import React from 'react'
 import SubsettingContainer from "./SubsettingContainer"
-import { Typography, Box, Button } from '@mui/material'
+import { Typography, Box, Button, Modal } from '@mui/material'
 import useSettingsRedux from '../../../hooks/useSettingsRedux'
 
 
