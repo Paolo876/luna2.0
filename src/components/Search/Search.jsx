@@ -19,7 +19,7 @@ const Search = () => {
 
   }
 
-
+  
   return (
     <ComponentContainer
       additionalStyles={{

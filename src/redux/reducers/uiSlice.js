@@ -57,17 +57,16 @@ const uiSlice = createSlice({
             if(id === "contrast") backdropFilter.contrast = value;
             if(id === "brightness") backdropFilter.brightness = value;
 
-            // state.interface.backdropFilter = value;
-            localStorage.setItem('backgroundConfig', JSON.stringify(state))
+            localStorage.setItem('uiConfig', JSON.stringify(state.interface))
         },
         // changeSettingsButtonPosition(state, {payload}){
         //     state.ui.settingsPosition = payload;
         //     localStorage.setItem('uiConfig', JSON.stringify(state.ui))
         // },
-        // changePrimaryColor(state, {payload}){
-        //     state.ui.primaryColor = payload;
-        //     localStorage.setItem('uiConfig', JSON.stringify(state.ui))
-        // },
+        changePrimaryColor(state, {payload}){
+            state.ui.primaryColor = payload;
+            localStorage.setItem('uiConfig', JSON.stringify(state.interface))
+        },
         // toggleHintsModal(state, {payload}){
         //     state.ui.isHintsShown = payload;
         //     localStorage.setItem('uiConfig', JSON.stringify(state.ui))
