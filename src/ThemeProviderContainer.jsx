@@ -82,9 +82,7 @@ const ThemeProviderContainer = ({ children }) => {
           fontSize: "1.1em",
         },
         body2: {
-          // fontWeight: 100,
           fontFamily: 'Questrial',
-  
         },
         button: {
           fontFamily: 'Source Sans Pro',

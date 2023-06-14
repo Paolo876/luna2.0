@@ -4,7 +4,6 @@ import settingsSlice from './reducers/settingsSlice';
 import backgroundSlice from "./reducers/backgroundSlice";
 import todoSlice from './reducers/todoSlice';
 import uiSlice from './reducers/uiSlice';
-// import bookmarksSlice from './bookmarksSlice';
 
 const store = configureStore({
   reducer: {  
