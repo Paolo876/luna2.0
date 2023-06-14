@@ -43,11 +43,8 @@ const uiSlice = createSlice({
         // // UI
 
         changeContainerColor(state, { payload }){
-            const colors = payload.color.substr(0, payload.color.length - 1).substr(4)
-            const [ r, g, b ] = colors.split(",")
-            console.log(r, g ,b )
-            const value = `linear-gradient(rgba(${r}, ${g}, ${b}, ${payload.alpha}), rgba(${r}, ${g}, ${b}, ${payload.alpha}))`;
-            state.interface.containerColor = value;
+            // const value = `linear-gradient(${payload}, ${payload})`
+            state.interface.containerColor = payload;
             localStorage.setItem('uiConfig', JSON.stringify(state.interface))
         },
         changeBackdrop(state, { payload }){
@@ -64,7 +61,7 @@ const uiSlice = createSlice({
         //     localStorage.setItem('uiConfig', JSON.stringify(state.ui))
         // },
         changePrimaryColor(state, {payload}){
-            state.ui.primaryColor = payload;
+            state.interface.primaryColor = payload;
             localStorage.setItem('uiConfig', JSON.stringify(state.interface))
         },
         // toggleHintsModal(state, {payload}){

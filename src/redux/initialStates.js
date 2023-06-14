@@ -67,7 +67,7 @@ export const uiInitialState = () => {
 
     if(!JSON.parse(localStorage.getItem("uiConfig"))){
         const uiConfig = {
-            containerColor: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5))",
+            containerColor: "rgba(0, 0, 0, 0.5)",
             isHintsEnabled: true,
             primaryColor: "#45a198",
             backdropFilter: { blur: 5, contrast: 90, brightness: 85}, 

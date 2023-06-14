@@ -17,7 +17,7 @@ const valueLabelComponent = ({ children, value }) => (
 
 
 const Interface = () => {
-  const { interface: { containerColor, primaryColor, backdropFilter }, changeContainerColor, changeBackdrop } = useUiRedux();
+  const { interface: { containerColor, primaryColor, backdropFilter }, changeContainerColor, changeBackdrop, changePrimaryColor } = useUiRedux();
   const [r, g ,b, a] = containerColor.substr(21).split(", ", 4);
 
 
@@ -25,15 +25,16 @@ const Interface = () => {
     <SubsettingContainer title="Interface">
       <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}} pr={4} mb={2}>
         <Typography variant="body2" sx={labelStyles}>Primary Color</Typography>
-        <MuiColorInput value={primaryColor} size='small' sx={{fontSize: 13, letterSpacing: .5, width: 225}}/>
+        <MuiColorInput value={primaryColor} onChange={e => changePrimaryColor(e)} size='small' sx={{fontSize: 13, letterSpacing: .5, width: 225}}/>
       </Box>
       <Box pr={4} mb={2}>
         <Typography variant="body2" sx={labelStyles}>Container Color</Typography>
         <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}} mb={1.5} ml={2}>
           <Typography variant="body2" fontSize={13} sx={{opacity: .8}}>Color</Typography>
-          <MuiColorInput value={`rgb(${r},${g},${b})`} onChange={(e) => changeContainerColor({color: e, alpha: parseFloat(a)})} size='small' sx={{fontSize: 13, letterSpacing: .5, width: 225}}/>
+          <MuiColorInput value={containerColor} onChange={e => changeContainerColor(e)} size='small' sx={{fontSize: 13, letterSpacing: .5, width: 225}}/>
+          {/* <MuiColorInput value={`rgb(${r},${g},${b})`} onChange={(e) => changeContainerColor({color: e, alpha: parseFloat(a)})} size='small' sx={{fontSize: 13, letterSpacing: .5, width: 225}}/> */}
         </Box>
-        <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}} mb={1.5} ml={2}>
+        {/* <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}} mb={1.5} ml={2}>
           <Typography variant="body2" fontSize={13} sx={{opacity: .8}}>Alpha</Typography>
           <Slider
             size="small"
@@ -48,7 +49,7 @@ const Interface = () => {
               valueLabel: valueLabelComponent,
             }}
           />
-        </Box>
+        </Box> */}
       </Box>
       <Box pr={4} mb={2}>
         <Typography variant="body2" sx={labelStyles}>Backdrop</Typography>
