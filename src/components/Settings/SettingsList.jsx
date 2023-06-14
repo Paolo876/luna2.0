@@ -17,7 +17,7 @@ import Reset from './Subsettings/Reset';
 
 const slide = keyframes`
   from {
-    left: -10%;
+    left: -30%;
     opacity: 0;
   }
   to {

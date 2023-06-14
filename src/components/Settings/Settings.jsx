@@ -24,7 +24,7 @@ const Settings = () => {
                 position: 'absolute',
                 bottom: 5,
                 left: 5,
-                transition: '300ms all ease-in-out',
+                transition: '250ms all ease-in-out',
                 lineHeight: 1,
                 zIndex: 3,
                 color: "#ebebeb",
@@ -43,7 +43,6 @@ const Settings = () => {
             </IconButton>
             <Modal
               open={showSettings}
-              // onClose={ () => setTimeout(() => setShowSettings(false), 250) }
               onClose={ () => setShowSettings(false) }
               closeAfterTransition
               slotProps={{

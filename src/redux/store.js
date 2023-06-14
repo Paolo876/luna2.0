@@ -12,7 +12,6 @@ const store = configureStore({
     background: backgroundSlice.reducer,
     todos: todoSlice.reducer, 
     ui: uiSlice.reducer,
-    // bookmarks: bookmarksSlice.reducer
   },
   middleware: (getDefaultMiddleware) =>
   getDefaultMiddleware({
