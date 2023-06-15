@@ -5,7 +5,10 @@ import useSettingsRedux from '../../../hooks/useSettingsRedux'
 
 
 const Reset = () => {
+  const { clearAllSettings } = useSettingsRedux();
   const [ showModal, setShowModal ] = useState(false)
+
+
   return (
     <SubsettingContainer title="Reset All Settings">
       <Box mt={1}>
@@ -45,7 +48,7 @@ const Reset = () => {
             Are you sure you want to reset all settings to default?
           </Typography>
           <Box sx={{display: "flex", gap: 6, }}>
-            <Button color="error" variant="contained" size="large" sx={{letterSpacing: 1, fontWeight: 600}}>Confirm</Button>
+            <Button color="error" variant="contained" size="large" sx={{letterSpacing: 1, fontWeight: 600}} onClick={() => clearAllSettings()}>Confirm</Button>
             <Button color="secondary" variant="outlined" size="large" sx={{letterSpacing: 1, fontWeight: 600}} onClick={() => setShowModal(false)}>Cancel</Button>
           </Box>
         </Paper>

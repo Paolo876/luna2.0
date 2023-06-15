@@ -97,41 +97,8 @@ const settingsSlice = createSlice({
         //     localStorage.setItem('componentsConfig', JSON.stringify(state.components));
 
         // },
-        // // UI
-
-        // changeContainerColor(state, {payload}){
-        //     // const colors = payload.color.substr(0, payload.color.length - 1).substr(4)
-        //     // const [ r, g, b ] = colors.split(",")
-        //     // // console.log(r, g ,b )
-        //     // const value = `linear-gradient(rgba(${colors}, ${payload.alpha}), rgba(${colors}, ${payload.alpha}))`;
-        //     // console.log(value)
-        //     // state.ui.containerColor = value;
-        //     // // localStorage.setItem('uiConfig', JSON.stringify(state.ui))
-
-        //     const colors = payload.color
-        //     const value = `linear-gradient(rgba(${colors.r}, ${colors.g}, ${colors.b}, ${payload.alpha}), rgba(${colors.r}, ${colors.g}, ${colors.b}, ${payload.alpha}))`;
-        //     // console.log(colors)
-        //     // state.ui.containerColor = value;
-        //     // localStorage.setItem('uiConfig', JSON.stringify(state.ui))
-        // },
-        // changeSettingsButtonPosition(state, {payload}){
-        //     state.ui.settingsPosition = payload;
-        //     localStorage.setItem('uiConfig', JSON.stringify(state.ui))
-        // },
-        // changePrimaryColor(state, {payload}){
-        //     state.ui.primaryColor = payload;
-        //     localStorage.setItem('uiConfig', JSON.stringify(state.ui))
-        // },
-        // toggleHintsModal(state, {payload}){
-        //     state.ui.isHintsShown = payload;
-        //     localStorage.setItem('uiConfig', JSON.stringify(state.ui))
-        // },
-        // resetUISettings(state){
-        //     state.ui = initialConfigurations("ui");
-        //     localStorage.setItem('uiConfig', JSON.stringify(state.ui))
-        // },
         //CLEAR SETTINGS
-        clearAllSettings(state){
+        clearAllSettings(){
             localStorage.clear();
             window.location.reload();
         },
