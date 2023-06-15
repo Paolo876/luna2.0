@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
 import SubsettingContainer from '../SubsettingContainer'
-import { Box, Typography, Select, FormControl, InputLabel, MenuItem, Stack } from '@mui/material'
+import { Box, Typography, Select, FormControl, InputLabel, MenuItem, Stack, Switch } from '@mui/material'
 import useSettingsRedux from "../../../../hooks/useSettingsRedux";
 import DisplayNameInput from './DisplayNameInput';
+import useUiRedux from "../../../../hooks/useUiRedux"
+
 
 const labelStyles = {
   fontSize: 20,
@@ -12,7 +14,7 @@ const labelStyles = {
 
 const General = () => {
   const { dateFormat, dateOptions, timeFormat, changeTimeFormat, temperatureUnit, changeTemperatureUnit, changeDateFormat, changeDateOptions } = useSettingsRedux();
-  
+  const { interface: { isHintsEnabled }, toggleHints} = useUiRedux();
   
   // const handleChangeDateOption = (item, value) => {
     
@@ -119,6 +121,13 @@ const General = () => {
           <MenuItem value={"k"} sx={{color: "black"}}>Kelvin</MenuItem>
         </Select>
       </FormControl>
+      <Box sx={{ mb: 4.25, width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between"}}>
+        <Typography variant="body2" sx={{...labelStyles, fontSize: 16, opacity: .8}}>Show Hints Notifications</Typography>
+        <Switch
+          checked={isHintsEnabled}
+          onChange={() => toggleHints()}
+        />
+      </Box>
 
     </SubsettingContainer>
   )

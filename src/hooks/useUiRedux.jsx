@@ -10,6 +10,7 @@ const useUiRedux = () => {
     changeContainerColor: data => dispatch(uiActions.changeContainerColor(data)),
     changeBackdrop: data => dispatch(uiActions.changeBackdrop(data)),
     changePrimaryColor: data => dispatch(uiActions.changePrimaryColor(data)),
+    toggleHints: data => dispatch(uiActions.toggleHints(data)),
   }
 }
 

@@ -63,10 +63,10 @@ const uiSlice = createSlice({
             state.interface.primaryColor = payload;
             localStorage.setItem('uiConfig', JSON.stringify(state.interface))
         },
-        // toggleHintsModal(state, {payload}){
-        //     state.ui.isHintsShown = payload;
-        //     localStorage.setItem('uiConfig', JSON.stringify(state.ui))
-        // },
+        toggleHints(state, {payload}){
+            state.interface.isHintsEnabled = !state.interface.isHintsEnabled;
+            localStorage.setItem('uiConfig', JSON.stringify(state.interface))
+        },
         // resetUISettings(state){
         //     state.ui = initialConfigurations("ui");
         //     localStorage.setItem('uiConfig', JSON.stringify(state.ui))

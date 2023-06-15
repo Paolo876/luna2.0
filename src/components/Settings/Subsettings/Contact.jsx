@@ -9,7 +9,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 
 const Contact = () => {
   return (
-    <SubsettingContainer title="Contact">
+    <SubsettingContainer title="Contact Me">
       <Box mb={5} mt={2}>
         <Typography 
           variant="h4" 
