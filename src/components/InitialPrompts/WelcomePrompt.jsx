@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useUserRedux from "../../hooks/useUserRedux";
 import validateInput from "../../utils/validate-input";
-import { Typography, Box, TextField, Fade, Button, Grow, Zoom } from '@mui/material';
+import { Typography, Box, TextField, Fade, Button } from '@mui/material';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import "./WelcomePrompt.scss"
 import Image from 'mui-image';
