@@ -13,6 +13,7 @@ import BackgroundAdjustments from './Subsettings/BackgroundAdjustments';
 import Components from './Subsettings/Components/Components';
 import Interface from './Subsettings/Interface';
 import Reset from './Subsettings/Reset';
+import About from './Subsettings/About';
 
 
 const slide = keyframes`
@@ -95,6 +96,7 @@ const SettingsList = () => {
           {selectedSetting === "components" && <Components/>}
           {selectedSetting === "ui" && <Interface/>}
           {selectedSetting === "reset" && <Reset/>}
+          {selectedSetting === "about" && <About/>}
         </Grid>
       </Grid>
     </Box>
