@@ -7,7 +7,7 @@ import { Box, Typography } from '@mui/material'
 const listItemStyle = {
   fontFamily: "Questrial", 
   fontSize: 13.5, 
-  letterSpacing: .5, 
+  letterSpacing: .75, 
   opacity: .9,
   py: .3,
 }
@@ -16,7 +16,7 @@ const About = () => {
   return (
     <SubsettingContainer title="About">
       <Box mb={5} sx={{display: "flex", alignItems: "flex-end", gap: 3}}>
-        <Image src={logo} height={90} width={90} duration={0}/>
+        <Image src={logo} height={85} width={85} duration={400}/>
         <Box>
         <Typography variant="h4" fontSize={12}>Designed and developed by Paolo Bugarin</Typography>
         </Box>
@@ -30,13 +30,14 @@ const About = () => {
         </Typography>
       </Box>
       <Box>
-      <Typography variant="h4" fontSize={16} mb={2}>Technologies & APIs Used</Typography>
+      <Typography variant="h4" fontSize={16} mb={1}>Technologies & APIs Used</Typography>
         <Box component="ul" sx={{listStyleType: "circle", listStyle: "inside", mb: 2, ml: .25}}>
           <Box component="li" sx={listItemStyle}>ReactJS</Box>
           <Box component="li" sx={listItemStyle}>React-Redux (ReduxJSToolkit)</Box>
           <Box component="li" sx={listItemStyle}>React-Draggable</Box>
           <Box component="li" sx={listItemStyle}>Material-UI</Box>
           <Box component="li" sx={listItemStyle}>Axios</Box>
+          <Box component="li" sx={listItemStyle}>Firebase</Box>
           <Box component="li" sx={listItemStyle}>Imagekitio-react</Box>
           <Box component="li" sx={listItemStyle}>mui-color-input</Box>
           <Box component="li" sx={listItemStyle}>Sass/Scss</Box>

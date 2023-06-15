@@ -14,6 +14,7 @@ import Components from './Subsettings/Components/Components';
 import Interface from './Subsettings/Interface';
 import Reset from './Subsettings/Reset';
 import About from './Subsettings/About';
+import Contact from './Subsettings/Contact';
 
 
 const slide = keyframes`
@@ -97,6 +98,7 @@ const SettingsList = () => {
           {selectedSetting === "ui" && <Interface/>}
           {selectedSetting === "reset" && <Reset/>}
           {selectedSetting === "about" && <About/>}
+          {selectedSetting === "contact" && <Contact/>}
         </Grid>
       </Grid>
     </Box>
