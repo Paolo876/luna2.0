@@ -15,9 +15,9 @@ const Contact = () => {
           variant="h4" 
           sx={{letterSpacing: 1.75, fontWeight: 600, fontSize: 18}}
         >
-          Paolo Bugarin
+          Paolo Bugarin <Box component="span" fontWeight={100} letterSpacing={1} fontSize={17} sx={{opacity: .6}}>| Full Stack Web Developer</Box>
         </Typography>
-        <Typography variant="body2" sx={{ letterSpacing: 1, opacity: .75, mt: .75, fontSize: 14.5 }}>Los Angeles, CA <PlaceIcon sx={{fontSize: "inherit"}} color="primary"/></Typography>
+        <Typography variant="body2" sx={{ letterSpacing: 1, opacity: .65, mt: 1, fontSize: 15 }}>Los Angeles, CA <PlaceIcon sx={{fontSize: "inherit"}} color="primary"/></Typography>
       </Box>
       <Box mb={5}>
         <Typography variant="h4" sx={{letterSpacing: 1, fontWeight: 100, opacity: .9, fontSize: 15}}>Email</Typography>
