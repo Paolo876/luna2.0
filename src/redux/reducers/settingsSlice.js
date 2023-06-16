@@ -62,7 +62,7 @@ const settingsSlice = createSlice({
 
             localStorage.setItem('componentsConfig', JSON.stringify(state.components))
         },
-        
+
         // editor mode
         toggleEditorMode(state, { payload }){
             state.editorMode.isActive = payload;
@@ -87,14 +87,14 @@ const settingsSlice = createSlice({
             })
             state.editorMode.changeComponentPosition = [];
             state.editorMode.isActive = false;
-            localStorage.setItem('componentsConfig', JSON.stringify(state.components));
+            localStorage.setItem('components', JSON.stringify(state.components));
 
         },
         resetComponentPositions(state){
             state.components.forEach(item => delete item.addedStyles.transform);
             state.editorMode.isActive = false;
             state.editorMode.changeComponentPosition = []
-            localStorage.setItem('componentsConfig', JSON.stringify(state.components));
+            localStorage.setItem('components', JSON.stringify(state.components));
 
         },
         //CLEAR SETTINGS

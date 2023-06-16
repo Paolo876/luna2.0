@@ -3,11 +3,12 @@ import useSettingsRedux from '../../hooks/useSettingsRedux';
 import { Box, Fab, Tooltip, Typography } from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
 import ClearIcon from '@mui/icons-material/Clear';
+import CachedIcon from '@mui/icons-material/Cached';
 
 
 const buttonAnimation = {
   border: "50%",
-  color: 'primary.main',
+  color: 'success.main',
   '&::after': {
     position: 'absolute',
     top: 0,
@@ -25,7 +26,7 @@ const buttonAnimation = {
       opacity: 1,
     },
     '100%': {
-      transform: 'scale(1.8)',
+      transform: 'scale(1.6)',
       opacity: 0,
     },
   },
@@ -38,24 +39,24 @@ const EditorModeActions = () => {
 
   return (
     <Box sx={{position: "absolute", left: 0, bottom: 0, zIndex: 20, py: 2, pr: 6, pl: 2, borderRadius: 5, boxShadow: 5, backdropFilter: "blur(5px) brightness(120%)" }}>
-      <Typography variant="h4" fontSize={15} mb={2.5} fontWeight={300} sx={{opacity: .8}}>Editor Mode Actions</Typography>
-      <Box sx={{display: "flex", flexDirection: "row", gap: 4.5, }}>
-        <Tooltip title="Reset Component Positions" arrow placement='bottom' enterDelay={500}>
-          <Fab variant="circular" color="error" size='small'  sx={{height: 45, width: 45, opacity: .75}} onClick={resetComponentPositions}>
-            <Typography variant="body2" fontSize={11}>Reset</Typography>
+      <Typography variant="h4" fontSize={14} mb={3.5} fontWeight={300} sx={{opacity: .8}}>Editor Mode Actions</Typography>
+      <Box sx={{display: "flex", flexDirection: "row", gap: 2.5, alignItems: "center" }}>
+        <Tooltip title="Reset Positions" arrow placement='bottom' enterDelay={500}>
+          <Fab variant="circular" color="error" size='small'  sx={{height: 36, width: 36, opacity: .7}} onClick={resetComponentPositions}>
+            <CachedIcon/>
           </Fab>
         </Tooltip>
 
         <Tooltip title="Cancel" arrow placement='bottom' enterDelay={500}>
-          <Fab variant="circular" size='small' sx={{height: 45, width: 45, opacity: .75}} onClick={() => toggleEditorMode(false)}>
+          <Fab variant="circular" size='small' sx={{height: 36, width: 36, opacity: .7}} onClick={() => toggleEditorMode(false)}>
             <ClearIcon />
           </Fab>
         </Tooltip>
 
-        <Box sx={{position: "relative", p:0, m: 0}}>
+        <Box sx={{position: "relative", p:0, m: 0, ml: 2.5}}>
           <Box sx={buttonAnimation}>
             <Tooltip title="Save Changes" arrow placement='bottom' enterDelay={500}>
-              <Fab variant="circular" color="primary" size='small' sx={{height: 45, width: 45}} onClick={saveComponentPositions}>
+              <Fab variant="circular" color="success" size='small' sx={{height: 42, width: 42}} onClick={saveComponentPositions}>
                 <CheckIcon />
               </Fab>
             </Tooltip>
