@@ -75,27 +75,27 @@ const settingsSlice = createSlice({
                 state.editorMode.changeComponentPosition[index].transform = payload.transform;
             }
         },
-        // saveComponentPositions(state){
-        //     const updatedComponents = state.editorMode.changeComponentPosition;
+        saveComponentPositions(state){
+            const updatedComponents = state.editorMode.changeComponentPosition;
 
-        //     updatedComponents.forEach(item => {
-        //         const index = state.components.findIndex(i => i.name === item.id);
-        //         if(index !== -1){
-        //             state.components[index].addedStyles.transform = item.transform;
-        //         }
-        //     })
-        //     state.editorMode.changeComponentPosition = [];
-        //     state.editorMode.isActive = false;
-        //     localStorage.setItem('componentsConfig', JSON.stringify(state.components));
+            updatedComponents.forEach(item => {
+                const index = state.components.findIndex(i => i.name === item.id);
+                if(index !== -1){
+                    state.components[index].addedStyles.transform = item.transform;
+                }
+            })
+            state.editorMode.changeComponentPosition = [];
+            state.editorMode.isActive = false;
+            localStorage.setItem('componentsConfig', JSON.stringify(state.components));
 
-        // },
-        // resetComponentPositions(state){
-        //     state.components.forEach(item => delete item.addedStyles.transform);
-        //     state.editorMode.isActive = false;
-        //     state.editorMode.changeComponentPosition = []
-        //     localStorage.setItem('componentsConfig', JSON.stringify(state.components));
+        },
+        resetComponentPositions(state){
+            state.components.forEach(item => delete item.addedStyles.transform);
+            state.editorMode.isActive = false;
+            state.editorMode.changeComponentPosition = []
+            localStorage.setItem('componentsConfig', JSON.stringify(state.components));
 
-        // },
+        },
         //CLEAR SETTINGS
         clearAllSettings(){
             localStorage.clear();

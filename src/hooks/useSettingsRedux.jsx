@@ -11,7 +11,6 @@ const useSettingsRedux = () => {
     ...settingsRedux,
     setIsVisible: data => dispatch(settingsActions.setIsVisible(data)),
     toggleGeolocation: data => dispatch(settingsActions.toggleGeolocation(data)),
-    changeComponentPosition: data => dispatch(settingsActions.changeComponentPosition(data)),
     changeTimeFormat: data => dispatch(settingsActions.changeTimeFormat(data)),
     changeTemperatureUnit: data => dispatch(settingsActions.changeTemperatureUnit(data)),
     changeDateFormat: data => dispatch(settingsActions.changeDateFormat(data)),
@@ -19,7 +18,12 @@ const useSettingsRedux = () => {
     changeStyle: data => dispatch(settingsActions.changeStyle(data)),
     resetStyle: data => dispatch(settingsActions.resetStyle(data)),
     clearAllSettings: () => dispatch(settingsActions.clearAllSettings()),
+    //editor mode
     toggleEditorMode: data => dispatch(settingsActions.toggleEditorMode(data)),
+    changeComponentPosition: data => dispatch(settingsActions.changeComponentPosition(data)),
+    saveComponentPositions: () => dispatch(settingsActions.saveComponentPositions()),
+    resetComponentPositions: () => dispatch(settingsActions.resetComponentPositions()),
+    
   }
 }
 

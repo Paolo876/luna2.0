@@ -10,7 +10,7 @@ import { Box, Button } from "@mui/material";
 
 const Todos = () => {
   const ref = useRef();
-  const { components } = useSettingsRedux();
+  const { components, editorMode: { isActive }  } = useSettingsRedux();
   const { interface: { containerColor, backdropFilter }} = useUiRedux();
   const addedStyles = components.find(item => item.name === "todos").addedStyles;
   const { clearTodo, items } = useTodoRedux();
@@ -24,7 +24,11 @@ const Todos = () => {
         textAlign: 'left',
         minWidth: '22em',
         textShadow: '0 0 10px rgba(0, 0, 0, 0.8)',
-        p: 1,
+        maxHeight: 400,
+        height: isActive ? 400 : "initial",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-start",
         background: containerColor,
         backdropFilter: `blur(${backdropFilter.blur}px) contrast(${backdropFilter.contrast}%) brightness(${backdropFilter.brightness}%)`,
         ".todos-header": {
@@ -34,7 +38,7 @@ const Todos = () => {
           fontSize: '1.35em',
           letterSpacing: 1,
         },
-        ...addedStyles
+        ...addedStyles,
       }}
       ref={ref} 
       id="todos"

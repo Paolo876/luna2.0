@@ -1,6 +1,6 @@
 import React from 'react'
-import { styled } from '@mui/material/styles';
-import { Badge, Box, IconButton, Button, Fab, Tooltip, Typography } from '@mui/material';
+import useSettingsRedux from '../../hooks/useSettingsRedux';
+import { Box, Fab, Tooltip, Typography } from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
 import ClearIcon from '@mui/icons-material/Clear';
 
@@ -33,18 +33,21 @@ const buttonAnimation = {
 
 
 const EditorModeActions = () => {
+  const { saveComponentPositions, toggleEditorMode, resetComponentPositions } = useSettingsRedux();
+
+
   return (
     <Box sx={{position: "absolute", left: 0, bottom: 0, zIndex: 20, py: 2, pr: 6, pl: 2, borderRadius: 5, boxShadow: 5, backdropFilter: "blur(5px) brightness(120%)" }}>
       <Typography variant="h4" fontSize={15} mb={2.5} fontWeight={300} sx={{opacity: .8}}>Editor Mode Actions</Typography>
       <Box sx={{display: "flex", flexDirection: "row", gap: 4.5, }}>
         <Tooltip title="Reset Component Positions" arrow placement='bottom' enterDelay={500}>
-          <Fab variant="circular" color="error" size='small'  sx={{height: 45, width: 45, opacity: .75}}>
+          <Fab variant="circular" color="error" size='small'  sx={{height: 45, width: 45, opacity: .75}} onClick={resetComponentPositions}>
             <Typography variant="body2" fontSize={11}>Reset</Typography>
           </Fab>
         </Tooltip>
 
         <Tooltip title="Cancel" arrow placement='bottom' enterDelay={500}>
-          <Fab variant="circular" size='small' sx={{height: 45, width: 45, opacity: .75}}>
+          <Fab variant="circular" size='small' sx={{height: 45, width: 45, opacity: .75}} onClick={() => toggleEditorMode(false)}>
             <ClearIcon />
           </Fab>
         </Tooltip>
@@ -52,7 +55,7 @@ const EditorModeActions = () => {
         <Box sx={{position: "relative", p:0, m: 0}}>
           <Box sx={buttonAnimation}>
             <Tooltip title="Save Changes" arrow placement='bottom' enterDelay={500}>
-              <Fab variant="circular" color="primary" size='small' sx={{height: 45, width: 45}}>
+              <Fab variant="circular" color="primary" size='small' sx={{height: 45, width: 45}} onClick={saveComponentPositions}>
                 <CheckIcon />
               </Fab>
             </Tooltip>

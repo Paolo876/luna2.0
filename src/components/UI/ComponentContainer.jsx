@@ -43,7 +43,7 @@ const ComponentContainer = (props, ref) => {
       {isActive && <Box 
         sx={{
           position: "absolute",
-          backgroundColor: "rgba(0,0,0,0.25)",
+          backgroundColor: "rgba(20, 20, 20, .25)",
           height: "100%",
           width: "100%",
           cursor: "grab",

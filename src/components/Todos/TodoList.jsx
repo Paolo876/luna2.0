@@ -29,6 +29,7 @@ const TodoList = ({ addedStyles }) => {
     <List
       sx={{
         borderBottom: "1px solid rgba(0, 0, 0, 0.1)",
+        overflowY: "auto"
       }}
     >
       {items.map(item => (
