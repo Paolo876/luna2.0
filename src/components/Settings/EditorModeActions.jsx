@@ -34,9 +34,9 @@ const buttonAnimation = {
 
 const EditorModeActions = () => {
   return (
-    <Box sx={{position: "absolute", left: 0, bottom: 0, zIndex: 20, background: "rgba(0,0,0,0.05)", py: 2, pr: 5, pl: 2, borderRadius: 5, boxShadow: 2 }}>
+    <Box sx={{position: "absolute", left: 0, bottom: 0, zIndex: 20, py: 2, pr: 6, pl: 2, borderRadius: 5, boxShadow: 5, backdropFilter: "blur(5px) brightness(120%)" }}>
       <Typography variant="h4" fontSize={15} mb={2.5} fontWeight={300} sx={{opacity: .8}}>Editor Mode Actions</Typography>
-      <Box sx={{display: "flex", flexDirection: "row", gap: 4, }}>
+      <Box sx={{display: "flex", flexDirection: "row", gap: 4.5, }}>
         <Tooltip title="Reset Component Positions" arrow placement='bottom' enterDelay={500}>
           <Fab variant="circular" color="error" size='small'  sx={{height: 45, width: 45, opacity: .75}}>
             <Typography variant="body2" fontSize={11}>Reset</Typography>

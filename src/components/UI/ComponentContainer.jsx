@@ -43,12 +43,12 @@ const ComponentContainer = (props, ref) => {
       {isActive && <Box 
         sx={{
           position: "absolute",
-          backgroundColor: "transparent",
+          backgroundColor: "rgba(0,0,0,0.25)",
           height: "100%",
           width: "100%",
           cursor: "grab",
           zIndex: 10,
-          border: `1px dotted ${primaryColor}`,
+          border: `2px dotted ${primaryColor}`,
         }} 
         ></Box>}
       {props.children}
