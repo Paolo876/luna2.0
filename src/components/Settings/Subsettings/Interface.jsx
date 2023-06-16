@@ -31,7 +31,7 @@ const Interface = () => {
         <MuiColorInput value={containerColor} onChange={e => changeContainerColor(e)} size='small' sx={{fontSize: 13, letterSpacing: .5, width: 225}}/>
       </Box>
       <Box pr={4} mb={4}>
-        <Typography variant="body2" sx={labelStyles}>Backdrop</Typography>
+        <Typography variant="body2" sx={labelStyles}>Container Backdrop</Typography>
         <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}} mb={2} ml={2} pt={1.5}>
           <Typography variant="body2" fontSize={13} sx={{opacity: .8}}>Blur</Typography>
           <Slider

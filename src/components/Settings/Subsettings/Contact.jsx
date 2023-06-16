@@ -13,22 +13,22 @@ const Contact = () => {
       <Box mb={5} mt={2}>
         <Typography 
           variant="h4" 
-          sx={{letterSpacing: 1.75, fontWeight: 600, fontSize: 18}}
+          sx={{letterSpacing: 1.25, fontWeight: 500, fontSize: 18}}
         >
           Paolo Bugarin <Box component="span" fontWeight={100} letterSpacing={1} fontSize={17} sx={{opacity: .6}}>| Full Stack Web Developer</Box>
         </Typography>
-        <Typography variant="body2" sx={{ letterSpacing: 1, opacity: .65, mt: 1, fontSize: 15 }}>Los Angeles, CA <PlaceIcon sx={{fontSize: "inherit"}} color="primary"/></Typography>
+        <Typography variant="body2" sx={{ letterSpacing: 1, opacity: .65, mt: .75, fontSize: 15 }}>Los Angeles, CA <PlaceIcon sx={{fontSize: "inherit"}} color="primary"/></Typography>
       </Box>
       <Box mb={5}>
         <Typography variant="h4" sx={{letterSpacing: 1, fontWeight: 100, opacity: .9, fontSize: 15}}>Email</Typography>
-        <ButtonBase target="_blank" href="mailto: paolopaolobugarin@gmail.com" sx={{ px:1 }} draggable={false}>
-          <Typography variant="h6" sx={{letterSpacing: .5, opacity: 1, fontWeight: 500, fontSize: 16, mt: 1 }} color="primary">paolopaolobugarin@gmail.com</Typography>
+        <ButtonBase target="_top" href="mailto:paolopaolobugarin@gmail.com" sx={{ px:1 }} draggable={false}>
+          <Typography variant="h6" sx={{letterSpacing: .5, opacity: 1, fontWeight: 500, fontSize: 16, mt: .15 }} color="primary">paolopaolobugarin@gmail.com</Typography>
         </ButtonBase>      
       </Box>
       <Box mb={5}>
         <Typography variant="h4" sx={{letterSpacing: 1, fontWeight: 100, opacity: .9, fontSize: 15}}>Phone</Typography>
         <ButtonBase href="tel:3234817852" sx={{ px:1 }} draggable={false}>
-          <Typography variant="body1" sx={{letterSpacing: .5, opacity: 1, fontWeight: 500, fontSize: 16, mt: 1 }} color="primary">+1 (323) 481 7852</Typography>
+          <Typography variant="body1" sx={{letterSpacing: .5, opacity: 1, fontWeight: 500, fontSize: 16, mt: .15 }} color="primary">+1 (323) 481 7852</Typography>
         </ButtonBase>      
       </Box>
       <Box>

@@ -24,9 +24,9 @@ const About = () => {
       <Box mb={4}>
         <Typography variant="h4" fontSize={16} mb={1}>Description</Typography>
 
-        <Typography variant="body2">
+        <Typography variant="body2" sx={{lineHeight: 1.3}}>
           Luna is a personalizable browser homepage alternative inspired by the google chrome extension 'Momentum'. 
-          It features a UI that the user can freely customize through rearranging the components, elements positioning, font properties, and UI color scheme.
+          It features a beautiful UI that can be customized by the user through a variety of options.
         </Typography>
       </Box>
       <Box>
