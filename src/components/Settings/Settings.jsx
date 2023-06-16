@@ -15,7 +15,7 @@ const Settings = () => {
     <>
       {
         isActive ? 
-          <EditorModeActions/>
+          <EditorModeActions setShowSettings={setShowSettings}/>
           :
           <>
             <IconButton
