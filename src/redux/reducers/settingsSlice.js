@@ -62,6 +62,7 @@ const settingsSlice = createSlice({
 
             localStorage.setItem('componentsConfig', JSON.stringify(state.components))
         },
+        
         // editor mode
         toggleEditorMode(state, { payload }){
             state.editorMode.isActive = payload;

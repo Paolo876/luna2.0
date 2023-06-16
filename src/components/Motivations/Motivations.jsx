@@ -5,7 +5,7 @@ import axios from "axios";
 
 const Motivations = () => {
   const ref = useRef();   //for react-draggable
-  const { components } = useSettingsRedux();
+  const { components, editorMode: { isActive } } = useSettingsRedux();
   const addedStyles = components.find(item => item.name === "motivations").addedStyles;
   
   const [ data, setData ] = useState(null);
@@ -34,17 +34,19 @@ const Motivations = () => {
         bottom: "5%",
         textAlign: "center",
         textShadow: "0 0 10px rgba(0, 0, 0, .5)",
-        p: 1,
+        maxWidth: "60vh",
+        width: isActive ? "60vh" : "initial",
+        maxHeight: 100,
+        height: isActive ? 100 : "initial",
         ".content": {
-          fontSize: "1.2em",
+          fontSize: "1.1em",
           maxWidth: "60em",
         },
         ".author": {
           mt: .25, 
           fontSize: ".9em",
         },
-        ...addedStyles
-        
+        ...addedStyles,
       }}
       ref={ref} 
       id="motivations"
