@@ -19,7 +19,7 @@ const Reset = () => {
         </Typography>
       </Box>
       <Box sx={{flex: 1, display: "flex", alignItems: "center", justifyContent: "center"}}>
-        <Button variant="contained" color="error" onClick={() => setShowModal(true)}>Reset All Settings</Button>
+        <Button variant="contained" color="error" onClick={() => setShowModal(true)} size="large">Reset All Settings</Button>
       </Box>
       <Modal
         open={showModal}

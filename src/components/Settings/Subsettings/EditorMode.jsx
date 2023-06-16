@@ -30,11 +30,13 @@ const EditorMode = () => {
           Note: Please make sure that the window is maximized in order to enable editor mode.
         </Typography>
       </Box>
-      <Box align="center" mt={8}>
+      <Box sx={{flex: 1, display: "flex", alignItems: "center", justifyContent: "center"}}>
         <Button 
           onClick={() => handleClick()}
           variant="contained" 
           endIcon={<AutoAwesomeIcon fontSize="small" sx={{color: "rgba(245, 205, 79, 1)"}}/>}
+          size="large"
+          color="secondary"
         >
           Enter Editor Mode
         </Button>
