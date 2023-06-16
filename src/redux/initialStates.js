@@ -21,7 +21,6 @@ export const settingsInitialState = () => {
     let result = {
         components: JSON.parse(localStorage.getItem("components")),
         isGeolocationAllowed: JSON.parse(localStorage.getItem("isGeolocationAllowed")),
-        // ui: JSON.parse(localStorage.getItem("uiConfig")),
         editorMode: { isActive: false, changeComponentPosition: []},
         temperatureUnit: localStorage.getItem("temperatureUnit"),
         timeFormat: localStorage.getItem("timeFormat"),
