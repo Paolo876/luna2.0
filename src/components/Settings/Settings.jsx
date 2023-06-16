@@ -3,6 +3,7 @@ import useSettingsRedux from '../../hooks/useSettingsRedux'
 import SettingsIcon from '@mui/icons-material/Settings';
 import { IconButton, Modal, Box, Fade } from '@mui/material';
 import SettingsList from './SettingsList';
+import EditorModeActions from './EditorModeActions';
 
 
 const Settings = () => {
@@ -14,9 +15,8 @@ const Settings = () => {
     <>
       {
         isActive ? 
-          <>
-
-          </> :
+          <EditorModeActions/>
+          :
           <>
             <IconButton
               onClick={() => setShowSettings(prevState => !prevState)}

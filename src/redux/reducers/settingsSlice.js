@@ -62,12 +62,11 @@ const settingsSlice = createSlice({
 
             localStorage.setItem('componentsConfig', JSON.stringify(state.components))
         },
-        // // editor mode
-        // toggleEditorMode(state, {payload}){
-        //     state.editorMode.isActive = payload;
-        //     state.editorMode.changeComponentPosition = [];
-   
-        // },
+        // editor mode
+        toggleEditorMode(state, { payload }){
+            state.editorMode.isActive = payload;
+            state.editorMode.changeComponentPosition = [];
+        },
         // changeComponentPosition(state, { payload }){
         //     const index = state.editorMode.changeComponentPosition.findIndex(item => item.id === payload.id);
         //     if(index === -1) {

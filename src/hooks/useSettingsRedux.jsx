@@ -19,7 +19,7 @@ const useSettingsRedux = () => {
     changeStyle: data => dispatch(settingsActions.changeStyle(data)),
     resetStyle: data => dispatch(settingsActions.resetStyle(data)),
     clearAllSettings: () => dispatch(settingsActions.clearAllSettings()),
-    // changeContainerColor: data => dispatch(settingsActions.changeContainerColor(data)),
+    toggleEditorMode: data => dispatch(settingsActions.toggleEditorMode(data)),
   }
 }
 

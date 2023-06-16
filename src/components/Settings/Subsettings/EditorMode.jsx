@@ -1,18 +1,20 @@
-import { useState } from 'react'
-import SubsettingContainer from './SubsettingContainer'
-import { Typography, Box, Button, Modal, Paper } from '@mui/material'
+import { useState } from 'react';
+import useSettingsRedux from "../../../hooks/useSettingsRedux";
+import SubsettingContainer from './SubsettingContainer';
+import { Typography, Box, Button, Modal, Paper } from '@mui/material';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 
 
 const EditorMode = () => {
-  const [ showModal, setShowModal ] = useState(false)
+  const { toggleEditorMode } = useSettingsRedux();
+  const [ showModal, setShowModal ] = useState(false);
 
   const handleClick = () => {
     let isAtMaxWidth = (window.screen.availWidth - window.innerWidth) === 0;
     let isAtMaxHeight = (window.screen.availHeight - window.outerHeight <= 1);
 
     if(isAtMaxWidth && isAtMaxHeight) {
-      alert('Browser is in fullscreen')
+      toggleEditorMode(true)
     } else {
       setShowModal(true)
     }
@@ -46,22 +48,24 @@ const EditorMode = () => {
         <Paper
           sx={{
             position: 'absolute',
-            top: '50%',
+            top: '40%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
             width: 500,
-            background: "rgba(250,250,250,.95)",
-            // bgcolor: 'warning.light',
-            // border: 'none',
-            border: 3,
-            borderColor: "warning.light",
+            border: 0,
             boxShadow: 24,
             p: 4,
+            display: "flex",
+            flexDirection: "column",
+            gap: 6,
+            alignItems: "center",
+            justifyContent: "center",
+            background: "rgba(255,255,255, .9)"
           }}
           align="center"
         >
-          <Typography color="warning.dark" variant="body1" fontWeight={500} fontFamily="Roboto">Note: Please make sure that the window is maximized in order to enable editor mode.</Typography>
-          <Box mt={4}>
+          <Typography variant="h6" fontSize={20} color="error.main" align='center' letterSpacing={.25}>Note: Please make sure that the window is maximized in order to enable editor mode.</Typography>
+          <Box>
             <Button variant="contained" onClick={() => setShowModal(false)}>Close</Button>
           </Box>
         </Paper>
