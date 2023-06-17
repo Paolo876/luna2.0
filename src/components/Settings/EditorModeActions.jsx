@@ -1,5 +1,6 @@
 import React from 'react'
 import useSettingsRedux from '../../hooks/useSettingsRedux';
+import { useSnackbar } from 'notistack';
 import { Box, Fab, Tooltip, Typography } from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
 import ClearIcon from '@mui/icons-material/Clear';
@@ -35,12 +36,19 @@ const buttonAnimation = {
 
 const EditorModeActions = ({ setShowSettings }) => {
   const { saveComponentPositions, toggleEditorMode, resetComponentPositions } = useSettingsRedux();
+  const { enqueueSnackbar } = useSnackbar()
 
   const handleClick = (action) => {
     setShowSettings(false)
-    if(action === "save") saveComponentPositions()
+    if(action === "save") {
+      saveComponentPositions()
+      enqueueSnackbar('Component Positions updated!', { variant: "success" })
+    }
     if(action === "cancel") toggleEditorMode(false)
-    if(action === "reset") resetComponentPositions()
+    if(action === "reset") {
+      resetComponentPositions()
+      enqueueSnackbar('Component Positions Reset to Default!', { variant: "warning" })
+    }
   }
 
   
