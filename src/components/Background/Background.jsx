@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import useBackgroundRedux from "../../hooks/useBackgroundRedux";
 import { Box } from "@mui/material";
+import Image from "mui-image";
 
 
 const Background = () => {
@@ -15,20 +16,23 @@ const Background = () => {
       }
     }
   }, [isLocal, isRandom])
-
-  let bgValue = `linear-gradient(rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.2)), url(${src}) no-repeat fixed center/cover`;
+  // let bgValue = `linear-gradient(rgba(0, 0, 0, 0.15),rgba(0, 0, 0, 0.15)), url(${src}) no-repeat fixed center/cover`;
 
   
   return (
-    <Box
+    <Image
+      src={src}
+      bgColor="rgba(0,0,0,0.95)"
+      duration={350}
+      showLoading={true}
+      easing="ease-in"
+      fit="cover"
       sx={{
-        background: bgValue, 
         filter: `brightness(${filter.brightness}%) contrast(${filter.contrast}%) saturate(${filter.saturation}%)`,
         height: "100vh",
-        width: "100vw"
+        width: "100vw",
       }}
-    >
-    </Box>
+    />
   )
 }
 
