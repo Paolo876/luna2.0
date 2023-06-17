@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import useUserRedux from '../../../../hooks/useUserRedux'
 import validateInput from '../../../../utils/validate-input'
 import { TextField, Typography, Button, InputAdornment } from '@mui/material'
+import { useSnackbar } from 'notistack'
 
 
 const labelStyles = {
@@ -15,11 +16,16 @@ const DisplayNameInput = () => {
   const { name, setUserName } = useUserRedux();
   const [ nameInput, setNameInput ] = useState(name)
   const [ nameError, setNameError ] = useState({state: false, value: null})
+  const { enqueueSnackbar } = useSnackbar()
 
   const handleNameSubmit = () => {
     if(validateInput(nameInput, "text")) {
-      setNameError({state: false, value: null});
-      setUserName(nameInput);
+      if(name !== nameInput){
+        setNameError({state: false, value: null});
+        setUserName(nameInput);
+        enqueueSnackbar('Display name updated!', { variant: "success" })
+  
+      }
     } else {
       setNameError({state: true, value:"Please enter a valid name."})
     }

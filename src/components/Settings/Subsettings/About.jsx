@@ -37,6 +37,7 @@ const About = () => {
           <Box component="li" sx={listItemStyle}>React-Draggable</Box>
           <Box component="li" sx={listItemStyle}>Material-UI</Box>
           <Box component="li" sx={listItemStyle}>Axios</Box>
+          <Box component="li" sx={listItemStyle}>Notistack</Box>
           <Box component="li" sx={listItemStyle}>Firebase</Box>
           <Box component="li" sx={listItemStyle}>Imagekitio-react</Box>
           <Box component="li" sx={listItemStyle}>mui-color-input</Box>

@@ -16,9 +16,9 @@ const General = () => {
   const { dateFormat, dateOptions, timeFormat, changeTimeFormat, temperatureUnit, changeTemperatureUnit, changeDateFormat, changeDateOptions } = useSettingsRedux();
   const { interface: { isHintsEnabled }, toggleHints} = useUiRedux();
   
-  // const handleChangeDateOption = (item, value) => {
+  const handleClick = (action) => {
     
-  // }
+  }
 
   return ( 
     <SubsettingContainer title="General">
