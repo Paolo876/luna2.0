@@ -1,10 +1,9 @@
-import { useEffect, useState } from 'react'
 import SubsettingContainer from '../SubsettingContainer'
+import { useSnackbar } from 'notistack'
 import { Box, Typography, Select, FormControl, InputLabel, MenuItem, Stack, Switch } from '@mui/material'
 import useSettingsRedux from "../../../../hooks/useSettingsRedux";
 import DisplayNameInput from './DisplayNameInput';
 import useUiRedux from "../../../../hooks/useUiRedux"
-
 
 const labelStyles = {
   fontSize: 20,
@@ -15,9 +14,21 @@ const labelStyles = {
 const General = () => {
   const { dateFormat, dateOptions, timeFormat, changeTimeFormat, temperatureUnit, changeTemperatureUnit, changeDateFormat, changeDateOptions } = useSettingsRedux();
   const { interface: { isHintsEnabled }, toggleHints} = useUiRedux();
-  
-  const handleClick = (action) => {
-    
+  const { enqueueSnackbar } = useSnackbar()
+
+  const handleClick = ({ action, value }) => {
+    if(action === "time"){
+      changeTimeFormat(value)
+      enqueueSnackbar('Time Format updated!', { variant: "success" })
+    }
+    if(action === "date"){
+      changeDateFormat(value)
+      enqueueSnackbar('Date Format updated!', { variant: "success" })
+    }
+    if(action === "temp"){
+      changeTemperatureUnit(value)
+      enqueueSnackbar('Temperature Unit updated!', { variant: "success" })
+    }
   }
 
   return ( 
@@ -30,7 +41,7 @@ const General = () => {
         <InputLabel shrink={true}><Typography variant="body2" sx={labelStyles}>Change Time Format</Typography></InputLabel>
         <Select
           value={timeFormat}
-          onChange={(e) => changeTimeFormat(e.target.value)}
+          onChange={(e) => handleClick({action: "time", value: e.target.value})}
           size="small"
           sx={{ fontSize: 17}}
         >
@@ -42,7 +53,7 @@ const General = () => {
         <InputLabel shrink={true}><Typography variant="body2" sx={labelStyles}>Change Date Format</Typography></InputLabel>
         <Select
           value={dateFormat}
-          onChange={(e) => changeDateFormat(e.target.value)}
+          onChange={(e) => handleClick({action: "date", value: e.target.value})}
           size="small"
           sx={{ fontSize: 17}}
         >
@@ -113,7 +124,7 @@ const General = () => {
         <InputLabel shrink={true}><Typography variant="body2" sx={labelStyles}>Change Temperature Unit</Typography></InputLabel>
         <Select
           value={temperatureUnit}
-          onChange={(e) => changeTemperatureUnit(e.target.value)}
+          onChange={(e) => handleClick({action: "temp", value: e.target.value})}
           size="small"
         >
           <MenuItem value={"f"} sx={{color: "black"}}>Fahrenheit</MenuItem>
@@ -134,17 +145,3 @@ const General = () => {
 }
 
 export default General
-
-
-/**
- * weekday: "long", "narrow", "short", undefined
- * month: "long", "narrow", "short", "2-digit", undefined
- * day: "numeric", "2-digit", undefined,
- * year: "2-digit", "numeric"
- * 
- * TIME FORMATS
- * 'en-US'  -> Month-day-year
- * 'en-GB'  -> day-month-year
- * 'ko-KR'  -> year-month-day
- *   
- */
