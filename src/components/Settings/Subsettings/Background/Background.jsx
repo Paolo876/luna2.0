@@ -24,7 +24,6 @@ const Background = () => {
     } else {
       isLocal ? generateLocalBackground() : fetchBackground();
       enqueueSnackbar('Default Background Removed!', { variant: "success" })
-
     }
   }
 
@@ -69,7 +68,7 @@ const Background = () => {
           <Box pr={1} pl={3} mt={.5} sx={{position: "relative", opacity: !isLocal ? 1 : .5}}>
             {isLocal && <Box sx={{position: "absolute", top: 0, left: 0, height: "100%", width: "100%", zIndex: 1, background: "rgba(0,0,0,.5)"}}></Box>}
             <Box sx={{display: "flex", width: 390, my: 1.5, justifyContent: "left"}}>
-              <Button endIcon={<AutorenewIcon/>} size="medium" variant="outlined" onClick={() => fetchBackground()} disabled={isLoading}>Generate Random Background</Button>
+              <Button endIcon={<AutorenewIcon/>} size="large" variant="contained" onClick={() => fetchBackground()} disabled={isLoading}>Generate Random Background</Button>
             </Box>
           </Box>
         </RadioGroup>
