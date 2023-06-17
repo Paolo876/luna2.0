@@ -10,10 +10,13 @@ import Settings from './components/Settings/Settings';
 function App() {
   const { name } = useUserRedux();
   const { isGeolocationAllowed } = useSettingsRedux();
-  
+
+
   if(!name || name.trim().length === 0) return <WelcomePrompt/>
   if(name && isGeolocationAllowed === null) return <LocationPrompt/>
+  // window.onresize = () => console.log("RE")
 
+  
   return (
     <div className="App">
       <Background/>
