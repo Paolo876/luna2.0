@@ -1,4 +1,5 @@
-import SubsettingContainer from '../SubsettingContainer'
+import SubsettingContainer from '../SubsettingContainer';
+import { useSnackbar } from 'notistack';
 import { FormControl, FormControlLabel, Radio, RadioGroup, Box, Typography, Button, ButtonBase, Divider, Tooltip } from '@mui/material'
 import useBackgroundRedux from "../../../../hooks/useBackgroundRedux";
 import Image from 'mui-image';
@@ -9,6 +10,23 @@ import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 
 const Background = () => {
   const { localBackgrounds, isLocal, isRandom, setIsLocalBackground, selectLocalBackground, fetchBackground, isLoading, setBackground, src, removeBackground, activeLocalBackground, generateLocalBackground } = useBackgroundRedux();
+  const { enqueueSnackbar } = useSnackbar()
+
+  const handleRadioClick = (value) => {
+    setIsLocalBackground(JSON.parse(value))
+    enqueueSnackbar('Background Updated!', { variant: "success" })
+  }
+
+  const handleSetBackgroundClick = (isSet) => {
+    if(isSet){
+      setBackground();
+      enqueueSnackbar('Background Set as Default!', { variant: "success" })
+    } else {
+      isLocal ? generateLocalBackground() : fetchBackground();
+      enqueueSnackbar('Default Background Removed!', { variant: "success" })
+
+    }
+  }
 
   return (
     <SubsettingContainer title="Background">
@@ -20,7 +38,7 @@ const Background = () => {
       <FormControl>
         <RadioGroup
           value={isLocal}
-          onChange={e => setIsLocalBackground(JSON.parse(e.target.value))}
+          onChange={e => handleRadioClick(JSON.parse(e.target.value))}
         >
           <FormControlLabel value={true} control={<Radio />} label={<Typography variant='body2' fontSize={16}>Select Random Backgrounds from Database</Typography>} />
           <Box pb={2} pr={1} pl={3} mt={.5} sx={{position: "relative", opacity: isLocal ? 1 : .5}}>
@@ -58,12 +76,12 @@ const Background = () => {
       </FormControl>
       <Box sx={{display: "flex", justifyContent: "right", mt: "auto"}}>
         {!isRandom && <Tooltip title="Removing background will generate a random image." arrow enterDelay={400}>
-          <Button variant="contained" sx={{fontSize: 12}} disabled={isRandom} color="error" onClick={isLocal ? generateLocalBackground : fetchBackground} endIcon={<HighlightOffIcon/>}>
+          <Button variant="contained" sx={{fontSize: 12}} disabled={isRandom} color="error" onClick={() => handleSetBackgroundClick(false)} endIcon={<HighlightOffIcon/>}>
             Remove Default Background
           </Button>
         </Tooltip>}
         {isRandom && <Tooltip title="Setting background as default will not generate a random image on reload." arrow enterDelay={400}>
-          <Button variant="contained" sx={{fontSize: 12}} disabled={!isRandom} color="secondary" onClick={() => setBackground()} endIcon={<CheckCircleOutlineIcon/>}>
+          <Button variant="contained" sx={{fontSize: 12}} disabled={!isRandom} color="secondary" onClick={() => handleSetBackgroundClick(true)} endIcon={<CheckCircleOutlineIcon/>}>
             Set Background as Default
           </Button>
         </Tooltip>}
