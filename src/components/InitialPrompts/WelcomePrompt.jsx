@@ -28,17 +28,17 @@ const WelcomePrompt = () => {
 
   return (
     <Box className="welcome-prompt">
-      <Fade appear={true} in={!showForm} timeout={{ enter: 800, exit: 500 }}>
+      <Fade appear={true} in={!showForm} timeout={{ enter: 500, exit: 500 }}>
         <Box pb={15}>
           <Image src={logo} height={350} width="auto" duration={0} />
         </Box>
       </Fade>
-      <Fade appear={true} in={!showForm} timeout={{ enter: 1000, exit: 500 }} style={{ transitionDelay: !showForm ? "1500ms" : "0ms" }}>
+      <Fade appear={true} in={!showForm} timeout={{ enter: 900, exit: 500 }} style={{ transitionDelay: !showForm ? "1200ms" : "0ms" }}>
         <Box pb={10}>
           <Button endIcon={<ArrowForwardIosIcon/>} size="large" variant="outlined" sx={{fontWeight: 600, letterSpacing: 1.5, fontSize: 18, px: 6, py: 1.5}} onClick={() => setShowForm(true)}>Continue</Button>
         </Box>
       </Fade>
-      <Fade appear={true} in={!showForm} timeout={{ enter: 600, exit: 500 }} style={{ transitionDelay: !showForm ? "600ms" : "0ms" }}>
+      <Fade appear={true} in={!showForm} timeout={{ enter: 600, exit: 500 }} style={{ transitionDelay: !showForm ? "500ms" : "0ms" }}>
         <Box sx={{position: "absolute", bottom: 50}}>
           <Typography 
             variant="body2" 
