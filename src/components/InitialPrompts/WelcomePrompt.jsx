@@ -59,7 +59,7 @@ const WelcomePrompt = () => {
           </Typography>
         </Box>
       </Fade>
-      <Fade appear={true} in={showForm} timeout={{ enter: 800, exit: 500 }} style={{ transitionDelay: showForm ? "250ms" : "0ms" }}>
+      <Fade appear={true} in={showForm} timeout={{ enter: 500, exit: 500 }} style={{ transitionDelay: showForm ? "250ms" : "0ms" }}>
         <Box component="form" onSubmit={handleSubmit}  sx={{position: "absolute"}} pb={15}>
           <Typography variant="h3" fontSize={55} letterSpacing={1}>Before we get started, <br/>what is your name?</Typography>
           <TextField variant="standard" placeholder='John' value={name} onChange={e => setName(e.target.value)} error={error.state} inputProps={{maxLength: 15}}/>
