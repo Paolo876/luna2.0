@@ -20,19 +20,21 @@ const Background = () => {
 
   
   return (
-    <Image
-      src={src}
-      bgColor="rgba(0,0,0,0.95)"
-      duration={350}
-      showLoading={true}
-      easing="ease-in"
-      fit="cover"
-      sx={{
-        filter: `brightness(${filter.brightness}%) contrast(${filter.contrast}%) saturate(${filter.saturation}%)`,
-        height: "100vh",
-        width: "100vw",
-      }}
-    />
+    <>
+      {src && <Image
+        src={src}
+        bgColor="rgba(0,0,0,0.95)"
+        duration={350}
+        showLoading={true}
+        easing="ease-in"
+        fit="cover"
+        height="100vh"
+        width="100vw"
+        sx={{
+          filter: `brightness(${filter.brightness}%) contrast(${filter.contrast}%) saturate(${filter.saturation}%)`,
+        }}
+      />}
+    </>
   )
 }
 
