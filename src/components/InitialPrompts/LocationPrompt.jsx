@@ -31,8 +31,10 @@ const LocationPrompt = () => {
               <Image src={logo} height={250} width={250} duration={0} />
             </Box>
             <Typography variant="h4">This app uses the browser's built-in geolocation API to display an accurate weather information.</Typography>
-            <Typography variant="body2" fontSize={21} mt={15} sx={{opacity: .9}}>Click the button below to trigger the browser's location prompt and choose 'Allow' if you wish to use this feature or 'Block' otherwise.</Typography>
-            <Typography variant="body2" color="info.light" fontStyle="italic" mt={1} sx={{opacity: .8}}>Weather component will be disabled if location is blocked.</Typography>
+            <Typography variant="body2" fontSize={18} mt={15} sx={{opacity: .9}}>Click the button below to trigger the browser's location prompt and choose 'Allow' if you wish to use this feature or 'Block' otherwise.</Typography>
+            <Typography variant="body2" color="info.light" mt={1} sx={{opacity: .8}} fontSize={15}>
+              Weather component will be disabled if location is blocked.
+            </Typography>
             <Box mt={6}>
               <Button endIcon={<ArrowForwardIosIcon/>} size="large" variant="outlined" sx={{fontWeight: 600, letterSpacing: 1.5, fontSize: 18, px: 6, py: 1.5}} onClick={handleClick}>Continue</Button>
             </Box>

@@ -63,7 +63,7 @@ const WelcomePrompt = () => {
         <Fade appear={true} in={showForm} timeout={{ enter: 500, exit: 500 }} style={{ transitionDelay: "250ms" }}>
           <Box component="form" onSubmit={handleSubmit}  sx={{position: "absolute"}} pb={15}>
             <Typography variant="h3" fontSize={55} letterSpacing={1}>Before we get started, <br/>what is your name?</Typography>
-            <TextField variant="standard" placeholder='John' value={name} onChange={e => setName(e.target.value)} error={error.state} inputProps={{maxLength: 15}} autoFocus/>
+            <TextField variant="standard" placeholder='John' value={name} onChange={e => setName(e.target.value)} error={error.state} inputProps={{maxLength: 15}} autoFocus color="secondary"/>
             {error && <Typography variant="body2" color="error.light" mt={1} fontStyle="italic">{error.value}</Typography>}
           </Box>
         </Fade>
