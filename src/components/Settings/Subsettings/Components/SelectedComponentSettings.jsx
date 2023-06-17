@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import useSettingsRedux from '../../../../hooks/useSettingsRedux'
+import useSettingsRedux from '../../../../hooks/useSettingsRedux';
+import { useSnackbar } from 'notistack';
 import { Box, Divider, Slider, Switch, Typography, Tooltip, Button, Menu, MenuItem } from '@mui/material'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { MuiColorInput } from 'mui-color-input'
@@ -21,6 +22,7 @@ const fontList = [ "Inter", "Lato", "Montserrat", "Roboto", "Source Sans Pro" ];
 const SelectedComponentSettings = ({ component }) => {
   const { components, setIsVisible, changeStyle, resetStyle } = useSettingsRedux()
   const selectedComponent = components.find(item => item.name === component)
+  const { enqueueSnackbar } = useSnackbar()
 
   const [anchorEl, setAnchorEl] = useState(null);
   const [ selectedFont, setSelectedFont ] = useState(selectedComponent.addedStyles.fontFamily);
@@ -35,6 +37,10 @@ const SelectedComponentSettings = ({ component }) => {
     setAnchorEl(null)
   }
 
+  const handleResetClick = () => {
+    resetStyle(component)
+    enqueueSnackbar(`${selectedComponent.value} component set to Default!`, { variant: "success" })
+  }
 
   return (
     <Box mt={1} px={2} sx={{display: "flex", flexDirection: "column", height: "100%"}}>
@@ -108,8 +114,8 @@ const SelectedComponentSettings = ({ component }) => {
         </Box>
       </Box>
       <Box sx={{display: "flex", justifyContent: "right", mt: "auto"}}>
-          <Button color="warning" variant="contained" size="small" onClick={() => resetStyle(component)} sx={{fontSize: 12}}>Reset To Default</Button>
-        </Box>
+        <Button color="warning" variant="contained" size="small" onClick={handleResetClick} sx={{fontSize: 12}} disabled={!selectedComponent.isVisible}>Reset To Default</Button>
+      </Box>
     </Box>
   )
 }

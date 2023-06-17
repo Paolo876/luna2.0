@@ -39,7 +39,7 @@ const WelcomePrompt = () => {
         </Box>
       </Fade>
       <Fade appear={true} in={!showForm} timeout={{ enter: 600, exit: 500 }} style={{ transitionDelay: !showForm ? "500ms" : "0ms" }}>
-        <Box sx={{position: "absolute", bottom: 50}}>
+        <Box sx={{position: "absolute", bottom: 50, px:5}}>
           <Typography 
             variant="body2" 
             fontSize={22} 
@@ -51,21 +51,23 @@ const WelcomePrompt = () => {
             variant="body2" 
             color="primary.light" 
             mt={1.25} 
-            fontSize={14.5} 
+            fontSize={14} 
             letterSpacing={.25} 
-            sx={{opacity: .8}}
+            sx={{opacity: .75}}
           >
-            Please understand that this app is designed and optimized for PC browsers. UI and features may not function properly if used on mobile browsers.
+            Please understand that this app is designed and optimized for PC browsers. Some features may not be available on mobile devices.
           </Typography>
         </Box>
       </Fade>
-      <Fade appear={true} in={showForm} timeout={{ enter: 500, exit: 500 }} style={{ transitionDelay: showForm ? "250ms" : "0ms" }}>
-        <Box component="form" onSubmit={handleSubmit}  sx={{position: "absolute"}} pb={15}>
-          <Typography variant="h3" fontSize={55} letterSpacing={1}>Before we get started, <br/>what is your name?</Typography>
-          <TextField variant="standard" placeholder='John' value={name} onChange={e => setName(e.target.value)} error={error.state} inputProps={{maxLength: 15}}/>
-          {error && <Typography variant="body2" color="error.light" mt={1} fontStyle="italic">{error.value}</Typography>}
-        </Box>
-      </Fade>
+      {showForm &&      
+        <Fade appear={true} in={showForm} timeout={{ enter: 500, exit: 500 }} style={{ transitionDelay: "250ms" }}>
+          <Box component="form" onSubmit={handleSubmit}  sx={{position: "absolute"}} pb={15}>
+            <Typography variant="h3" fontSize={55} letterSpacing={1}>Before we get started, <br/>what is your name?</Typography>
+            <TextField variant="standard" placeholder='John' value={name} onChange={e => setName(e.target.value)} error={error.state} inputProps={{maxLength: 15}} autoFocus/>
+            {error && <Typography variant="body2" color="error.light" mt={1} fontStyle="italic">{error.value}</Typography>}
+          </Box>
+        </Fade>
+      }
     </Box>
   )
 }
