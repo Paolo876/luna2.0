@@ -26,7 +26,7 @@ const Search = () => {
         top: "0",
         // left: "2%",
         right: "inherit",
-        minWidth: "30em",
+        minWidth: {xs: "none", sm: "20em", md: "30em"},
         m: .5,
         flexDirection: "row",
         WebkitBoxPack: "center",
@@ -35,7 +35,8 @@ const Search = () => {
         background: containerColor,
         backdropFilter: `blur(${backdropFilter.blur}px) contrast(${backdropFilter.contrast}%) brightness(${backdropFilter.brightness}%)`,
         textShadow: "0 0 10px rgba(0, 0, 0, 0.4)",
-        ...addedStyles
+        ...addedStyles,
+        display: {xs: "none", sm: "initial"}
         
       }}
       ref={ref} 

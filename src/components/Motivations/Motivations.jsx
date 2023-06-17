@@ -31,20 +31,21 @@ const Motivations = () => {
   if(!error && data) return (
     <ComponentContainer
       additionalStyles={{
-        bottom: "5%",
+        bottom: {xs: "10%", md: "5%"},
         textAlign: "center",
-        textShadow: "0 0 10px rgba(0, 0, 0, .5)",
+        textShadow: "1px 1px 2px rgba(0, 0, 0, .8)",
         maxWidth: "60vh",
         width: isActive ? "60vh" : "initial",
         maxHeight: 100,
         height: isActive ? 100 : "initial",
+        px: {xs: 3, md: 0},
         ".content": {
-          fontSize: "1.1em",
-          maxWidth: "60em",
+          fontSize: {xs: ".65em", sm: "1em", md: "1.1em"},
+          // maxWidth: {xs: "80%", md:"60em"},
         },
         ".author": {
           mt: .25, 
-          fontSize: ".9em",
+          fontSize: {xs: ".6em", sm: ".8em", md: ".9em"},
         },
         ...addedStyles,
       }}

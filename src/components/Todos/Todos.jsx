@@ -26,7 +26,7 @@ const Todos = () => {
         textShadow: '0 0 10px rgba(0, 0, 0, 0.8)',
         maxHeight: 400,
         height: isActive ? 400 : "initial",
-        display: "flex",
+        display: {xs: "none", md: "flex"},
         flexDirection: "column",
         justifyContent: "flex-start",
         background: containerColor,

@@ -56,14 +56,12 @@ const Weather = React.memo(() => {
     <ComponentContainer
       additionalStyles={{
         top: '48%',
-        background: 'radial-gradient(closest-side, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1) 40%, transparent 80%)',
         textAlign: 'center',
-        minWidth: '15em',
+        // minWidth: {xs: '11em', sm:'15em', md: "fit-content"},
         p: '.5em',
-        textShadow: '0 0 10px rgba(0, 0, 0, 0.8)',
-        // bottom: 1,
+        textShadow: "1px 1px 2px rgba(0, 0, 0, .8)",
         ".header": {
-          fontSize: "1.2em"
+          fontSize: {xs: ".95em", sm: "1.2em"}
         },
         ...addedStyles
       }}
@@ -73,19 +71,19 @@ const Weather = React.memo(() => {
       {isLoading && <Box ><CircularProgress color="inherit" size={30} sx={{opacity: .7}}/></Box>}
       {error && <Typography ></Typography>}
       {data && !error && <>
-        <p className="header">{`${data.name}, ${data.sys.country}`} <LocationOnIcon sx={{opacity: .8}}/></p>
+        <p className="header">{`${data.name}, ${data.sys.country}`} <LocationOnIcon sx={{opacity: .8, color: "primary.light", }} fontSize="inherit"/></p>
 
-        <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center", mt:1, fontWeight: addedStyles.fontWeight - 200}}>
-          <Box sx={{width: "35%"}}>
-            <p>{temperature}<Box component="small">{temperatureUnit === 'f' || temperatureUnit === 'c' ? "°" : ""}{temperatureUnit.toUpperCase()}</Box></p>
+        <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center", mt:1, fontWeight: addedStyles.fontWeight - 200, gap :{xs: 1, md: 2.5}}}>
+          <Box sx={{width: "50%"}}>
+            <p style={{fontSize: ".9em", }}>{temperature}<Box component="small">{temperatureUnit === 'f' || temperatureUnit === 'c' ? "°" : ""}{temperatureUnit.toUpperCase()}</Box></p>
           </Box>
           <Divider orientation="vertical" flexItem sx={{borderColor: "#ebebeb"}}/>
-          <Box sx={{width: "35%",  display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", py:.5}}>
-            <Box sx={{height: 50, width: 50}}>
+          <Box sx={{width: "50%",  display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", py:{xs: 0, md: .5}}}>
+            <Box sx={{height: { xs: 30, sm: 40, md: 50 }, width: { xs: 30, sm: 40, md: 50 }}}>
               <Image src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`} fit="cover"/>
 
             </Box>
-            <p style={{fontSize: ".7em", lineHeight: 1.15}}>{data.weather[0].description}</p>
+            <p style={{fontSize: ".6em", lineHeight: 1.15}}>{data.weather[0].description}</p>
           </Box>
         </Box>
       </>}

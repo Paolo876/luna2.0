@@ -25,13 +25,12 @@ const Time = () => {
     <ComponentContainer 
       additionalStyles={{
         top: '12%',
-        background: "radial-gradient(rgba(0, 0, 0, 0.1) 10%, transparent 70%)",
         textAlign: "center",
         color:" #ebebeb",
-        textShadow: "0 0 10px rgba(141, 91, 91, 0.1)",
+        textShadow: "1px 1px 2px rgba(0, 0, 0, .8)",
         p: 1,
         ".time": {
-          fontSize: '7em',
+          fontSize: {xs: "4.5em", sm:'7em'},
           lineHeight: '1em',
           fontWeight: 'inherit',
           alignSelf: 'center',
