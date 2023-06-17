@@ -24,7 +24,7 @@ const LocationPrompt = () => {
 
   return (
       <Box className="location-prompt">
-        <Fade appear={true} in={true} timeout={{ enter: 300, exit: 300 }}>
+        <Fade appear={true} in={true} timeout={{ enter: 300, exit: 300 }} style={{ transitionDelay: "250ms" }}>
         
           <Box sx={{display: "flex", alignItems: "center", flexDirection: "column", maxWidth: "75vw", pb: "5%"}}>
             <Box pb={10} mx="auto" px="auto">
