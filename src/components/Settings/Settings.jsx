@@ -55,11 +55,9 @@ const Settings = () => {
               }}
             >
               <Fade in={showSettings} timeout={200}>
-
-              <Box>
-              <SettingsList/>
-
-              </Box>
+                <Box>
+                  <SettingsList/>
+                </Box>
               </Fade>
             </Modal>
           </>

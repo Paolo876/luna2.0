@@ -2,6 +2,7 @@ import { useRef, useEffect, useState } from "react";
 import ComponentContainer from "../UI/ComponentContainer";
 import useSettingsRedux from "../../hooks/useSettingsRedux";
 import axios from "axios";
+import { Box, CircularProgress, Fade } from "@mui/material";
 
 const Motivations = () => {
   const ref = useRef();   //for react-draggable
@@ -35,13 +36,11 @@ const Motivations = () => {
         textAlign: "center",
         textShadow: "1px 1px 2px rgba(0, 0, 0, .8)",
         maxWidth: {xs: "95vw", md: "75vw"},
-        // width: isActive ? "60vh" : "initial",
         maxHeight: 100,
         height: isActive ? 100 : "initial",
         px: {xs: 0, md: 0},
         ".content": {
           fontSize: {xs: ".65em", sm: "1em", md: "1.1em"},
-          // maxWidth: {xs: "80%", md:"60em"},
         },
         ".author": {
           mt: .25, 
@@ -52,8 +51,13 @@ const Motivations = () => {
       ref={ref} 
       id="motivations"
     >
-      <p className="content">{`"${data.content}"`}</p>
-      <p  className="author" style={{fontWeight: addedStyles.fontWeight - 200}}>{`-${data.author}`}</p>    
+      {/* <Fade appear={true} in={true} timeout={{ enter: 300, exit: 300 }} style={{ transitionDelay: "250ms" }}>
+        <Box> */}
+          {isLoading && <Box ><CircularProgress color="inherit" size={30} sx={{opacity: .7}}/></Box>}
+          <p className="content">{`"${data.content}"`}</p>
+          <p  className="author" style={{fontWeight: addedStyles.fontWeight - 200}}>{`-${data.author}`}</p>    
+        {/* </Box>
+      </Fade> */}
     </ComponentContainer>
   )
 }

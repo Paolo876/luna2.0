@@ -21,7 +21,7 @@ const Weather = React.memo(() => {
     if(!data){
       fetchData();
     }
-  }, [])
+  }, [data])
 
   const fetchData = async () => {
     navigator.geolocation.getCurrentPosition( async ({coords}) => {
