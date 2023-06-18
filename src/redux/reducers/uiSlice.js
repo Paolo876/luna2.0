@@ -26,6 +26,10 @@ const uiSlice = createSlice({
             state.interface.isHintsEnabled = !state.interface.isHintsEnabled;
             localStorage.setItem('uiConfig', JSON.stringify(state.interface))
         },
+        closeInitialModal(state, {payload}){
+            state.isInitialLoad = false;
+            localStorage.setItem('uiConfig', JSON.stringify(state.interface))
+        },
     },
 });
 

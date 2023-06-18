@@ -68,7 +68,8 @@ export const uiInitialState = () => {
             containerColor: "rgba(0, 0, 0, 0.5)",
             isHintsEnabled: true,
             primaryColor: "#45a198",
-            backdropFilter: { blur: 5, contrast: 90, brightness: 85}, 
+            backdropFilter: { blur: 5, contrast: 90, brightness: 85},
+            isInitialLoad: true,
         };
         localStorage.setItem("uiConfig", JSON.stringify(uiConfig))
         result = { ...result, uiConfig }
