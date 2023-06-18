@@ -1,17 +1,16 @@
 import React from 'react'
 import { Box, Divider, Modal, Typography, Fade, Button } from '@mui/material'
-import useUiRedux from '../../hooks/useUiRedux'
 import Image from 'mui-image';
 import logo from "../../assets/logo.png"
 import CloseIcon from '@mui/icons-material/Close';
 import SettingsIcon from '@mui/icons-material/Settings';
 
-const InitialModal = () => {
-  const { interface: { isInitialLoad }, closeInitialModal } = useUiRedux();
+const InitialModal = ({ showModal, setShowModal}) => {
 
   return (
     <Modal
-      open={isInitialLoad}
+      open={showModal}
+      onClose={() => setShowModal(false)}
       closeAfterTransition
       slotProps={{
         backdrop: {
@@ -22,7 +21,7 @@ const InitialModal = () => {
         }
       }}
     >
-      <Fade in={isInitialLoad} timeout={{ enter: 300, exit: 300 }} style={{ transitionDelay: "250ms" }}>
+      <Fade in={showModal} timeout={{ enter: 300, exit: 300 }} style={{ transitionDelay: "250ms" }}>
         <Box
           sx={{
             position: 'absolute',
@@ -59,7 +58,7 @@ const InitialModal = () => {
             </Typography>
           </Box>
           <Box sx={{mt: "auto", display: "flex", justifyContent: "right", width: "100%"}}>
-            <Button variant="contained" endIcon={<CloseIcon/>} color="error">Close</Button>
+            <Button variant="contained" endIcon={<CloseIcon/>} color="error" onClick={() => setShowModal(false)}>Close</Button>
           </Box>
         </Box>
       </Fade>

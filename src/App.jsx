@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import useUserRedux from './hooks/useUserRedux';
 import useSettingsRedux from './hooks/useSettingsRedux';
 import useUiRedux from './hooks/useUiRedux';
@@ -14,6 +15,7 @@ function App() {
   const { isGeolocationAllowed } = useSettingsRedux();
   const { interface: { isInitialLoad } } = useUiRedux();
 
+  const [ showModal, setShowModal ] = useState(isInitialLoad);
   if(!name || name.trim().length === 0) return <WelcomePrompt/>
   if(name && isGeolocationAllowed === null) return <LocationPrompt/>
 
@@ -22,7 +24,7 @@ function App() {
       <Background/>
       <Settings/>
       <ComponentsList/>
-      { isInitialLoad && <InitialModal/> }
+      { showModal && <InitialModal showModal={showModal} setShowModal={setShowModal}/> }
     </>
   );
 }
