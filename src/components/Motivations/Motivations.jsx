@@ -51,13 +51,9 @@ const Motivations = () => {
       ref={ref} 
       id="motivations"
     >
-      {/* <Fade appear={true} in={true} timeout={{ enter: 300, exit: 300 }} style={{ transitionDelay: "250ms" }}>
-        <Box> */}
-          {isLoading && <Box ><CircularProgress color="inherit" size={30} sx={{opacity: .7}}/></Box>}
-          <p className="content">{`"${data.content}"`}</p>
-          <p  className="author" style={{fontWeight: addedStyles.fontWeight - 200}}>{`-${data.author}`}</p>    
-        {/* </Box>
-      </Fade> */}
+      {isLoading && <Box ><CircularProgress color="inherit" size={30} sx={{opacity: .7}}/></Box>}
+      <p className="content">{`"${data.content}"`}</p>
+      <p  className="author" style={{fontWeight: addedStyles.fontWeight - 200}}>{`-${data.author}`}</p>    
     </ComponentContainer>
   )
 }

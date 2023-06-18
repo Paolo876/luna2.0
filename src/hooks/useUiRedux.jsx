@@ -11,6 +11,7 @@ const useUiRedux = () => {
     changeBackdrop: data => dispatch(uiActions.changeBackdrop(data)),
     changePrimaryColor: data => dispatch(uiActions.changePrimaryColor(data)),
     toggleHints: data => dispatch(uiActions.toggleHints(data)),
+    closeInitialModal: () => dispatch(uiActions.closeInitialModal()),
   }
 }
 

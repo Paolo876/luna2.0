@@ -18,16 +18,16 @@ const uiSlice = createSlice({
 
             localStorage.setItem('uiConfig', JSON.stringify(state.interface))
         },
-        changePrimaryColor(state, {payload}){
+        changePrimaryColor(state, { payload }){
             state.interface.primaryColor = payload;
             localStorage.setItem('uiConfig', JSON.stringify(state.interface))
         },
-        toggleHints(state, {payload}){
+        toggleHints(state){
             state.interface.isHintsEnabled = !state.interface.isHintsEnabled;
             localStorage.setItem('uiConfig', JSON.stringify(state.interface))
         },
-        closeInitialModal(state, {payload}){
-            state.isInitialLoad = false;
+        closeInitialModal(state){
+            state.interface.isInitialLoad = false;
             localStorage.setItem('uiConfig', JSON.stringify(state.interface))
         },
     },
