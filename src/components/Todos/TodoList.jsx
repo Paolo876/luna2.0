@@ -70,7 +70,7 @@ const TodoList = ({ addedStyles }) => {
                       fontWeight: 400,
                       px: 1,
                       height: 32,
-                      fontSize: ".85em",
+                      fontSize: {md: 12, lg: 14},
                     },
                 }}
                 inputProps={{maxLength: 28}}
@@ -108,6 +108,7 @@ const TodoList = ({ addedStyles }) => {
                     textDecoration: item.isFinished ? "line-through" : "initial",
                     opacity: item.isFinished ? .6 : 1,
                     transform: item.isFinished ? "translateX(0.25em)" : "none",
+                    fontSize: {md: 12, lg: 14}
                   }}
                 >
                   {item.text}

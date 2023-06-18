@@ -69,7 +69,7 @@ const Weather = React.memo(() => {
       id="weather"
     >
       {isLoading && <Box ><CircularProgress color="inherit" size={30} sx={{opacity: .7}}/></Box>}
-      {error && <Typography ></Typography>}
+      {error && <Typography >{error}</Typography>}
       {data && !error && <>
         <p className="header">{`${data.name}, ${data.sys.country}`} <LocationOnIcon sx={{opacity: .8, color: "primary.light", }} fontSize="inherit"/></p>
 
