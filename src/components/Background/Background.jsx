@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import useBackgroundRedux from "../../hooks/useBackgroundRedux";
-import { Box } from "@mui/material";
 import Image from "mui-image";
 
 
@@ -33,6 +32,7 @@ const Background = () => {
         sx={{
           filter: `brightness(${filter.brightness}%) contrast(${filter.contrast}%) saturate(${filter.saturation}%)`,
         }}
+        draggable={false}
       />}
     </>
   )
