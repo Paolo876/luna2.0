@@ -32,21 +32,25 @@ const Reset = () => {
             top: '40%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
-            width: 500,
+            width: {xs: "95vw", sm: 500, md: 600, lg: 650},
             border: 0,
             boxShadow: 24,
             p: 4,
             display: "flex",
             flexDirection: "column",
-            gap: 6,
+            gap: 8,
             alignItems: "center",
             justifyContent: "center",
-            background: "rgba(255,255,255, .9)"
+            background: "rgba(30,30,30, .96)",
           }}
         >
-          <Typography variant="h6" fontSize={20} color="error.main" align='center' letterSpacing={.25}> 
+        <Box sx={{width: "100%", textAlign: "center"}}>
+          <Typography variant="h4" fontSize={21} align='center' letterSpacing={.25} mb={1.5}> 
             Are you sure you want to reset all settings to default?
           </Typography>
+          <Typography variant="body2" sx={{opacity: .75}}>Local cache and states will be cleared. Page will reload upon confirmation.</Typography>
+
+        </Box>
           <Box sx={{display: "flex", gap: 6, }}>
             <Button color="error" variant="contained" size="large" sx={{letterSpacing: 1, fontWeight: 600}} onClick={() => clearAllSettings()}>Confirm</Button>
             <Button color="secondary" variant="outlined" size="large" sx={{letterSpacing: 1, fontWeight: 600}} onClick={() => setShowModal(false)}>Cancel</Button>

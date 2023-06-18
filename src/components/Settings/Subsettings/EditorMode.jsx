@@ -23,10 +23,10 @@ const EditorMode = () => {
   return (
     <SubsettingContainer title="Editor Mode">
       <Box >
-        <Typography variant="body2" fontSize={13.5}>
+        <Typography variant="body2" fontSize={15} letterSpacing={.25}>
           Editor Mode allows you to change the position and sizing of each components to your desired preference. 
         </Typography>
-        <Typography variant="body2" sx={{opacity: .8, mt: 1, fontSize: 13, }}>
+        <Typography variant="body2" sx={{opacity: .8, mt: 1}} fontSize={15} letterSpacing={.25}>
           Note: Please make sure that the window is maximized in order to enable editor mode.
         </Typography>
       </Box>
@@ -53,22 +53,22 @@ const EditorMode = () => {
             top: '40%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
-            width: 500,
+            width: {xs: "95vw", sm: 500, md: 600, lg: 650},
             border: 0,
             boxShadow: 24,
             p: 4,
             display: "flex",
             flexDirection: "column",
-            gap: 6,
+            gap: 5,
             alignItems: "center",
             justifyContent: "center",
-            background: "rgba(255,255,255, .9)"
+            background: "rgba(30,30,30, .96)",
           }}
           align="center"
         >
-          <Typography variant="h6" fontSize={20} color="error.main" align='center' letterSpacing={.25}>Note: Please make sure that the window is maximized in order to enable editor mode.</Typography>
+          <Typography variant="h4" fontSize={20} align='center' letterSpacing={.25}>Note: Please make sure that the window is maximized in order to enable editor mode.</Typography>
           <Box>
-            <Button variant="contained" onClick={() => setShowModal(false)}>Close</Button>
+            <Button variant="contained" onClick={() => setShowModal(false)} color="error">Close</Button>
           </Box>
         </Paper>
       </Modal>
