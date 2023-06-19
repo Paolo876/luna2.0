@@ -31,7 +31,7 @@ const ComponentContainer = (props, ref) => {
 
   const handleResizeClick = ({action, e}) => {
     // ref.current.style.transform = "none"
-    changeComponentScaling({id: ref.current.id, transform: ref.current.style.transform, action})
+    changeComponentScaling({id: ref.current.id, transform: getComputedStyle(ref.current).transform, action})
     e.stopPropagation()
   }
 

@@ -80,7 +80,7 @@ const settingsSlice = createSlice({
             const { id, action, transform } = payload;
             console.log(action, transform)
             const index = state.editorMode.changeComponentPosition.findIndex(item => item.id === id);
-
+            
             //check if scale value exists else create
             //combine scale and existing transform values
             // push or add value    value structure -> { id, transform }
@@ -88,7 +88,7 @@ const settingsSlice = createSlice({
                 // state.editorMode.changeComponentPosition.push(payload);
             } else {
                 // state.editorMode.changeComponentPosition[index].transform = payload.transform;
-                console.log(action)
+                // console.log(action)
             }
         },
         saveComponentPositions(state){
