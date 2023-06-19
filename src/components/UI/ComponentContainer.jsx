@@ -1,6 +1,6 @@
 import React from "react";
 import Draggable from "react-draggable";
-import { Box, ButtonBase, Fab } from "@mui/material";
+import { Box, Fab } from "@mui/material";
 import useSettingsRedux from "../../hooks/useSettingsRedux";
 import useUiRedux from "../../hooks/useUiRedux";
 import getTranslateValue from "../../utils/get-translate-value";
@@ -9,9 +9,12 @@ import AddIcon from '@mui/icons-material/Add';
 
 
 const ComponentContainer = (props, ref) => {
-  const { editorMode: { isActive }, changeComponentPosition, components } = useSettingsRedux();
+  const { editorMode: { isActive }, changeComponentPosition, changeComponentScaling, components } = useSettingsRedux();
   const { interface: { primaryColor } } = useUiRedux();
-  const handleStop = () => {
+
+  const handleStop = (e) => {
+    e.stopPropagation()
+    console.log(ref.current.id)
     changeComponentPosition({id: ref.current.id, transform: ref.current.style.transform})
   }
 
@@ -26,6 +29,8 @@ const ComponentContainer = (props, ref) => {
 
 
   const handleResizeClick = ({action, e}) => {
+    // ref.current.style.transform = "none"
+    changeComponentScaling({id: ref.current.id, action})
     e.stopPropagation()
   }
   const content = (
@@ -48,7 +53,7 @@ const ComponentContainer = (props, ref) => {
       id={props.id}
     >
       {isActive && <>
-        <ButtonBase
+        <Box
           sx={{
             position: "absolute",
             height: "100%",
@@ -58,7 +63,7 @@ const ComponentContainer = (props, ref) => {
             border: `2px dashed ${primaryColor}`,
             boxShadow: 24,
           }}
-        ></ButtonBase>
+        ></Box>
         {/* resize actions */}
         <Box 
           sx={{
@@ -83,6 +88,7 @@ const ComponentContainer = (props, ref) => {
         {props.children}
     </Box>
   )
+  // console.log(defaultPosition)
 
 
   return (
@@ -103,7 +109,7 @@ const ComponentContainer = (props, ref) => {
           {content}
         </Draggable>
       :
-          <>{content}</>
+        <>{content}</>
       }
   </>
   )

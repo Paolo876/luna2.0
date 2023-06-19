@@ -21,6 +21,7 @@ const useSettingsRedux = () => {
     //editor mode
     toggleEditorMode: data => dispatch(settingsActions.toggleEditorMode(data)),
     changeComponentPosition: data => dispatch(settingsActions.changeComponentPosition(data)),
+    changeComponentScaling: data => dispatch(settingsActions.changeComponentScaling(data)),
     saveComponentPositions: () => dispatch(settingsActions.saveComponentPositions()),
     resetComponentPositions: () => dispatch(settingsActions.resetComponentPositions()),
     

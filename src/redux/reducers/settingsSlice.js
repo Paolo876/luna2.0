@@ -76,6 +76,16 @@ const settingsSlice = createSlice({
                 state.editorMode.changeComponentPosition[index].transform = payload.transform;
             }
         },
+        changeComponentScaling(state, { payload }){
+            const { id, action } = payload;
+            const index = state.editorMode.changeComponentPosition.findIndex(item => item.id === id);
+            if(index === -1) {
+                // state.editorMode.changeComponentPosition.push(payload);
+            } else {
+                // state.editorMode.changeComponentPosition[index].transform = payload.transform;
+                console.log(action)
+            }
+        },
         saveComponentPositions(state){
             const updatedComponents = state.editorMode.changeComponentPosition;
 
