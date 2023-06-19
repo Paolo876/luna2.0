@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Draggable from "react-draggable";
 import { Box, Fab } from "@mui/material";
 import useSettingsRedux from "../../hooks/useSettingsRedux";
@@ -11,10 +11,11 @@ import AddIcon from '@mui/icons-material/Add';
 const ComponentContainer = (props, ref) => {
   const { editorMode: { isActive }, changeComponentPosition, changeComponentScaling, components } = useSettingsRedux();
   const { interface: { primaryColor } } = useUiRedux();
-
+  const [ showScaleActions, setShowScaleActions ] = useState(true);
   const handleStop = (e) => {
-    e.stopPropagation()
-    console.log(ref.current.id)
+    // e.stopPropagation()
+    // console.log(ref.current.id)
+    setShowScaleActions(true)
     changeComponentPosition({id: ref.current.id, transform: ref.current.style.transform})
   }
 
@@ -33,6 +34,17 @@ const ComponentContainer = (props, ref) => {
     changeComponentScaling({id: ref.current.id, action})
     e.stopPropagation()
   }
+
+  let rectPosition = {};
+  if(ref.current) {
+    console.log(ref.current.getBoundingClientRect())
+    rectPosition.left = ref.current.getBoundingClientRect().left
+    rectPosition.width = ref.current.getBoundingClientRect().width
+    rectPosition.top = ref.current.getBoundingClientRect().top
+  }
+
+  // console.log(ref.current.offsetTop, rectPosition.top)
+  // console.log(ref.current.offsetLeft, rectPosition.left)
   const content = (
     <Box
       sx={{
@@ -52,7 +64,7 @@ const ComponentContainer = (props, ref) => {
       ref={ref}
       id={props.id}
     >
-      {isActive && <>
+      {isActive && ref.current && <>
         <Box
           sx={{
             position: "absolute",
@@ -64,6 +76,59 @@ const ComponentContainer = (props, ref) => {
             boxShadow: 24,
           }}
         ></Box>
+        {/* resize actions */}
+        {/* <Box 
+          sx={{
+            background: "rgba(255,255,255, .5)",
+            backdropFilter: "blur(5px) brightness(120%)", 
+            display: "flex", 
+            width: "fit-content", 
+            position: "absolute", 
+            right: 0, 
+            top: 0, 
+            height: "fit-content",
+            py: .75, 
+            px: .75, 
+            gap: 1,
+            zIndex: 12,
+          }}
+        >              
+          <Fab size='small' sx={{height: 18, width: 18, minHeight: "initial"}} color="warning" variant="circular" onClick={(e) => handleResizeClick({action:"down", e})}><RemoveIcon fontSize="inherit"/></Fab>
+          <Fab size='small' sx={{height: 18, width: 18, minHeight: "initial"}} color="secondary" variant="circular" onClick={(e) => handleResizeClick({action:"up", e})}><AddIcon fontSize="inherit"/></Fab>
+        </Box> */}
+      </>}
+        {props.children}
+    </Box>
+  )
+  // console.log(defaultPosition)
+
+
+  return (
+    <>
+      {isActive ? 
+        <>
+        <Draggable      
+          position={null} 
+          nodeRef={ref} 
+          onStop={handleStop}
+          onDrag={() => setShowScaleActions(false)}
+          defaultPosition={defaultPosition}
+          bounds={{   
+            top: (ref.current.offsetTop * -1), 
+            left: (ref.current.offsetLeft * -1), 
+            right: window.innerWidth - (ref.current.offsetLeft + ref.current.offsetWidth), 
+            bottom: window.innerHeight - (ref.current.offsetTop + ref.current.offsetHeight) 
+          }}
+        >
+          {content}
+        </Draggable>
+        {showScaleActions && <Box sx={{
+          width: 50,
+          position: "absolute",
+          zIndex: 20,
+          top: `${rectPosition.top}px`,
+          left: `${rectPosition.left + rectPosition.width - 50}px`,
+        }}>
         {/* resize actions */}
         <Box 
           sx={{
@@ -84,30 +149,8 @@ const ComponentContainer = (props, ref) => {
           <Fab size='small' sx={{height: 18, width: 18, minHeight: "initial"}} color="warning" variant="circular" onClick={(e) => handleResizeClick({action:"down", e})}><RemoveIcon fontSize="inherit"/></Fab>
           <Fab size='small' sx={{height: 18, width: 18, minHeight: "initial"}} color="secondary" variant="circular" onClick={(e) => handleResizeClick({action:"up", e})}><AddIcon fontSize="inherit"/></Fab>
         </Box>
-      </>}
-        {props.children}
-    </Box>
-  )
-  // console.log(defaultPosition)
-
-
-  return (
-    <>
-      {isActive ? 
-        <Draggable      
-          position={null} 
-          nodeRef={ref} 
-          onStop={handleStop}
-          defaultPosition={defaultPosition}
-          bounds={{   
-            top: (ref.current.offsetTop * -1), 
-            left: (ref.current.offsetLeft * -1), 
-            right: window.innerWidth - (ref.current.offsetLeft + ref.current.offsetWidth), 
-            bottom: window.innerHeight - (ref.current.offsetTop + ref.current.offsetHeight) 
-          }}
-        >
-          {content}
-        </Draggable>
+        </Box>}
+        </>
       :
         <>{content}</>
       }
