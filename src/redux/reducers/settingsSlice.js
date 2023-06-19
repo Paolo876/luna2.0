@@ -77,8 +77,13 @@ const settingsSlice = createSlice({
             }
         },
         changeComponentScaling(state, { payload }){
-            const { id, action } = payload;
+            const { id, action, transform } = payload;
+            console.log(action, transform)
             const index = state.editorMode.changeComponentPosition.findIndex(item => item.id === id);
+
+            //check if scale value exists else create
+            //combine scale and existing transform values
+            // push or add value    value structure -> { id, transform }
             if(index === -1) {
                 // state.editorMode.changeComponentPosition.push(payload);
             } else {
