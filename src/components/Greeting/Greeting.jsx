@@ -28,8 +28,7 @@ const Greeting = () => {
         textAlign: "center",
         textShadow: "1px 1px 2px rgba(0, 0, 0, .8)",
         lineHeight: 1.25,
-        ...addedStyles
-        
+        ...addedStyles,       
       }}
       ref={ref} 
       id="greeting"

@@ -1,9 +1,11 @@
 import React from "react";
 import Draggable from "react-draggable";
-import { Box } from "@mui/material";
+import { Box, Fab, IconButton, Typography } from "@mui/material";
 import useSettingsRedux from "../../hooks/useSettingsRedux";
 import useUiRedux from "../../hooks/useUiRedux";
 import getTranslateValue from "../../utils/get-translate-value";
+import RemoveIcon from '@mui/icons-material/Remove';
+import AddIcon from '@mui/icons-material/Add';
 
 
 const ComponentContainer = (props, ref) => {
@@ -18,6 +20,7 @@ const ComponentContainer = (props, ref) => {
       const componentStyles = components.find(item => item.name === ref.current.id).addedStyles
       if(componentStyles.transform){
           defaultPosition = getTranslateValue(componentStyles.transform);
+          console.log(componentStyles)
       }
   }
 
@@ -43,14 +46,35 @@ const ComponentContainer = (props, ref) => {
       {isActive && <Box 
         sx={{
           position: "absolute",
-          // backgroundColor: "rgba(20, 20, 20, .25)",
           height: "100%",
           width: "100%",
           cursor: "grab",
           zIndex: 10,
           border: `2px dotted ${primaryColor}`,
-        }} 
-        ></Box>}
+        }}
+        >
+          {/* resize actions */}
+          <Box 
+            sx={{
+              background: "rgba(255,255,255, .5)",
+              backdropFilter: "blur(5px) brightness(120%)", 
+              display: "flex", 
+              width: "fit-content", 
+              position: "absolute", 
+              right: 0, 
+              top: 0, 
+              py: .35, 
+              px: 1, 
+              gap :2
+            }}
+          >
+            <Typography variant="body2" fontSize={12} letterSpacing={.5}>Resize</Typography>
+            <Box sx={{display: "flex", gap: .75}}>
+              <Fab  size='small' sx={{height: 16, minHeight: "initial"}} color="secondary" variant="extended"><RemoveIcon fontSize="inherit"/></Fab>
+              <Fab  size='small' sx={{height: 16, minHeight: "initial"}} color="primary" variant="extended"><AddIcon fontSize="inherit"/></Fab>
+            </Box>
+          </Box>
+        </Box>}
       {props.children}
     </Box>
   )
