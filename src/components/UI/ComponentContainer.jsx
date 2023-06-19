@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Draggable from "react-draggable";
-import { Box, Fab } from "@mui/material";
+import { Box, Button, ButtonGroup, Fab, IconButton } from "@mui/material";
 import useSettingsRedux from "../../hooks/useSettingsRedux";
 import useUiRedux from "../../hooks/useUiRedux";
 import getMatrixValues from "../../utils/getMatrixValues";
@@ -70,7 +70,14 @@ const ComponentContainer = (props, ref) => {
           cursor: "grab",
           zIndex: 10,
           border: `2px dashed ${primaryColor}`,
-          boxShadow: 24,
+          boxShadow: 2,
+          transition: "all 200ms ease-in-out",
+          "&:hover": {
+            background: "rgba(255,255,255,0.25)",
+            border: `1px dashed ${primaryColor}`,
+
+            boxShadow: 10,
+          }
         }}
       ></Box>}
         {props.children}
@@ -105,7 +112,35 @@ const ComponentContainer = (props, ref) => {
           left: `${rectPosition.left + rectPosition.width - 50}px`,
         }}>
         {/* resize actions */}
-        <Box 
+        <ButtonGroup
+          disableElevation
+          variant="contained"
+          size="small"
+          sx={{
+            background: "rgba(255,255,255, .5)",
+            backdropFilter: "blur(5px) brightness(110%)", 
+            display: "flex", 
+            width: "fit-content", 
+            position: "absolute", 
+            right: 0, 
+            top: 0, 
+            height: "fit-content",
+            boxShadow: 2,
+            zIndex: 12,
+            opacity: .95,
+            transition: "all 150ms ease-in-out",
+            "&:hover": {
+              opacity: 1,
+              transform: "scale(1.02)",
+              boxShadow: 10,
+
+            }
+          }}
+        >
+          <Button size="small" color="warning"><RemoveIcon fontSize="inherit"/></Button>
+          <Button size="small" color="success"><AddIcon fontSize="inherit"/></Button>
+        </ButtonGroup>
+        {/* <Box 
           sx={{
             background: "rgba(255,255,255, .5)",
             backdropFilter: "blur(5px) brightness(120%)", 
@@ -123,7 +158,7 @@ const ComponentContainer = (props, ref) => {
         >              
           <Fab size='small' sx={{height: 18, width: 18, minHeight: "initial"}} color="warning" variant="circular" onClick={(e) => handleResizeClick({action:"down", e})}><RemoveIcon fontSize="inherit"/></Fab>
           <Fab size='small' sx={{height: 18, width: 18, minHeight: "initial"}} color="secondary" variant="circular" onClick={(e) => handleResizeClick({action:"up", e})}><AddIcon fontSize="inherit"/></Fab>
-        </Box>
+        </Box> */}
         </Box>}
         </>
       :
