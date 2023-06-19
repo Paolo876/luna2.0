@@ -58,7 +58,6 @@ const Weather = React.memo(() => {
         top: '48%',
         textAlign: 'center',
         // minWidth: {xs: '11em', sm:'15em', md: "fit-content"},
-        p: '.5em',
         textShadow: "1px 1px 2px rgba(0, 0, 0, .8)",
         ".header": {
           fontSize: {xs: ".95em", sm: "1.2em"}

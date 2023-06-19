@@ -28,7 +28,6 @@ const Time = () => {
         textAlign: "center",
         color:" #ebebeb",
         textShadow: "1px 1px 2px rgba(0, 0, 0, .8)",
-        p: 1,
         ".time": {
           fontSize: {xs: "4.5em", sm:'7em'},
           lineHeight: '1em',

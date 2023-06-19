@@ -1,6 +1,6 @@
 import React from "react";
 import Draggable from "react-draggable";
-import { Box, Fab, IconButton, Typography } from "@mui/material";
+import { Box, ButtonBase, Fab, IconButton, Typography } from "@mui/material";
 import useSettingsRedux from "../../hooks/useSettingsRedux";
 import useUiRedux from "../../hooks/useUiRedux";
 import getTranslateValue from "../../utils/get-translate-value";
@@ -24,6 +24,10 @@ const ComponentContainer = (props, ref) => {
       }
   }
 
+
+  const handleResizeClick = ({action, e}) => {
+    e.stopPropagation()
+  }
   const content = (
     <Box
       sx={{
@@ -36,46 +40,47 @@ const ComponentContainer = (props, ref) => {
         margin: "0 auto",
         width: "fit-content",
         zIndex: 1,
-        textShadow: "0 0 10px rgba(0, 0, 0, 0.2)",
+        textShadow: "1px 1px 2px rgba(0, 0, 0, .75)",
         ...props.additionalStyles
       }}
       onClick={props.onClick} 
       ref={ref}
       id={props.id}
     >
-      {isActive && <Box 
-        sx={{
-          position: "absolute",
-          height: "100%",
-          width: "100%",
-          cursor: "grab",
-          zIndex: 10,
-          border: `2px dotted ${primaryColor}`,
-        }}
-        >
-          {/* resize actions */}
-          <Box 
-            sx={{
-              background: "rgba(255,255,255, .5)",
-              backdropFilter: "blur(5px) brightness(120%)", 
-              display: "flex", 
-              width: "fit-content", 
-              position: "absolute", 
-              right: 0, 
-              top: 0, 
-              py: .35, 
-              px: 1, 
-              gap :2
-            }}
-          >
-            <Typography variant="body2" fontSize={12} letterSpacing={.5}>Resize</Typography>
-            <Box sx={{display: "flex", gap: .75}}>
-              <Fab  size='small' sx={{height: 16, minHeight: "initial"}} color="secondary" variant="extended"><RemoveIcon fontSize="inherit"/></Fab>
-              <Fab  size='small' sx={{height: 16, minHeight: "initial"}} color="primary" variant="extended"><AddIcon fontSize="inherit"/></Fab>
-            </Box>
-          </Box>
-        </Box>}
-      {props.children}
+      {isActive && <>
+        <ButtonBase
+          sx={{
+            position: "absolute",
+            height: "100%",
+            width: "100%",
+            cursor: "grab",
+            zIndex: 10,
+            border: `2px dashed ${primaryColor}`,
+            boxShadow: 24,
+          }}
+        ></ButtonBase>
+        {/* resize actions */}
+        <Box 
+          sx={{
+            background: "rgba(255,255,255, .5)",
+            backdropFilter: "blur(5px) brightness(120%)", 
+            display: "flex", 
+            width: "fit-content", 
+            position: "absolute", 
+            right: 0, 
+            top: 0, 
+            height: "fit-content",
+            py: .75, 
+            px: .75, 
+            gap: 1,
+            zIndex: 12,
+          }}
+        >              
+          <Fab size='small' sx={{height: 18, width: 18, minHeight: "initial"}} color="warning" variant="circular" onClick={(e) => handleResizeClick({action:"down", e})}><RemoveIcon fontSize="inherit"/></Fab>
+          <Fab size='small' sx={{height: 18, width: 18, minHeight: "initial"}} color="secondary" variant="circular" onClick={(e) => handleResizeClick("up")}><AddIcon fontSize="inherit"/></Fab>
+        </Box>
+      </>}
+        {props.children}
     </Box>
   )
 
