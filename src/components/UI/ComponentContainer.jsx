@@ -1,6 +1,6 @@
 import React from "react";
 import Draggable from "react-draggable";
-import { Box, ButtonBase, Fab, IconButton, Typography } from "@mui/material";
+import { Box, ButtonBase, Fab } from "@mui/material";
 import useSettingsRedux from "../../hooks/useSettingsRedux";
 import useUiRedux from "../../hooks/useUiRedux";
 import getTranslateValue from "../../utils/get-translate-value";
@@ -77,7 +77,7 @@ const ComponentContainer = (props, ref) => {
           }}
         >              
           <Fab size='small' sx={{height: 18, width: 18, minHeight: "initial"}} color="warning" variant="circular" onClick={(e) => handleResizeClick({action:"down", e})}><RemoveIcon fontSize="inherit"/></Fab>
-          <Fab size='small' sx={{height: 18, width: 18, minHeight: "initial"}} color="secondary" variant="circular" onClick={(e) => handleResizeClick("up")}><AddIcon fontSize="inherit"/></Fab>
+          <Fab size='small' sx={{height: 18, width: 18, minHeight: "initial"}} color="secondary" variant="circular" onClick={(e) => handleResizeClick({action:"up", e})}><AddIcon fontSize="inherit"/></Fab>
         </Box>
       </>}
         {props.children}
