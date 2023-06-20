@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Draggable from "react-draggable";
+import { DraggableCore } from "react-draggable";
 import { Box, Button, ButtonGroup, Fab, IconButton } from "@mui/material";
 import useSettingsRedux from "../../hooks/useSettingsRedux";
 import useUiRedux from "../../hooks/useUiRedux";
@@ -9,11 +10,13 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 
 
-const ComponentContainer = (props, ref) => {
+const ComponentContainer = ( props, ref ) => {
   const { editorMode: { isActive }, changeComponentPosition, changeComponentScaling, components } = useSettingsRedux();
   const { interface: { primaryColor } } = useUiRedux();
   const [ showScaleActions, setShowScaleActions ] = useState(true);
+
   const handleStop = (e) => {
+    // console.log(ref.current.clientHeight,ref.current.clientWidth )
     setShowScaleActions(true)
     changeComponentPosition({id: ref.current.id, transform: getComputedStyle(ref.current).transform})
   }
@@ -31,7 +34,16 @@ const ComponentContainer = (props, ref) => {
 
   const handleResizeClick = ({action, e}) => {
     // ref.current.style.transform = "none"
-    changeComponentScaling({id: ref.current.id, transform: getComputedStyle(ref.current).transform, action})
+    // ref.current.style.transform = ""
+    
+    const { scaleX, translateX, translateY } = getMatrixValues((getComputedStyle(ref.current).transform));
+    console.log((getComputedStyle(ref.current).transform))
+    let newMatrixValues;
+    if(action === "up"){
+      newMatrixValues = `matrix(${parseInt(scaleX) + .1}, 0, 0, ${parseInt(scaleX) + .1}, ${translateX}, ${translateY})`;
+      ref.current.style.transform = newMatrixValues;
+    }
+    // changeComponentScaling({id: ref.current.id, transform: getComputedStyle(ref.current).transform, action})
     e.stopPropagation()
   }
 
@@ -41,7 +53,7 @@ const ComponentContainer = (props, ref) => {
     rectPosition.width = ref.current.getBoundingClientRect().width
     rectPosition.top = ref.current.getBoundingClientRect().top
   }
-
+  // console.log(props.additionalStyles)
   const content = (
     <Box
       sx={{
@@ -55,32 +67,37 @@ const ComponentContainer = (props, ref) => {
         width: "fit-content",
         zIndex: 1,
         textShadow: "1px 1px 2px rgba(0, 0, 0, .75)",
-        ...props.additionalStyles
+        ...props.additionalStyles,
+        // transform: "scale(1)"
       }}
       onClick={props.onClick} 
       ref={ref}
       id={props.id}
     >
-      {isActive && ref.current &&
-      <Box
-        sx={{
-          position: "absolute",
-          height: "100%",
-          width: "100%",
-          cursor: "grab",
-          zIndex: 10,
-          border: `2px dashed ${primaryColor}`,
-          boxShadow: 2,
-          transition: "all 200ms ease-in-out",
-          "&:hover": {
-            background: "rgba(255,255,255,0.25)",
-            border: `1px dashed ${primaryColor}`,
+      <Box component="span" sx={{}}>
+        {isActive && ref.current &&
+          <Box
+            sx={{
+              position: "absolute",
+              height: "100%",
+              width: "100%",
+              cursor: "grab",
+              zIndex: 10,
+              border: `2px dashed ${primaryColor}`,
+              boxShadow: 2,
+              transition: "all 200ms ease-in-out",
+              "&:hover": {
+                background: "rgba(255,255,255,0.25)",
+                border: `1px dashed ${primaryColor}`,
 
-            boxShadow: 10,
-          }
-        }}
-      ></Box>}
-        {props.children}
+                boxShadow: 10,
+              }
+            }}
+          ></Box>}
+
+            {props.children}
+
+      </Box>
     </Box>
   )
 
@@ -111,8 +128,8 @@ const ComponentContainer = (props, ref) => {
           top: `${rectPosition.top}px`,
           left: `${rectPosition.left + rectPosition.width - 50}px`,
         }}>
-          {/* resize actions */}
-          <ButtonGroup
+          {/* resize actions --currently in development */}
+          {/* <ButtonGroup
             disableElevation
             variant="contained"
             size="small"
@@ -139,7 +156,7 @@ const ComponentContainer = (props, ref) => {
           >
             <Button size="small" color="warning" onClick={(e) => handleResizeClick({action:"down", e})}><RemoveIcon fontSize="inherit"/></Button>
             <Button size="small" color="success" onClick={(e) => handleResizeClick({action:"up", e})}><AddIcon fontSize="inherit"/></Button>
-          </ButtonGroup>
+          </ButtonGroup> */}
         </Box>}
         </>
       :

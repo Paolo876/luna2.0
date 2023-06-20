@@ -79,16 +79,20 @@ const settingsSlice = createSlice({
         changeComponentScaling(state, { payload }){
             const { id, action, transform } = payload;
             const index = state.editorMode.changeComponentPosition.findIndex(item => item.id === id);
-            console.log(action, getMatrixValues(transform))
-
+            const { scaleX, translateX, translateY } = getMatrixValues(transform);
+            let newMatrixValues;
+            if(action === "up"){
+                newMatrixValues = `matrix(${parseInt(scaleX) + .1}, 0, 0, ${parseInt(scaleX) + .1}, ${translateX}, ${translateY})`;
+            } else {
+                newMatrixValues = `matrix(${parseInt(scaleX) - .1}, 0, 0, ${parseInt(scaleX) - .1}, ${translateX}, ${translateY})`;
+            }
             //check if scale value exists else create
             //combine scale and existing transform values
             // push or add value    value structure -> { id, transform }
             if(index === -1) {
-                // state.editorMode.changeComponentPosition.push(payload);
+                state.editorMode.changeComponentPosition.push({ id, transform: newMatrixValues});
             } else {
-                // state.editorMode.changeComponentPosition[index].transform = payload.transform;
-                // console.log(action)
+                state.editorMode.changeComponentPosition[index].transform = newMatrixValues;
             }
         },
         saveComponentPositions(state){

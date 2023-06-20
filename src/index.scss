@@ -18,7 +18,10 @@ body {
   user-select: none;
   overflow: hidden;
 }
+#root {
+  overflow: hidden;
 
+}
 /* scrollbar reset*/
 ::-webkit-scrollbar {
   width: 18px;
