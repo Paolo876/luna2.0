@@ -111,54 +111,35 @@ const ComponentContainer = (props, ref) => {
           top: `${rectPosition.top}px`,
           left: `${rectPosition.left + rectPosition.width - 50}px`,
         }}>
-        {/* resize actions */}
-        <ButtonGroup
-          disableElevation
-          variant="contained"
-          size="small"
-          sx={{
-            background: "rgba(255,255,255, .5)",
-            backdropFilter: "blur(5px) brightness(110%)", 
-            display: "flex", 
-            width: "fit-content", 
-            position: "absolute", 
-            right: 0, 
-            top: 0, 
-            height: "fit-content",
-            boxShadow: 2,
-            zIndex: 12,
-            opacity: .95,
-            transition: "all 150ms ease-in-out",
-            "&:hover": {
-              opacity: 1,
-              transform: "scale(1.02)",
-              boxShadow: 10,
+          {/* resize actions */}
+          <ButtonGroup
+            disableElevation
+            variant="contained"
+            size="small"
+            sx={{
+              background: "rgba(255,255,255, .5)",
+              backdropFilter: "blur(5px) brightness(110%)", 
+              display: "flex", 
+              width: "fit-content", 
+              position: "absolute", 
+              right: 0, 
+              top: 0, 
+              height: "fit-content",
+              boxShadow: 2,
+              zIndex: 12,
+              opacity: .95,
+              transition: "all 150ms ease-in-out",
+              "&:hover": {
+                opacity: 1,
+                transform: "scale(1.02)",
+                boxShadow: 10,
 
-            }
-          }}
-        >
-          <Button size="small" color="warning"><RemoveIcon fontSize="inherit"/></Button>
-          <Button size="small" color="success"><AddIcon fontSize="inherit"/></Button>
-        </ButtonGroup>
-        {/* <Box 
-          sx={{
-            background: "rgba(255,255,255, .5)",
-            backdropFilter: "blur(5px) brightness(120%)", 
-            display: "flex", 
-            width: "fit-content", 
-            position: "absolute", 
-            right: 0, 
-            top: 0, 
-            height: "fit-content",
-            py: .75, 
-            px: .75, 
-            gap: 1,
-            zIndex: 12,
-          }}
-        >              
-          <Fab size='small' sx={{height: 18, width: 18, minHeight: "initial"}} color="warning" variant="circular" onClick={(e) => handleResizeClick({action:"down", e})}><RemoveIcon fontSize="inherit"/></Fab>
-          <Fab size='small' sx={{height: 18, width: 18, minHeight: "initial"}} color="secondary" variant="circular" onClick={(e) => handleResizeClick({action:"up", e})}><AddIcon fontSize="inherit"/></Fab>
-        </Box> */}
+              }
+            }}
+          >
+            <Button size="small" color="warning" onClick={(e) => handleResizeClick({action:"down", e})}><RemoveIcon fontSize="inherit"/></Button>
+            <Button size="small" color="success" onClick={(e) => handleResizeClick({action:"up", e})}><AddIcon fontSize="inherit"/></Button>
+          </ButtonGroup>
         </Box>}
         </>
       :

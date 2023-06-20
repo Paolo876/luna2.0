@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { settingsInitialState, componentsInitialState } from "../initialStates";
-
+import getMatrixValues from "../../utils/getMatrixValues";
 
 const settingsSlice = createSlice({
     name: 'settings',
@@ -78,9 +78,9 @@ const settingsSlice = createSlice({
         },
         changeComponentScaling(state, { payload }){
             const { id, action, transform } = payload;
-            console.log(action, transform)
             const index = state.editorMode.changeComponentPosition.findIndex(item => item.id === id);
-            
+            console.log(action, getMatrixValues(transform))
+
             //check if scale value exists else create
             //combine scale and existing transform values
             // push or add value    value structure -> { id, transform }
