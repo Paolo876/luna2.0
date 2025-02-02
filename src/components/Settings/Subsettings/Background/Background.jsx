@@ -64,7 +64,7 @@ const Background = () => {
             </Box>
           </Box>
           <Divider/>
-          <FormControlLabel value={false} control={<Radio />} label={<Typography variant='body2' fontSize={16}>Select Random Backgrounds from unsplash.com</Typography>} />
+          <FormControlLabel value={false} control={<Radio />} label={<Typography variant='body2' fontSize={16}>Select Random Backgrounds from picsum.photos</Typography>} />
           <Box pr={1} pl={3} mt={.5} sx={{position: "relative", opacity: !isLocal ? 1 : .5}}>
             {isLocal && <Box sx={{position: "absolute", top: 0, left: 0, height: "100%", width: "100%", zIndex: 1, background: "rgba(0,0,0,.5)"}}></Box>}
             <Box sx={{display: "flex", width: 390, my: 1.5, justifyContent: "left"}}>
