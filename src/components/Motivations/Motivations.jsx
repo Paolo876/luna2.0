@@ -20,8 +20,9 @@ const Motivations = () => {
   const fetchData = async () => {
     setIsLoading(true)
     try{
-      const res = await axios.get("https://api.quotable.io/random?maxLength=140&tags=happiness|love|success");
-      setData(res.data)
+      // const res = await axios.get("https://api.quotable.io/random?maxLength=140&tags=happiness|love|success");
+      const res = await axios.get("https://api.realinspire.tech/v1/quotes/random?maxLength=220");
+      setData(res.data[0])
       setIsLoading(false)
     }catch (err) {
       setError(err.message)

@@ -42,9 +42,9 @@ const About = () => {
           <Box component="li" sx={listItemStyle}>Imagekitio-react</Box>
           <Box component="li" sx={listItemStyle}>mui-color-input</Box>
           <Box component="li" sx={listItemStyle}>Sass/Scss</Box>
-          <Box component="li" sx={listItemStyle}>Unsplash API</Box>
+          <Box component="li" sx={listItemStyle}>Picsum.photos API</Box>
           <Box component="li" sx={listItemStyle}>Openweathermap API</Box>
-          <Box component="li" sx={listItemStyle}>Quotable API by Luke Peavey</Box>
+          <Box component="li" sx={listItemStyle}>Real-Inspire API by Mohamad Ayash</Box>
         </Box>
       </Box>
     </SubsettingContainer>
